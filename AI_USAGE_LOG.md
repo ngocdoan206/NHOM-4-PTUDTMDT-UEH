@@ -221,10 +221,9 @@ Giả định: hệ thống ở mức sản phẩm chạy được (web responsi
 | Không có người dùng thật để kiểm chứng | Không biết giải pháp có hiệu quả | Thử nghiệm với 5–10 khách quen; nếu là bản demo thì dùng kịch bản kiểm thử có dữ liệu mô phỏng |
 
 
-# SỬ DỤNG AI 2 ĐỂ PHẢN BIỆN VÀ ĐÁNH GIÁ
+# SỬ DỤNG AI 2 (ChatGPT) ĐỂ PHẢN BIỆN VÀ ĐÁNH GIÁ
 Dưới đây là nội dung prompt của bạn đã được format chuẩn Markdown (có sử dụng danh sách và bảng biểu) để bạn có thể copy và dán trực tiếp vào file .md:
 
-## AI sử dụng: ChatGPT
 ## Prompt
 Bạn là người phản biện độc lập cho một dự án website thương mại điện tử do nhóm sinh viên thực hiện trong một học phần. 
 
