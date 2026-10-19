@@ -4,9 +4,9 @@
 
 | STT | Website | Đường dẫn | Dùng để học |
 | --- | --- | --- | --- |
-| 1 | Pet Mart | [petmart.vn](https://www.petmart.vn/) | Trang chủ, danh mục sản phẩm, tìm kiếm và điều hướng |
-| 2 | Dog Paradise | [Trang dịch vụ grooming](https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo) | Cách trình bày dịch vụ, bảng giá, chính sách và thông tin đặt hàng |
-| 3 | Groomit (ứng dụng tại Mỹ) | [App Store](https://apps.apple.com/us/app/groomit-on-demand-grooming/id1240314505) | Luồng đặt lịch, lựa chọn groomer và khung giờ |
+| 1 | Pet Mart | https://www.petmart.vn/ | Trang chủ, danh mục sản phẩm, tìm kiếm và điều hướng |
+| 2 | Dog Paradise | https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo | Cách trình bày dịch vụ, bảng giá, chính sách và thông tin đặt hàng |
+| 3 | Groomit (ứng dụng tại Mỹ) | https://apps.apple.com/us/app/groomit-on-demand-grooming/id1240314505 | Luồng đặt lịch, lựa chọn groomer và khung giờ |
 
 **Ngày khảo sát:** [19/10/2026]  
 **Lưu ý:** Groomit là ứng dụng phục vụ thị trường Mỹ, tập trung vào grooming tại nhà và xe lưu động. Nhóm chỉ tham khảo thông tin công khai để nghiên cứu quy trình đặt lịch, không xem đây là website thương mại điện tử Việt Nam tương đương hai đối tượng còn lại.
@@ -39,7 +39,30 @@ PawCare chưa cần triển khai danh mục quá rộng, hệ thống điều ph
 ### Phương án PawCare chọn
 PawCare ưu tiên website kết hợp dịch vụ grooming và cửa hàng trực tuyến, với hai luồng chính là đặt lịch và mua sản phẩm. Các tính năng nền tảng gồm bảng giá minh bạch, danh mục dễ tìm, hồ sơ thú cưng và cơ chế gửi yêu cầu đặt lịch để nhân viên xác nhận. Điểm nhấn phát triển sau là **Lộ trình chăm sóc**, hỗ trợ lưu lịch sử chăm sóc, nhắc lịch grooming và gợi ý mua lại sản phẩm phù hợp.
 
+## 4. Ảnh tham khảo
 
-## 4. Hạn chế của khảo sát
+<img width="692" height="303" alt="image" src="https://github.com/user-attachments/assets/ecd92158-3fa2-462f-944f-0c17c6886c78" />
+
+**Hình 1. Trang chủ Pet Mart, thể hiện cách tổ chức điều hướng và giới thiệu sản phẩm, dịch vụ.**
+
+---
+
+<img width="691" height="333" alt="image" src="https://github.com/user-attachments/assets/bdfbbc7d-6581-4b79-a993-dfd9b81a6c58" />
+
+**Hình 2. Trang sản phẩm Pet Mart, dùng để tham khảo cách trình bày danh mục và giá bán.**
+
+---
+
+<img width="692" height="812" alt="image" src="https://github.com/user-attachments/assets/b48e487d-c950-463d-bf4e-1572e4ec1d2d" />
+
+**Hình 3. Trang dịch vụ grooming Dog Paradise, thể hiện cách giới thiệu dịch vụ và bảng giá.**
+
+---
+
+<img width="692" height="346" alt="image" src="https://github.com/user-attachments/assets/a88510b5-c49e-45f6-9614-cf62609fb82d" />
+
+**Hình 4. Trang App Store của Groomit, dùng để tham khảo mô tả công khai về quy trình đặt lịch.**
+
+## 5. Hạn chế của khảo sát
 
 Khảo sát chủ yếu dựa trên các trang công khai được cung cấp. Nhóm chưa kiểm thử đầy đủ toàn bộ quy trình mua hàng và đặt lịch trên từng nền tảng. Riêng Groomit, phân tích dựa trên mô tả ứng dụng trên App Store, không phải kết quả trải nghiệm thực tế toàn bộ ứng dụng. Vì vậy, các tính năng chưa có đủ bằng chứng được ghi nhận thận trọng và chỉ sử dụng làm cơ sở tham khảo cho việc đề xuất PawCare.
