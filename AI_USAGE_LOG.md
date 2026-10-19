@@ -224,7 +224,7 @@ Giả định: hệ thống ở mức sản phẩm chạy được (web responsi
 # SỬ DỤNG AI 2 ĐỂ PHẢN BIỆN VÀ ĐÁNH GIÁ
 Dưới đây là nội dung prompt của bạn đã được format chuẩn Markdown (có sử dụng danh sách và bảng biểu) để bạn có thể copy và dán trực tiếp vào file .md:
 
-Markdown
+## AI sử dụng: ChatGPT
 ## Prompt
 Bạn là người phản biện độc lập cho một dự án website thương mại điện tử do nhóm sinh viên thực hiện trong một học phần. 
 
