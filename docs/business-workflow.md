@@ -11,7 +11,7 @@ Tiếp theo, khách chọn một trong bốn dịch vụ lẻ (tắm sấy, cắ
 
 Hệ thống chỉ hiển thị những khung giờ còn đủ thời lượng theo groomer đã chọn. Khi khách chốt một khung giờ, hệ thống giữ chỗ trong 10 phút để khách kịp hoàn tất thanh toán; nếu hai khách cùng chọn trùng giờ thì chỉ một người giữ được chỗ, người còn lại sẽ được báo và gợi ý khung giờ lân cận. Trước khi thanh toán, khách xem lại toàn bộ thông tin đơn — dịch vụ, groomer, giờ hẹn, giá dự tính, ghi chú — và tick xác nhận điều kiện tiếp nhận (không nhận thú đang mang thai, đang điều trị bệnh hoặc mới phẫu thuật). Nếu muốn, khách có thể thêm sản phẩm (thức ăn, snack, phụ kiện) vào cùng giỏ hàng với dịch vụ trước khi thanh toán một lần duy nhất.
 
-Khách thanh toán bằng một trong ba hình thức: VNPay sandbox, trả tại tiệm, hoặc COD khi giỏ hàng có sản phẩm cần giao. Thanh toán thành công thì hệ thống xác nhận đơn ngay, và từ lúc này khách có thể vào mục "Đơn của tôi" để theo dõi trạng thái đơn theo thời gian thực — mỗi khách chỉ xem được đơn của chính mình.
+Khách thanh toán bằng một trong ba hình thức: VNPay sandbox, trả tại tiệm, hoặc COD khi giỏ hàng có sản phẩm cần giao. Thanh toán thành công thì hệ thống xác nhận đơn ngay, và từ lúc này khách có thể vào mục "Đơn của tôi" để theo dõi trạng thái đơn — mỗi khách chỉ xem được đơn của chính mình.
 
 ## Quy trình phía tiệm
 
@@ -29,7 +29,7 @@ Khi khách đưa bé đến, nhân viên check-in và đánh giá nhanh tình tr
 | Đang thực hiện | Groomer đang thực hiện dịch vụ | Admin |
 | Sẵn sàng đón | Dịch vụ hoàn tất, chờ khách đến đón | Admin |
 | Hoàn tất | Khách đã nhận lại bé | Admin |
-| Đã hủy | Hủy trước khi check-in | *(chưa quy định rõ trong REQUIREMENTS.md)* |
+| Đã hủy | Hủy trước khi check-in | Khách hoặc Admin |
 | Không đến | Khách không đến đúng giờ đã đặt | Admin |
 
 ## Sơ đồ tóm tắt
@@ -37,8 +37,8 @@ Khi khách đưa bé đến, nhân viên check-in và đánh giá nhanh tình tr
  
 ```mermaid
 flowchart TD
-    A[Khách vào website & đăng nhập] --> B[Chọn bé, dịch vụ, groomer]
-    B --> C[Hệ thống báo giá & thời lượng]
+    A[Khách vào website và đăng nhập] --> B[Chọn bé, dịch vụ, groomer]
+    B --> C[Hệ thống báo giá và thời lượng]
     C --> D[Chọn giờ trống, giữ chỗ 10 phút]
     D --> E[Xem lại đơn, xác nhận điều kiện tiếp nhận]
     E --> F[Thanh toán]
