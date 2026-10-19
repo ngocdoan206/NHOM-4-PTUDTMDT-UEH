@@ -1,4 +1,4 @@
-# SỬ DỤNG AI 1 PHÂN TÍCH YÊU CẦU
+# SỬ DỤNG AI 1 (CLAUDE) PHÂN TÍCH YÊU CẦU
 ## Quy ước nhãn:
 - **[BB]** là yêu cầu bắt buộc: thiếu thì hệ thống không giải quyết được vấn đề cốt lõi.
 - **[SAU]** là có thể phát triển sau.
