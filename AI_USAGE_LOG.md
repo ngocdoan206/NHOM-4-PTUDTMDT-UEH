@@ -180,3 +180,74 @@ Giả định: hệ thống ở mức sản phẩm chạy được (web responsi
 | Phụ thuộc bên thứ ba (email, thanh toán, Zalo) | Trễ tiến độ | MVP chỉ dùng email; hoãn thanh toán và Zalo |
 | 7 thành viên khó phối hợp, năng lực kỹ thuật không đều | Chậm, lỗi tích hợp | Phân vai rõ, chia module độc lập, họp ngắn hàng tuần, đánh giá năng lực thật ở tuần 1 |
 | Không có người dùng thật để kiểm chứng | Không biết giải pháp có hiệu quả | Thử nghiệm với 5–10 khách quen; nếu là bản demo thì dùng kịch bản kiểm thử có dữ liệu mô phỏng |
+
+
+# SỬ DỤNG AI 2 ĐỂ PHẢN BIỆN VÀ ĐÁNH GIÁ
+## 1 Chi tiết các vấn đề AI 2 phản biện
+
+**1.1 Có thực sự giải quyết vấn đề kinh doanh không? Có yêu cầu nào trùng lặp/không cần thiết?**
+* **Vấn đề:** Tính năng “Lượng ăn tham khảo” (Mục E)
+  * **Lý do:** Khách hàng mục tiêu đến với PawCare chủ yếu để giải quyết vấn đề grooming (tắm, tỉa lông), không phải để khám dinh dưỡng. Việc tư vấn sai lượng ăn có thể gây rủi ro về sức khỏe thú cưng, làm mất uy tín tiệm.
+  * **Đề xuất điều chỉnh:** Loại bỏ hoàn toàn. Tập trung vào chu kỳ tắm/cắt tỉa là đủ để giải quyết vấn đề "Không biết chăm đúng" trong phạm vi grooming.
+* **Vấn đề:** Tính năng “Bán sản phẩm” (Mục F)
+  * **Lý do:** Theo mô tả ban đầu, đây chỉ là phần phụ. Nhưng nếu làm một hệ thống E-commerce bán lẻ đầy đủ (giỏ hàng, thanh toán, quản lý tồn kho độc lập) sẽ làm phân tán nguồn lực khỏi tính năng cốt lõi là đặt lịch.
+  * **Đề xuất điều chỉnh:** Đơn giản hóa thành “Mua kèm dịch vụ” (Upsell). Khách chọn lịch tắm, hệ thống gợi ý “Mua thêm sữa tắm/pate mang về”, thanh toán gộp vào hóa đơn dịch vụ. Không làm hệ thống giỏ hàng mua sắm riêng biệt cho phiên bản này.
+* **Vấn đề:** Chức năng "Ước tính chi phí grooming hàng tháng" (Mục E)
+  * **Lý do:** Không mang lại giá trị thực tế cao lúc đặt lịch, dễ gây rối UI.
+  * **Đề xuất điều chỉnh:** Chuyển thành một bài viết blog/landing page tĩnh (bảng biểu tham khảo) thay vì làm công cụ tính toán động phức tạp.
+
+**1.2 Có chức năng nào vượt quá phạm vi của nhóm không? (7 tuần, 7 người)**
+* **Vấn đề:** Chặn trùng lịch (Khóa slot realtime) (Mục C)
+  * **Lý do:** Xử lý đồng thời (Concurrency) để khóa slot theo thời gian thực (giống rạp chiếu phim) đòi hỏi kỹ thuật cao, rất dễ gây lỗi (bug) hoặc khóa chết (deadlock) database. Trong 7 tuần, điều này là quá sức.
+  * **Đề xuất điều chỉnh:** Giảm mức độ phức tạp. Chuyển sang cơ chế “Đặt chỗ (Pending) -> Tiệm xác nhận” hoặc xử lý trùng lịch ở mức Database Constraint cơ bản. Nếu có 2 người đặt cùng lúc, người submit sau sẽ nhận thông báo “Slot vừa được đặt, vui lòng chọn giờ khác”.
+* **Vấn đề:** Phân chia 4 vai trò quản trị (Mục 2)
+  * **Lý do:** Xây dựng UI/UX và logic phân quyền cho 3 luồng riêng biệt: Khách, Groomer, và Chủ tiệm tốn rất nhiều thời gian. Thực tế tiệm nhỏ thường chủ tiệm kiêm luôn lễ tân và xếp lịch.
+  * **Đề xuất điều chỉnh:** Gộp vai trò Groomer và Chủ tiệm/Nhân viên thành 1 vai trò duy nhất là "Staff/Admin" cho phiên bản đầu (MVP). Ai trực máy tính ở quầy thì người đó thao tác cập nhật trạng thái.
+
+**1.3 Có thiếu chức năng cơ bản hoặc quy trình nghiệp vụ nào không?**
+* **Vấn đề:** Xử lý khách vãng lai (Walk-in)
+  * **Lý do:** Tài liệu hoàn toàn tập trung vào khách đặt trực tuyến. Thực tế tiệm luôn có khách tự dắt chó/mèo đến. Nếu hệ thống không cho phép đưa khách này vào web, slot trống sẽ bị sai lệch so với thực tế, gây trùng lịch.
+  * **Đề xuất điều chỉnh:** Bổ sung chức năng "Tạo lịch nhanh tại quầy (POS cơ bản)" dành riêng cho Admin để điền khách vãng lai vào slot trống ngay lập tức.
+* **Vấn đề:** Thiếu cơ chế thông báo cho hệ thống nội bộ của tiệm
+  * **Lý do:** Tài liệu có đề cập "Email xác nhận gửi cho khách", nhưng khi có booking mới, nhân viên/chủ tiệm biết bằng cách nào để chuẩn bị?
+  * **Đề xuất điều chỉnh:** Bổ sung chức năng hiển thị Notification (chuông báo) hoặc tự động làm mới (auto-refresh) trang quản lý lịch của tiệm, hoặc gửi email thông báo về email của tiệm.
+
+**1.4 Có rủi ro về dữ liệu, bảo mật hoặc quyền riêng tư không?**
+* **Vấn đề:** Lưu trữ “Ảnh trước/sau dịch vụ” (Mục D)
+  * **Lý do:** File ảnh gốc rất nặng. Nếu không kiểm soát, server của sinh viên (thường dùng gói free/rẻ) sẽ sập hoặc hết băng thông chỉ sau vài ngày test.
+  * **Đề xuất điều chỉnh:** Bắt buộc thêm yêu cầu: Giới hạn kích thước file upload (VD: tối đa 2MB/ảnh) và chỉ lưu trữ ảnh tối đa 30 ngày, sau đó tự động xóa để tiết kiệm tài nguyên.
+* **Vấn đề:** Quyền riêng tư của ảnh thú cưng
+  * **Lý do:** Chủ nuôi (đặc biệt các giống chó/mèo đắt tiền) rất nhạy cảm với việc hình ảnh thú cưng của mình bị người khác xem hoặc lấy cắp.
+  * **Đề xuất điều chỉnh:** Đảm bảo logic code kiểm tra quyền (Authorization): Chỉ User ID sở hữu thú cưng hoặc Admin mới gọi được API để xem URL hình ảnh đó.
+
+**1.5 Có yêu cầu nào chưa đủ rõ để lập trình và kiểm thử không?**
+* **Vấn đề:** Yêu cầu “Hủy/dời lịch theo chính sách” (Mục C)
+  * **Lý do:** Từ "chính sách" là từ ngữ kinh doanh, Lập trình viên không thể code và Tester không thể viết test-case từ chữ này.
+  * **Đề xuất điều chỉnh:** Lượng hóa rõ ràng ngay trong yêu cầu. Ví dụ: "Khách chỉ được phép ấn nút Hủy/Dời lịch trên web trước giờ hẹn tối thiểu 12 tiếng. Dưới 12 tiếng nút này bị mờ (disabled), khách phải gọi hotline".
+* **Vấn đề:** "Ước tính giá trước khi đặt... hiển thị khoảng giá" (Mục B)
+  * **Lý do:** Khoảng giá tính theo công thức nào? Việc tính toán động dựa vào 3 biến số (Cân nặng, Độ dài lông, Tình trạng rối) rất dễ sinh lỗi logic nếu không có ma trận (matrix) cụ thể.
+  * **Đề xuất điều chỉnh:** Cần nhóm Business Analyst (hoặc thành viên phụ trách) cung cấp bảng Mapping giá cố định cho Dev. Ví dụ: Base price = Cân nặng. Phụ phí lông dài = +50k. Thay vì hiển thị "khoảng giá ước tính", hãy hiển thị "Giá cơ bản: X VND. Phụ phí thực tế sẽ xác nhận khi check-in".
+* **Vấn đề:** "Cập nhật trạng thái... giảm nỗi lo" (Mục D)
+  * **Lý do:** Việc này hoạt động ra sao ở phía người dùng? Người dùng phải F5 (tải lại trang) liên tục để chờ trạng thái đổi từ "Đang tắm" sang "Đã sấy"?
+  * **Đề xuất điều chỉnh:** Làm rõ hành vi: Khách vào trang "Lịch sử của tôi" để xem dòng thời gian (Timeline). Không yêu cầu làm WebSockets (Realtime) để tiết kiệm thời gian, chỉ cần khách reload trang là thấy trạng thái mới.
+
+> **Tiểu kết:** Danh sách AI 1 đề xuất khá đầy đủ về mặt kinh doanh nhưng đang hơi phình to về mặt kỹ thuật đối với một dự án học phần 7 tuần. Nhóm nên mạnh tay cắt bỏ các tính năng tư vấn râu ria, gộp role quản trị, và lượng hóa bằng số liệu cụ thể (giá, giờ hủy lịch) để Dev có thể bắt tay vào làm ngay.
+
+---
+
+## 2 Bảng Tổng hợp Đề xuất, Phản biện và Quyết định của nhóm
+
+| Nội dung / Tính năng | AI thứ nhất đề xuất | AI thứ hai phản biện | Quyết định của nhóm |
+| :--- | :--- | :--- | :--- |
+| **Lượng ăn tham khảo** | Có | Không giải quyết vấn đề cốt lõi, có thể gây rủi ro sức khỏe thú cưng và mất uy tín. Đề xuất loại bỏ. | Loại bỏ hoàn toàn |
+| **Bán sản phẩm** | Có | Việc làm hệ thống E-commerce đầy đủ sẽ gây phân tán nguồn lực. Đề xuất đơn giản hóa thành chức năng “Mua kèm dịch vụ” (Upsell) gộp vào hóa đơn. | Giữ lại nhưng thu hẹp thành chức năng “Mua kèm dịch vụ” (Upsell) |
+| **Ước tính chi phí grooming hàng tháng** | Có | Không mang lại giá trị cao lúc đặt lịch, dễ gây rối UI. Đề xuất chuyển thành bảng biểu tham khảo tĩnh. | Giữ. Nếu không kịp triển khai, cân nhắc đổi thành trang nội dung/bảng biểu tĩnh vì đây là chức năng thêm. |
+| **Chặn trùng lịch (Khóa slot realtime)** | Có | Đòi hỏi kỹ thuật cao, dễ sinh lỗi hoặc deadlock trong 7 tuần. Đề xuất đổi sang “Đặt chỗ -> Tiệm xác nhận”. | Giữ |
+| **Phân chia 4 vai trò quản trị** | Có (Khách vãng lai, Chủ nuôi, Groomer, Chủ tiệm) | Tốn nhiều thời gian thiết kế logic và UI riêng. Đề xuất gộp vai trò Groomer và Chủ tiệm thành một role “Staff/Admin”. | Vẫn phân 4 vai trò |
+| **Xử lý khách vãng lai (Walk-in)** | Không có (chỉ tập trung khách online) | Thiếu sót này sẽ gây sai lệch dữ liệu slot trống thực tế. Đề xuất bổ sung “Tạo lịch nhanh tại quầy (POS)”. | Bổ sung chức năng “Tạo lịch nhanh tại quầy” cho Admin |
+| **Cơ chế thông báo nội bộ cho tiệm** | Chỉ gửi email xác nhận cho khách | Nhân viên không biết có lịch mới. Đề xuất thêm Notification hoặc tự động làm mới trang quản lý. | Bổ sung Notification/Email thông báo cho hệ thống quản trị |
+| **Lưu trữ ảnh trước/sau dịch vụ** | Có | Ảnh nặng dễ làm quá tải server sinh viên. Đề xuất giới hạn kích thước (tối đa 2MB) và tự động xóa sau 30 ngày. | Áp dụng giới hạn dung lượng upload 2MB và thời gian lưu 30 ngày |
+| **Quyền riêng tư ảnh thú cưng** | Có đề cập chung chung | Chủ nuôi nhạy cảm. Cần đảm bảo logic phân quyền (Authorization) để chỉ chủ thú cưng và Admin mới xem được URL ảnh. | Bổ sung logic phân quyền bắt buộc cho API lấy ảnh |
+| **Hủy/dời lịch theo chính sách** | Có | Từ “chính sách” quá chung chung, không thể code và test. Đề xuất lượng hóa rõ ràng bằng số (ví dụ: trước 12 tiếng). | Lượng hóa cụ thể (VD: chỉ cho phép thao tác trước 12 tiếng) |
+| **Ước tính hiển thị khoảng giá** | Có | Dễ sinh lỗi logic do nhiều biến số. Đề xuất cung cấp bảng giá cố định thay cho khoảng giá động. | Hiển thị “Giá cơ bản” và ghi chú các khoản phụ phí sẽ xác nhận tại tiệm |
+| **Cập nhật trạng thái trực tuyến** | Có | Cần làm rõ hành vi người dùng (không nên dùng WebSockets). Đề xuất xây dựng Timeline và tải lại trang thủ công. | Làm giao diện Timeline, cập nhật bằng cách tải lại trang thủ công |
