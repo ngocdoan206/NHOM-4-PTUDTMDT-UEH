@@ -60,7 +60,19 @@ Chi tiết từng chức năng nằm trong REQUIREMENTS.md.
 
 ## 5. Công nghệ dự kiến
 
-(đang chờ xác nhận sau khi xong phần 7)
+| Phần | Công nghệ | Dùng để |
+|---|---|---|
+| Ngôn ngữ và khung ứng dụng | C#, ASP.NET Core MVC | Xây website, xử lý nghiệp vụ |
+| Truy cập dữ liệu | Entity Framework Core | Đọc, ghi cơ sở dữ liệu bằng mã C# |
+| Cơ sở dữ liệu | SQLite (khi phát triển) | Lưu dữ liệu, ràng buộc chống đặt trùng giờ |
+| Giao diện | HTML, CSS, JavaScript, Bootstrap 5 | Giao diện đáp ứng nhiều kích thước màn hình |
+| Đăng nhập, phân quyền | ASP.NET Core Identity | Tài khoản khách hàng và Admin |
+| Biểu đồ | Chart.js | Dashboard cho Admin |
+| Thanh toán | VNPay sandbox, trả tại tiệm, COD | Thanh toán đơn |
+| Kiểm thử | xUnit | Kiểm thử chức năng |
+| Quản lý mã nguồn | GitHub (Issues, Pull Request) | Phối hợp nhóm |
+
+**Nguồn mã mẫu tham khảo (dự kiến):** DemoTechEcommerceMVC, giấy phép MIT, tác giả NABIHAyman, đường dẫn: https://github.com/NABIHAyman/DemoTechEcommerceMVC. Nhóm sẽ kế thừa khung bán hàng (giỏ hàng, đơn hàng) và chỉnh sửa, bổ sung các chức năng đặt lịch, báo giá, lộ trình chăm sóc. Phần kế thừa và phần chỉnh sửa sẽ được ghi cụ thể khi triển khai.
 
 ## 6. Kế hoạch thực hiện
 
