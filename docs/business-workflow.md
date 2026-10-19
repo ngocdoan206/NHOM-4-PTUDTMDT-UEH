@@ -5,13 +5,23 @@
 
 ## Hành trình của khách hàng
 
-Khách truy cập website để xem giá và tham khảo Lộ trình chăm sóc mà không cần đăng nhập, nhưng khi muốn đặt lịch thì bắt buộc phải đăng nhập trước. Sau khi đăng nhập, khách chọn hồ sơ bé đã lưu hoặc tạo hồ sơ mới với các thông tin loài, cân nặng và loại lông, vì đây là dữ liệu nền để hệ thống tính giá và thời lượng sau này.
+1. **Đăng nhập** – Khách xem giá và tham khảo Lộ trình chăm sóc mà không cần đăng nhập, nhưng khi muốn đặt lịch thì bắt buộc phải đăng nhập trước.
 
-Tiếp theo, khách chọn một trong bốn dịch vụ lẻ (tắm sấy, cắt tỉa tạo kiểu, vệ sinh tai, cắt móng) hoặc một trong ba combo, rồi chọn groomer theo hình thức "Bất kỳ" để hệ thống tự gán, hoặc chỉ định groomer hiện có. Ngay khi đủ thông tin, hệ thống tự động tra bảng giá theo mốc cân nặng và độ dài lông, cộng thêm phụ phí nếu có (lông rối, thú quá cỡ), đồng thời tính luôn thời lượng dự kiến của lượt dịch vụ — khách biết trước chi phí trước khi phải chọn giờ.
+2. **Chọn hồ sơ bé** – Chọn hồ sơ bé đã lưu hoặc tạo hồ sơ mới với các thông tin loài, cân nặng và loại lông; đây là dữ liệu nền để hệ thống tính giá và thời lượng sau này.
 
-Hệ thống chỉ hiển thị những khung giờ còn đủ thời lượng theo groomer đã chọn. Khi khách chốt một khung giờ, hệ thống giữ chỗ trong 10 phút để khách kịp hoàn tất thanh toán; nếu hai khách cùng chọn trùng giờ thì chỉ một người giữ được chỗ, người còn lại sẽ được báo và gợi ý khung giờ lân cận. Trước khi thanh toán, khách xem lại toàn bộ thông tin đơn — dịch vụ, groomer, giờ hẹn, giá dự tính, ghi chú — và tick xác nhận điều kiện tiếp nhận (không nhận thú đang mang thai, đang điều trị bệnh hoặc mới phẫu thuật). Nếu muốn, khách có thể thêm sản phẩm (thức ăn, snack, phụ kiện) vào cùng giỏ hàng với dịch vụ trước khi thanh toán một lần duy nhất.
+3. **Chọn dịch vụ và groomer** – Chọn một trong bốn dịch vụ lẻ (tắm sấy, cắt tỉa tạo kiểu, vệ sinh tai, cắt móng) hoặc một trong ba combo, rồi chọn groomer theo hình thức "Bất kỳ" để hệ thống tự gán, hoặc chỉ định groomer hiện có.
 
-Khách thanh toán bằng một trong ba hình thức: VNPay sandbox, trả tại tiệm, hoặc COD khi giỏ hàng có sản phẩm cần giao. Thanh toán thành công thì hệ thống xác nhận đơn ngay, và từ lúc này khách có thể vào mục "Đơn của tôi" để theo dõi trạng thái đơn — mỗi khách chỉ xem được đơn của chính mình.
+4. **Xem báo giá tự động** – Ngay khi đủ thông tin, hệ thống tra bảng giá theo mốc cân nặng và độ dài lông, cộng thêm phụ phí nếu có (lông rối, thú quá cỡ), đồng thời tính luôn thời lượng dự kiến — khách biết trước chi phí trước khi chọn giờ.
+
+5. **Chọn giờ và giữ chỗ** – Hệ thống chỉ hiển thị những khung giờ còn đủ thời lượng theo groomer đã chọn. Khi khách chốt một khung giờ, hệ thống giữ chỗ trong 10 phút để khách kịp hoàn tất thanh toán; nếu hai khách cùng chọn trùng giờ thì chỉ một người giữ được chỗ, người còn lại được báo và gợi ý khung giờ lân cận.
+
+6. **Xem lại đơn** – Khách xem lại toàn bộ thông tin đơn — dịch vụ, groomer, giờ hẹn, giá dự tính, ghi chú — và tick xác nhận điều kiện tiếp nhận (không nhận thú đang mang thai, đang điều trị bệnh hoặc mới phẫu thuật).
+
+7. **(Tùy chọn) Thêm sản phẩm** – Khách có thể thêm sản phẩm (thức ăn, snack, phụ kiện) vào cùng giỏ hàng với dịch vụ trước khi thanh toán một lần duy nhất.
+
+8. **Thanh toán** – Khách thanh toán bằng một trong ba hình thức: VNPay sandbox, trả tại tiệm, hoặc COD khi giỏ hàng có sản phẩm cần giao. Thanh toán thành công thì hệ thống xác nhận đơn ngay.
+
+9. **Theo dõi đơn** – Khách vào mục "Đơn của tôi" để theo dõi trạng thái đơn; mỗi khách chỉ xem được đơn của chính mình.
 
 ## Quy trình phía tiệm
 
