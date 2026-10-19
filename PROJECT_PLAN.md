@@ -36,13 +36,13 @@ Vai trò là vai trò chính, không giới hạn công việc. Các thành viê
 |---|---|---|
 | 1. Khảo sát và xác định yêu cầu | 15/10 – 20/10 | Bản bài tập hoàn chỉnh nộp thầy: đề tài, phân tích đối thủ, yêu cầu, quy trình nghiệp vụ, kế hoạch và repo công khai |
 | 2. Thiết kế giao diện | 21/10 – 08/11 | Có thiết kế giao diện, thiết kế cơ sở dữ liệu và luồng xử lý chính, được cả nhóm thống nhất |
-| 3. Xây dựng các chức năng frontend | 02/11 – 22/11 | Các trang chính của khách hàng và quản trị chạy được, dùng được trên desktop và mobile |
-| 4. Phát triển backend và cơ sở dữ liệu | 02/11 – 29/11 | Các nghiệp vụ chính hoạt động và kết nối được với giao diện |
+| 3. Xây dựng các chức năng frontend | 09/11 – 29/11 | Các trang chính của khách hàng và quản trị chạy được, dùng được trên desktop và mobile |
+| 4. Phát triển backend và cơ sở dữ liệu | 09/11 – 29/11 | Các nghiệp vụ chính hoạt động và kết nối được với giao diện |
 | 5. Tích hợp và kiểm thử | 23/11 – 06/12 | Các luồng chính chạy từ đầu đến cuối; có kết quả kiểm thử và lỗi đã xử lý |
 | 6. Triển khai và hoàn thiện | 30/11 – 10/12 | Website chạy công khai, repo gọn gàng, nội dung báo cáo hoàn thành |
 | Hoàn tất báo cáo và thuyết trình | 11/12 – 15/12 | Báo cáo đã format, slide và phần tập dượt sẵn sàng |
  
-Giai đoạn 3 và 4 chạy song song; giai đoạn 5 bắt đầu khi các chức năng chính đã tích hợp được.
+Giai đoạn 3 và 4 chỉ bắt đầu sau khi thiết kế giao diện, cơ sở dữ liệu và API được chốt (T14, 08/11), rồi chạy song song. Giai đoạn 5 bắt đầu khi các chức năng chính đã tích hợp được.
  
 ---
  
@@ -77,10 +77,10 @@ Giai đoạn 3 và 4 chạy song song; giai đoạn 5 bắt đầu khi các ch�
 | Mã | Công việc | Người phụ trách | Kết quả cần đạt | Thời hạn | Trạng thái |
 |---|---|---|---|---|---|
 | T15 | Bố cục chung và trang chủ | Hà | Các trang chạy được, nhất quán về giao diện | 15/11 | Chưa bắt đầu |
-| T16 | Giao diện đặt lịch theo groomer và khung giờ trống | Hà | Khách hàng đặt lịch được trên giao diện | 22/11 | Chưa bắt đầu |
-| T17 | Giao diện danh mục, chi tiết sản phẩm, giỏ hàng, checkout và đơn hàng | Hạnh | Khách hàng thao tác mua hàng được trên giao diện | 22/11 | Chưa bắt đầu |
-| T18 | Giao diện quản trị và thống kê | Giao | Các màn hình quản trị chạy được | 22/11 | Chưa bắt đầu |
-| T19 | Hiệu ứng tương tác và kiểm tra responsive | Hà (phối hợp Hạnh) | Giao diện dùng được trên ít nhất 2 kích thước màn hình | 22/11 | Chưa bắt đầu |
+| T16 | Giao diện đặt lịch theo groomer và khung giờ trống | Hà | Khách hàng đặt lịch được trên giao diện | 29/11 | Chưa bắt đầu |
+| T17 | Giao diện danh mục, chi tiết sản phẩm, giỏ hàng, checkout và đơn hàng | Hạnh | Khách hàng thao tác mua hàng được trên giao diện | 29/11 | Chưa bắt đầu |
+| T18 | Giao diện quản trị và thống kê | Giao | Các màn hình quản trị chạy được | 29/11 | Chưa bắt đầu |
+| T19 | Hiệu ứng tương tác và kiểm tra responsive | Hà (phối hợp Hạnh) | Giao diện dùng được trên ít nhất 2 kích thước màn hình | 29/11 | Chưa bắt đầu |
  
 ### Giai đoạn 4: Phát triển backend và cơ sở dữ liệu
  
@@ -97,7 +97,7 @@ Giai đoạn 3 và 4 chạy song song; giai đoạn 5 bắt đầu khi các ch�
  
 | Mã | Công việc | Người phụ trách | Kết quả cần đạt | Thời hạn | Trạng thái |
 |---|---|---|---|---|---|
-| T26 | Tích hợp frontend và backend các luồng chính | Nghi (điều phối) | Các luồng chính chạy từ đầu đến cuối | 01/12 | Chưa bắt đầu |
+| T26 | Tích hợp frontend và backend các luồng chính | Nghi (điều phối) | Các luồng chính chạy từ đầu đến cuối | 03/12 | Chưa bắt đầu |
 | T27 | Lập test case và kiểm thử chức năng | Nghi | Bảng test case và kết quả kiểm thử | 06/12 | Chưa bắt đầu |
 | T28 | Kiểm thử chéo giữa các thành viên | Cả nhóm | Lỗi được ghi lại thành Issue | 06/12 | Chưa bắt đầu |
 | T29 | Kiểm tra bảo mật cơ bản | Nghi | Danh sách rủi ro, biện pháp và minh chứng | 06/12 | Chưa bắt đầu |
