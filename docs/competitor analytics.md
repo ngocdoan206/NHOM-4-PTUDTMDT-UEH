@@ -4,14 +4,13 @@
 
 | STT | Website | Đường dẫn | Dùng để học |
 | --- | --- | --- | --- |
-| 1 | Pet Mart | petmart.vn | Trang chủ, danh mục sản phẩm, tìm kiếm và điều hướng |
-| 2 | Dog Paradise | Trang dịch vụ grooming | Cách trình bày dịch vụ, bảng giá, chính sách và thông tin đặt hàng |
-| 3 | Groomit (ứng dụng tại Mỹ) | App Store | Luồng đặt lịch, lựa chọn groomer và khung giờ |
+| 1 | Pet Mart | [petmart.vn](https://www.petmart.vn/) | Trang chủ, danh mục sản phẩm, tìm kiếm và điều hướng |
+| 2 | Dog Paradise | [Trang dịch vụ grooming](https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo) | Cách trình bày dịch vụ, bảng giá, chính sách và thông tin đặt hàng |
+| 3 | Groomit (ứng dụng tại Mỹ) | [App Store](https://apps.apple.com/us/app/groomit-on-demand-grooming/id1240314505) | Luồng đặt lịch, lựa chọn groomer và khung giờ |
 
 **Ngày khảo sát:** [19/10/2026]  
 **Lưu ý:** Groomit là ứng dụng phục vụ thị trường Mỹ, tập trung vào grooming tại nhà và xe lưu động. Nhóm chỉ tham khảo thông tin công khai để nghiên cứu quy trình đặt lịch, không xem đây là website thương mại điện tử Việt Nam tương đương hai đối tượng còn lại.
 
----
 
 ## 2. Bảng so sánh
 
@@ -26,7 +25,6 @@
 
 *Nguồn: Nhóm tổng hợp từ các đường dẫn khảo sát. Những tính năng chưa được kiểm chứng trực tiếp cần được hiểu theo thông tin công khai, không mặc định là kết quả trải nghiệm thực tế.*
 
----
 
 ## 3. Học được gì, chưa phù hợp gì?
 
@@ -41,7 +39,6 @@ PawCare chưa cần triển khai danh mục quá rộng, hệ thống điều ph
 ### Phương án PawCare chọn
 PawCare ưu tiên website kết hợp dịch vụ grooming và cửa hàng trực tuyến, với hai luồng chính là đặt lịch và mua sản phẩm. Các tính năng nền tảng gồm bảng giá minh bạch, danh mục dễ tìm, hồ sơ thú cưng và cơ chế gửi yêu cầu đặt lịch để nhân viên xác nhận. Điểm nhấn phát triển sau là **Lộ trình chăm sóc**, hỗ trợ lưu lịch sử chăm sóc, nhắc lịch grooming và gợi ý mua lại sản phẩm phù hợp.
 
----
 
 ## 4. Hạn chế của khảo sát
 
