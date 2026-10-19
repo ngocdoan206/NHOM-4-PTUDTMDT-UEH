@@ -1,4 +1,43 @@
 # SỬ DỤNG AI 1 (CLAUDE) PHÂN TÍCH YÊU CẦU
+## Prompt
+Bạn là chuyên gia phân tích nghiệp vụ cho dự án thương mại điện tử.
+Thông tin dự án:
+
+* Tên dự án: PawCare
+* Sản phẩm hoặc dịch vụ: tiệm spa và grooming thú cưng, một chi nhánh, tự vận hành tại HCM. Đặt lịch dịch vụ là phần chính, bán đồ cho thú cưng là phần phụ.
+* Khách hàng mục tiêu: Chủ nuôi chó mèo, chủ yếu dưới 45 tuổi, mới nuôi hoặc ít kinh nghiệm, đang đặt lịch qua tin nhắn hoặc hotline; Gia đình nuôi từ 2 thú trở lên
+* Vấn đề kinh doanh:
+
+Không biết chăm đúng, khó dự tính chi phí: Không rõ ăn bao nhiêu, bao lâu tắm hoặc cắt tỉa một lần, tốn bao nhiêu mỗi tháng.
+Giá khó đoán: Giá niêm yết một đằng, phụ phí phát sinh theo lông và cân nặng, hóa đơn cuối cao hơn dự kiến
+Đặt lịch thủ công: Phải nhắn tin hoặc gọi, không biết giờ trống đúng groomer, chờ xác nhận, dịp lễ tết dễ kín
+Lo lắng khi giao thú cho người khác: Không biết sau dịch vụ bé thế nào
+Xếp lịch thủ công (của tiệm): Dễ trùng lịch, khó cân đối giờ vắng và giờ kín.
+
+* Website tham khảo: [Pet Mart Cửa Hàng Thú Cưng | Hà Nội, TP.HCM, Đà Nẵng, Hải Phòng](https://www.petmart.vn/)
+[Dịch Vụ Grooming Cắt Tỉa Lông Chó Mèo tại TPHCM](https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo)
+[Mobile Pet Grooming Near You - Book Groomit Today](https://www.groomit.me/)
+* Thời gian thực hiện: 7 tuần
+* Quy mô nhóm: 7 thành viên
+
+Hãy đề xuất:
+
+1. Mục tiêu và phạm vi dự án.
+2. Các nhóm người dùng và quyền hạn.
+3. Danh sách chức năng cần có.
+4. Quy trình nghiệp vụ chính.
+5. Yêu cầu phi chức năng.
+6. Các chức năng nên hoàn thành ở phiên bản đầu tiên.
+7. Các chức năng nâng cao có thể bổ sung.
+8. Rủi ro khi triển khai và cách giảm thiểu.
+
+Phân biệt rõ:
+
+* Yêu cầu bắt buộc.
+* Yêu cầu có thể phát triển sau.
+* Đề xuất cần nhóm xác minh thêm.
+
+Không giả định nhóm có đủ thời gian hoặc năng lực để triển khai tất cả chức năng. Hãy giải thích cơ sở của từng đề xuất.
 ## Quy ước nhãn:
 - **[BB]** là yêu cầu bắt buộc: thiếu thì hệ thống không giải quyết được vấn đề cốt lõi.
 - **[SAU]** là có thể phát triển sau.
