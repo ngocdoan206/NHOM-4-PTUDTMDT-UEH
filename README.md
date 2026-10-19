@@ -60,7 +60,7 @@ Chi tiết từng chức năng nằm trong REQUIREMENTS.md.
 
 ## 5. Công nghệ dự kiến
 
-(đang chờ xác nhận sau khi xong phần 7)
+(đang xác nhận)
 
 ## 6. Kế hoạch thực hiện
 
