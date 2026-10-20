@@ -20,6 +20,11 @@ Xếp lịch thủ công (của tiệm): Dễ trùng lịch, khó cân đối gi
 * Thời gian thực hiện: 7 tuần.
 * Quy mô nhóm: 7 thành viên.
 
+  - *Kết quả khảo sát ba website:*
+  1. Pet Mart: có tìm kiếm và danh mục lớn, mua hàng trực tuyến; hệ thống lớn có thể vượt nhu cầu của một tiệm nhỏ.
+  2. Dog Paradise: công khai bảng giá và quy trình grooming, nhưng bảng giá dạng ảnh khó tra cứu; trang khuyến khích liên hệ hoặc đặt trước.
+  3. Groomit (Mỹ): đặt lịch số hóa, tra giá theo đặc điểm thú cưng và khu vực; mô hình tại nhà/xe lưu động khó áp dụng cho một tiệm đơn lẻ.
+
 Hãy đề xuất:
 
 1. Mục tiêu và phạm vi dự án.
@@ -506,3 +511,9 @@ Với mỗi vấn đề, hãy nêu lý do và đề xuất điều chỉnh.
 | **Hủy/dời lịch theo chính sách** | Có | Từ “chính sách” quá chung chung, không thể code và test. Đề xuất lượng hóa rõ ràng bằng số (ví dụ: trước 12 tiếng). | Lượng hóa cụ thể (VD: chỉ cho phép thao tác trước 12 tiếng) |
 | **Ước tính hiển thị khoảng giá** | Có | Dễ sinh lỗi logic do nhiều biến số. Đề xuất cung cấp bảng giá cố định thay cho khoảng giá động. | Hiển thị “Giá cơ bản” và ghi chú các khoản phụ phí sẽ xác nhận tại tiệm |
 | **Cập nhật trạng thái trực tuyến** | Có | Cần làm rõ hành vi người dùng (không nên dùng WebSockets). Đề xuất xây dựng Timeline và tải lại trang thủ công. | Làm giao diện Timeline, cập nhật bằng cách tải lại trang thủ công |
+
+### Người kiểm tra
+
+Nguyễn Thanh Hà
+
+*Ghi chú:* Prompt ghi thời gian thực hiện 7 tuần theo thời điểm hỏi AI. Kế hoạch thực tế là 15/10–15/12/2026 (xem PROJECT_PLAN.md).
