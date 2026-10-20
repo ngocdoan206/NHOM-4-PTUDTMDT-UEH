@@ -11,7 +11,7 @@ PawCare là website của một tiệm spa và grooming chó mèo tại TP.HCM. 
 **Website giải quyết như thế nào.**
 - Đặt lịch theo giờ trống của từng groomer, giữ chỗ 10 phút, không trùng giờ.
 - Báo giá tự động trước khi đặt, theo loài, cân nặng và độ dài lông.
-- Lộ trình chăm sóc theo hồ sơ của bé: khẩu phần mỗi ngày, lịch grooming, chi phí dự tính.
+- Lộ trình chăm sóc theo hồ sơ của bé: lịch grooming, chi phí dự tính.
 - Dịch vụ và sản phẩm nằm chung một giỏ hàng, một lần thanh toán.
 - Admin có màn hình quản lý lịch và Dashboard.
 
@@ -50,13 +50,15 @@ Chi tiết từng chức năng nằm trong REQUIREMENTS.md.
 
 ## 4. Thành viên
 
-- Đoàn Thị Thu Ngọc – Trưởng nhóm 
-- Nguyễn Hồng Hạnh
-- Nguyễn Hoàng Bảo Nghi
-- Nguyễn Thị Huỳnh Giao
-- Phạm Bảo Ngọc
-- Nguyễn Thanh Hà 
-- Dương Thành Đạt
+| Họ tên | Vai trò |
+|---|---|
+| Đoàn Thị Thu Ngọc | Trưởng nhóm, phân tích nghiệp vụ, backend Voucher và phí ship |
+| Nguyễn Thanh Hà | UI/UX, frontend đặt lịch |
+| Nguyễn Hồng Hạnh | Frontend mua hàng, điểm sáng tạo Lộ trình chăm sóc |
+| Phạm Bảo Ngọc | Backend, CSDL lịch trống và giữ chỗ |
+| Dương Thành Đạt | Backend giỏ hàng, checkout, VNPay |
+| Nguyễn Thị Huỳnh Giao | Admin, Dashboard, phiếu kết quả, review |
+| Nguyễn Hoàng Bảo Nghi | Đăng nhập/phân quyền, kiểm thử, triển khai |
 
 ## 5. Công nghệ dự kiến
 
