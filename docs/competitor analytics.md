@@ -36,7 +36,7 @@
 PawCare chưa cần triển khai danh mục hàng hóa quá rộng, hệ thống tự động khóa lịch/điều phối groomer theo thời gian thực, mô hình grooming tận nhà/xe lưu động hoặc dịch vụ đặt lịch định kỳ trừ tiền tự động. Những tính năng này đòi hỏi vốn đầu tư lớn, nhân sự di động và quy trình vận hành phức tạp vượt quá nguồn lực tiệm đơn lẻ ban đầu.
 
 ### Phương án PawCare chọn
-PawCare ưu tiên website kết hợp dịch vụ grooming và cửa hàng trực tuyến, với hai luồng chính là đặt lịch và mua sản phẩm. Các tính năng nền tảng gồm bảng giá minh bạch, danh mục dễ tìm, hồ sơ thú cưng và cơ chế gửi yêu cầu đặt lịch để nhân viên xác nhận. Điểm nhấn phát triển sau là **Lộ trình chăm sóc**, hỗ trợ lưu lịch sử chăm sóc, nhắc lịch grooming và gợi ý mua lại sản phẩm phù hợp.
+PawCare ưu tiên website kết hợp dịch vụ grooming và cửa hàng trực tuyến, với hai luồng chính là đặt lịch và mua sản phẩm. Các tính năng nền tảng gồm bảng giá minh bạch, danh mục dễ tìm, hồ sơ thú cưng và đặt lịch theo giờ trống của từng groomer, giữ chỗ 10 phút khi đặt hàng để tránh trùng giờ. Điểm sáng tạo là **Lộ trình chăm sóc**, lập lịch grooming định kỳ và chi phí dự tính theo hồ sơ của bé. 
 
 ## 4. Ảnh tham khảo
 
