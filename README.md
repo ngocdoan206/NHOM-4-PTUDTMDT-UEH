@@ -23,28 +23,30 @@ Chủ nuôi chó mèo tại TP.HCM, chủ yếu dưới 45 tuổi, mới nuôi h
 
 ## 3. Chức năng chính
 
-Bản đầu gồm 15 chức năng (F01 đến F15), làm theo thứ tự ưu tiên.
+Bản đầu gồm 17 chức năng (FR-01 đến FR-17), chia làm 3 đợt thực hiện.
 
-**Cốt lõi (bắt buộc)**
-- F01: Đăng ký, đăng nhập, hồ sơ khách và hồ sơ bé
-- F02: Danh mục dịch vụ và sản phẩm, chi tiết, tìm kiếm, lọc, sắp xếp
-- F03: Báo giá tự động và thời lượng theo hồ sơ bé
-- F04: Chọn giờ trống theo groomer, giữ chỗ 10 phút
-- F05: Giỏ hàng gộp dịch vụ và sản phẩm
-- F06: Checkout và thanh toán (VNPay sandbox, trả tại tiệm, COD)
-- F07: Lịch sử và trạng thái đơn của khách
-- F08: Admin quản lý dịch vụ, sản phẩm, danh mục, groomer, đơn, lịch
+**Đợt 1 – Nền tảng đặt lịch và mua hàng**
+- FR-01: Đăng ký tài khoản
+- FR-02: Đăng nhập và đăng xuất
+- FR-03: Quản lý hồ sơ bé
+- FR-04: Xem và tìm kiếm dịch vụ, sản phẩm
+- FR-05: Xem báo giá tự động
+- FR-06: Chọn giờ trống và giữ chỗ
+- FR-07: Quản lý giỏ hàng
+- FR-08: Thanh toán đơn hàng 
+- FR-09: Theo dõi và hủy đơn
+- FR-10: Quản lý dịch vụ, sản phẩm và đơn
 
-**Làm ngay sau phần cốt lõi**
-- F09: Voucher (có mã Sinh viên UEH)
-- F10: Phí ship theo bảng phí cố định
-- F11: Review và rating
-- F12: Trang chủ
-- F13: Dashboard Admin
-- F14: Phiếu kết quả sau grooming
+**Đợt 2 – Hoàn thiện**
+- FR-11: Áp dụng voucher
+- FR-12: Tính phí giao hàng
+- FR-13: Đánh giá dịch vụ, sản phẩm
+- FR-14: Xem trang chủ
+- FR-15: Xem Dashboard 
+- FR-16: Lập phiếu kết quả grooming
 
-**Điểm sáng tạo**
-- F15: Lộ trình chăm sóc
+**Đợt 3 – Điểm sáng tạo**
+- FR-17: Xem lộ trình chăm sóc
 
 Chi tiết từng chức năng nằm trong REQUIREMENTS.md.
 
