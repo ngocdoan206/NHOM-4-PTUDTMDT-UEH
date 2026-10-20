@@ -33,21 +33,21 @@ Bản đầu gồm 22 chức năng (F01 đến F22), chia làm 3 đợt thực h
 - F05: Xem chi tiết dịch vụ và sản phẩm
 - F06: Tìm kiếm và lọc dịch vụ, sản phẩm
 - F07: Xem báo giá tự động
-- F08: Chọn giờ trống và giữ chỗ (giữ chỗ 10 phút khi đặt hàng)
+- F08: Chọn giờ trống và giữ chỗ
 - F09: Quản lý giỏ hàng gộp dịch vụ và sản phẩm
 - F10: Đặt hàng
-- F11: Thanh toán trực tuyến (VNPay sandbox)
+- F11: Thanh toán trực tuyến
 - F12: Theo dõi và hủy đơn
-- F13: Quản lý dịch vụ và sản phẩm (Quản trị viên)
-- F14: Quản lý groomer và lịch làm việc (Quản trị viên)
-- F15: Quản lý đơn và lịch hẹn (Quản trị viên)
+- F13: Quản lý dịch vụ và sản phẩm 
+- F14: Quản lý groomer và lịch làm việc 
+- F15: Quản lý đơn và lịch hẹn 
 
 **Đợt 2 – Hoàn thiện**
-- F16: Quản lý và áp dụng voucher (có mã Sinh viên UEH)
-- F17: Tính phí giao hàng (theo bảng phí cố định)
+- F16: Quản lý và áp dụng voucher
+- F17: Tính phí giao hàng 
 - F18: Đánh giá dịch vụ, sản phẩm
 - F19: Xem trang chủ
-- F20: Xem Dashboard (Quản trị viên)
+- F20: Xem Dashboard
 - F21: Lập phiếu kết quả grooming
 
 **Đợt 3 – Điểm sáng tạo**
