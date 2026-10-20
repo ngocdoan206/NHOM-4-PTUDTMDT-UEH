@@ -99,3 +99,5 @@ Lịch chi tiết và người phụ trách: xem PROJECT_PLAN.md.
 - Bảng yêu cầu: REQUIREMENTS.md
 - Kế hoạch: PROJECT_PLAN.md
 - Phân tích website: docs/competitor-analysis.md
+- Quy trình nghiệp vụ: docs/business-workflow.md
+- Nhật ký sử dụng AI: AI_USAGE_LOG.md
