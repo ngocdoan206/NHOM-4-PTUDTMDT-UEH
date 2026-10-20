@@ -17,8 +17,8 @@ Xếp lịch thủ công (của tiệm): Dễ trùng lịch, khó cân đối gi
 * Website tham khảo: [Pet Mart Cửa Hàng Thú Cưng | Hà Nội, TP.HCM, Đà Nẵng, Hải Phòng](https://www.petmart.vn/)
 [Dịch Vụ Grooming Cắt Tỉa Lông Chó Mèo tại TPHCM](https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo)
 [Mobile Pet Grooming Near You - Book Groomit Today](https://www.groomit.me/)
-* Thời gian thực hiện: 7 tuần
-* Quy mô nhóm: 7 thành viên
+* Thời gian thực hiện: 7 tuần.
+* Quy mô nhóm: 7 thành viên.
 
 Hãy đề xuất:
 
