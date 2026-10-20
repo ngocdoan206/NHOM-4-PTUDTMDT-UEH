@@ -7,7 +7,7 @@
 | 1 | Pet Mart | https://www.petmart.vn/ | Trang chủ, danh mục sản phẩm, tìm kiếm và điều hướng |
 | 2 | Dog Paradise | https://dogparadise.vn/blogs/dich-vu/dich-vu-grooming-cat-tia-long-cho-meo | Cách trình bày dịch vụ, bảng giá, chính sách và thông tin đặt hàng |
 | 3 | Groomit (ứng dụng tại Mỹ) |https://www.groomit.me/pet-grooming-prices| Đặt lịch số hóa, tra cứu giá động theo đặc điểm thú cưng & vị trí | 
-**Ngày khảo sát:** [19/10/2026]  
+**Ngày khảo sát:** 19/10/2026  
 **Lưu ý:** Groomit là ứng dụng phục vụ thị trường Mỹ, tập trung vào grooming tại nhà và xe lưu động. Nhóm chỉ tham khảo thông tin công khai để nghiên cứu quy trình đặt lịch, không xem đây là website thương mại điện tử Việt Nam tương đương hai đối tượng còn lại.
 
 
@@ -17,9 +17,9 @@
 | --- | --- | --- | --- | --- |
 | **Trang chủ** | Kết hợp giới thiệu sản phẩm, dịch vụ và thông tin cửa hàng | Trang khảo sát tập trung vào nội dung grooming | Mô tả ứng dụng nhấn mạnh sự tiện lợi khi đặt lịch | Hai CTA chính: “Đặt lịch grooming” và “Mua sản phẩm” |
 | **Danh mục sản phẩm** | Nhiều nhóm sản phẩm cho chó và mèo | Không áp dụng trực tiếp với trang dịch vụ được khảo sát | Không phải trọng tâm trong mô tả ứng dụng | Danh mục gọn theo chó/mèo và nhu cầu chăm sóc |
-| **Tìm kiếm và lọc** | Có tìm kiếm và điều hướng theo danh mục | Nội dung dịch vụ dài; bảng giá dạng ảnh khó tìm nhanh | Hỗ trợ lựa chọn groomer theo mô tả công khai | Tìm sản phẩm theo tên, nhóm hàng; lọc dịch vụ theo loại, ngày và giờ |
+| **Tìm kiếm và lọc** | Có tìm kiếm và điều hướng theo danh mục | Nội dung dịch vụ dài; bảng giá dạng ảnh khó tìm nhanh | Hỗ trợ lựa chọn groomer theo mô tả công khai | Tìm theo tên; lọc theo loại (dịch vụ/sản phẩm), danh mục, khoảng giá, loài, điểm đánh giá|
 | **Chi tiết sản phẩm** | Hiển thị hình ảnh, tên, giá và thông tin sản phẩm | Tập trung mô tả dịch vụ, giá và điều kiện sử dụng | Cung cấp thông tin dịch vụ và groomer theo mô tả công khai | Tách trang sản phẩm và trang dịch vụ; trình bày giá, thời lượng và lưu ý rõ ràng |
-| **Giỏ hàng và đặt hàng** | Có chức năng mua hàng trực tuyến | Có thông tin mua hàng; trang grooming khuyến khích liên hệ/đặt trước | Hỗ trợ đặt lịch grooming theo mô tả ứng dụng | Tách quy trình mua sản phẩm và đặt lịch grooming |
+| **Giỏ hàng và đặt hàng** | Có chức năng mua hàng trực tuyến | Có thông tin mua hàng; trang grooming khuyến khích liên hệ/đặt trước | Hỗ trợ đặt lịch grooming theo mô tả ứng dụng | Một giỏ hàng chung cho dịch vụ đặt lịch và sản phẩm, thanh toán một lần |
 | **Điểm có thể cải thiện** | Quy mô danh mục và hệ thống lớn có thể vượt nhu cầu của tiệm nhỏ | Bảng giá dạng ảnh kém thuận tiện khi tra cứu | Mô hình tại nhà và điều phối dịch vụ bước đầu có thể khó triển khai tại PawCare | Ưu tiên website gọn, bảng giá dễ đọc và lịch hẹn được xác nhận rõ ràng |
 
 *Nguồn: Nhóm tổng hợp từ các đường dẫn khảo sát. Những tính năng chưa được kiểm chứng trực tiếp cần được hiểu theo thông tin công khai, không mặc định là kết quả trải nghiệm thực tế.*
