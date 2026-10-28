@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dịch vụ &amp; Sản phẩm – PawCare (wireframe)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-box" aria-hidden="true">Logo</span>
+        PawCare
+      </a>
+
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html" aria-current="page">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
+      </nav>
+
+      <div class="search" role="search">
+        <label for="search-input">Tìm kiếm</label>
+        <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+      </div>
+
+      <a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
+
+      <div class="cart-box" role="img" aria-label="Biểu tượng giỏ hàng">Giỏ</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== GHI CHÚ WIREFRAME ===== -->
+    <details class="wireframe-note">
+      <summary>Ghi chú wireframe</summary>
+      <p><strong>Mục đích:</strong> cho khách xem toàn bộ dịch vụ (chức năng chính) và sản phẩm bán kèm (phần phụ), rồi bấm vào trang chi tiết.</p>
+      <ul>
+        <li><strong>Thành phần:</strong> tiêu đề trang, phần Dịch vụ (7 thẻ), phần Sản phẩm bán kèm (8 thẻ).</li>
+        <li><strong>Máy tính (1366px):</strong> lưới 4 cột.</li>
+        <li><strong>Máy tính bảng (768px):</strong> lưới 2 cột.</li>
+        <li><strong>Điện thoại (390px):</strong> lưới 1 cột.</li>
+        <li>Thẻ trong cùng lưới cao đều nhau; nút "Xem chi tiết" luôn nằm ở đáy thẻ.</li>
+        <li>⚠ Tên combo và danh sách sản phẩm đang chờ nhóm chốt.</li>
+      </ul>
+    </details>
+
+    <!-- ===== TIÊU ĐỀ TRANG ===== -->
+    <div class="page-head">
+      <h1>Dịch vụ &amp; Sản phẩm</h1>
+      <p class="page-desc">[mô tả ngắn cho trang danh sách]</p>
+    </div>
+
+    <!-- ===== DỊCH VỤ (7 thẻ) ===== -->
+    <section class="section" aria-labelledby="services-title">
+      <div class="section-head">
+        <h2 id="services-title">Dịch vụ</h2>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Tắm sấy">Ảnh dịch vụ</div>
+          <h3 class="card-title">Tắm sấy</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Tắm sấy">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt tỉa tạo kiểu">Ảnh dịch vụ</div>
+          <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Vệ sinh tai">Ảnh dịch vụ</div>
+          <h3 class="card-title">Vệ sinh tai</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vệ sinh tai">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt móng">Ảnh dịch vụ</div>
+          <h3 class="card-title">Cắt móng</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt móng">Xem chi tiết</a>
+        </article>
+
+        <!-- ⚠ Tên combo chờ nhóm chốt -->
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Combo Tắm sấy, Vệ sinh tai, Cắt móng">Ảnh dịch vụ</div>
+          <h3 class="card-title">Combo Tắm sấy + Vệ sinh tai + Cắt móng</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Combo Tắm sấy, Vệ sinh tai, Cắt móng">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Combo Tắm sấy, Cắt tỉa">Ảnh dịch vụ</div>
+          <h3 class="card-title">Combo Tắm sấy + Cắt tỉa</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Combo Tắm sấy, Cắt tỉa">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Trọn gói">Ảnh dịch vụ</div>
+          <h3 class="card-title">Trọn gói</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Trọn gói">Xem chi tiết</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SẢN PHẨM BÁN KÈM (8 thẻ) ⚠ danh sách chờ nhóm chốt ===== -->
+    <section class="section" aria-labelledby="products-title">
+      <div class="section-head">
+        <h2 id="products-title">Sản phẩm bán kèm</h2>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Thức ăn hạt cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho mèo">Ảnh sản phẩm</div>
+          <h3 class="card-title">Thức ăn hạt cho mèo</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho mèo">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Pate cho mèo">Ảnh sản phẩm</div>
+          <h3 class="card-title">Pate cho mèo</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Pate cho mèo">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Snack thưởng cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Snack thưởng cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Snack thưởng cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Đồ gặm cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Đồ gặm cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Đồ gặm cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Vòng cổ và dây dắt">Ảnh sản phẩm</div>
+          <h3 class="card-title">Vòng cổ và dây dắt</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vòng cổ và dây dắt">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Bát ăn">Ảnh sản phẩm</div>
+          <h3 class="card-title">Bát ăn</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Bát ăn">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Lược chải lông">Ảnh sản phẩm</div>
+          <h3 class="card-title">Lược chải lông</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Lược chải lông">Xem chi tiết</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">PawCare</p>
+
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-title">Liên kết nhanh</h2>
+          <ul class="footer-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Liên hệ</h2>
+          <ul class="footer-list">
+            <li>Địa chỉ: [địa chỉ]</li>
+            <li>Hotline: [hotline]</li>
+            <li>Email: [email]</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Giờ mở cửa</h2>
+          <p>8:00–19:00</p>
+        </div>
+      </div>
+
+      <p class="copyright">© [năm] PawCare. [nội dung bản quyền]</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tắm sấy – PawCare (wireframe)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (giống hệt ở 4 trang) =====
+       Trang chi tiết không có mục menu riêng. Nó thuộc nhóm
+       "Dịch vụ & Sản phẩm" nên mục đó được đánh dấu aria-current="true"
+       (nghĩa: "mục đang chứa trang này"), không dùng "page" vì đây
+       không phải chính trang products.html. -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-box" aria-hidden="true">Logo</span>
+        PawCare
+      </a>
+
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html" aria-current="true">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
+      </nav>
+
+      <div class="search" role="search">
+        <label for="search-input">Tìm kiếm</label>
+        <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+      </div>
+
+      <a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
+
+      <div class="cart-box" role="img" aria-label="Biểu tượng giỏ hàng">Giỏ</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== GHI CHÚ WIREFRAME ===== -->
+    <details class="wireframe-note">
+      <summary>Ghi chú wireframe</summary>
+      <p><strong>Mục đích:</strong> trình bày chi tiết một dịch vụ (ví dụ: Tắm sấy) để khách xem giá theo cân nặng và độ dài lông, rồi bấm Đặt lịch.</p>
+      <ul>
+        <li><strong>Thành phần:</strong> liên kết quay lại, ảnh chính + 3 ảnh nhỏ, tên, giá, mô tả, thuộc tính, bảng giá mẫu, nút Đặt lịch, 3 thẻ liên quan.</li>
+        <li><strong>Máy tính (1366px):</strong> 2 cột – ảnh trái, thông tin phải; thẻ liên quan 3 cột.</li>
+        <li><strong>Máy tính bảng (768px):</strong> vẫn 2 cột, khoảng cách hẹp hơn; thẻ liên quan 3 cột.</li>
+        <li><strong>Điện thoại (390px):</strong> ảnh nằm trên, thông tin nằm dưới; nút Đặt lịch rộng hết màn hình; thẻ liên quan 1 cột.</li>
+        <li>Nút "Đặt lịch" chỉ là giao diện, chưa có chức năng.</li>
+      </ul>
+    </details>
+
+    <a class="back-link" href="products.html">← Quay lại danh sách</a>
+
+    <!-- ===== KHU CHI TIẾT: Grid 2 cột ===== -->
+    <article class="detail" aria-labelledby="detail-title">
+      <!-- Cột trái: ảnh -->
+      <div class="gallery">
+        <div class="img-box img-box-wide" role="img" aria-label="Ảnh chính dịch vụ Tắm sấy">Ảnh chính</div>
+        <div class="thumbs">
+          <div class="img-box img-box-square" role="img" aria-label="Ảnh nhỏ 1">Ảnh nhỏ 1</div>
+          <div class="img-box img-box-square" role="img" aria-label="Ảnh nhỏ 2">Ảnh nhỏ 2</div>
+          <div class="img-box img-box-square" role="img" aria-label="Ảnh nhỏ 3">Ảnh nhỏ 3</div>
+        </div>
+      </div>
+
+      <!-- Cột phải: thông tin -->
+      <div class="detail-info">
+        <div>
+          <h1 id="detail-title">Tắm sấy</h1>
+          <p class="detail-price">Giá từ [giá]</p>
+          <p>[mô tả]</p>
+        </div>
+
+        <!-- Thuộc tính: danh sách mô tả (dl) gồm cặp nhãn dt – giá trị dd -->
+        <section aria-labelledby="attr-title">
+          <h2 id="attr-title">Thông tin dịch vụ</h2>
+          <dl class="attr-list">
+            <dt>Áp dụng cho</dt>
+            <dd>Chó, mèo</dd>
+            <dt>Thời lượng ước tính</dt>
+            <dd>[thời lượng]</dd>
+            <dt>Hình thức</dt>
+            <dd>Tại tiệm</dd>
+          </dl>
+        </section>
+
+        <!-- Bảng giá mẫu -->
+        <section aria-labelledby="price-title">
+          <h2 id="price-title">Bảng giá mẫu</h2>
+          <div class="table-wrap">
+            <table class="price-table">
+              <caption>Giá theo cân nặng và độ dài lông</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Cân nặng</th>
+                  <th scope="col">Lông ngắn</th>
+                  <th scope="col">Lông dài</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Dưới 5 kg</th>
+                  <td>[giá]</td>
+                  <td>[giá]</td>
+                </tr>
+                <tr>
+                  <th scope="row">5–10 kg</th>
+                  <td>[giá]</td>
+                  <td>[giá]</td>
+                </tr>
+                <tr>
+                  <th scope="row">10–20 kg</th>
+                  <td>[giá]</td>
+                  <td>[giá]</td>
+                </tr>
+                <tr>
+                  <th scope="row">Trên 20 kg</th>
+                  <td>[giá]</td>
+                  <td>[giá]</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- type="button": nút không gửi dữ liệu, chỉ là giao diện -->
+        <button class="btn btn-primary btn-large" type="button">Đặt lịch</button>
+      </div>
+    </article>
+
+    <!-- ===== LIÊN QUAN (3 thẻ) ===== -->
+    <section class="section" aria-labelledby="related-title">
+      <h2 id="related-title">Dịch vụ/sản phẩm liên quan</h2>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt tỉa tạo kiểu">Ảnh dịch vụ</div>
+          <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
+          <p class="card-price">Giá từ [giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Combo Tắm sấy, Vệ sinh tai, Cắt móng">Ảnh dịch vụ</div>
+          <h3 class="card-title">Combo Tắm sấy + Vệ sinh tai + Cắt móng</h3>
+          <p class="card-price">Giá từ [giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Combo Tắm sấy, Vệ sinh tai, Cắt móng">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Lược chải lông">Ảnh sản phẩm</div>
+          <h3 class="card-title">Lược chải lông</h3>
+          <p class="card-price">Giá [giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Lược chải lông">Xem chi tiết</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">PawCare</p>
+
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-title">Liên kết nhanh</h2>
+          <ul class="footer-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Liên hệ</h2>
+          <ul class="footer-list">
+            <li>Địa chỉ: [địa chỉ]</li>
+            <li>Hotline: [hotline]</li>
+            <li>Email: [email]</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Giờ mở cửa</h2>
+          <p>8:00–19:00</p>
+        </div>
+      </div>
+
+      <p class="copyright">© [năm] PawCare. [nội dung bản quyền]</p>
+    </div>
+  </footer>
+
+</body>
+</html>

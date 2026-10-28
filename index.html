@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <!-- Bảng mã tiếng Việt và hiển thị đúng trên điện thoại -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang chủ – PawCare (wireframe)</title>
+  <!-- Một file CSS dùng chung cho cả 4 trang -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo: khung xám giữ chỗ + chữ PawCare -->
+      <a class="logo" href="index.html">
+        <span class="logo-box" aria-hidden="true">Logo</span>
+        PawCare
+      </a>
+
+      <!-- Menu chính: 3 liên kết -->
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Trang chủ</a></li>
+          <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
+      </nav>
+
+      <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
+      <div class="search" role="search">
+        <label for="search-input">Tìm kiếm</label>
+        <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+      </div>
+
+      <!-- Nút Đặt lịch dẫn tới trang danh sách -->
+      <a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
+
+      <!-- Khung giữ chỗ biểu tượng giỏ hàng -->
+      <div class="cart-box" role="img" aria-label="Biểu tượng giỏ hàng">Giỏ</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== GHI CHÚ WIREFRAME (đóng sẵn, bấm để mở) ===== -->
+    <div class="container">
+      <details class="wireframe-note">
+        <summary>Ghi chú wireframe</summary>
+        <p><strong>Mục đích:</strong> giới thiệu nhanh PawCare và dẫn khách tới đặt lịch.</p>
+        <ul>
+          <li><strong>Thành phần:</strong> banner, Dịch vụ nổi bật (4 thẻ), Sản phẩm nổi bật (4 thẻ), Vì sao chọn PawCare (3 ô).</li>
+          <li><strong>Máy tính (1366px):</strong> banner 2 cột (chữ trái, ảnh phải); thẻ 4 cột.</li>
+          <li><strong>Máy tính bảng (768px):</strong> banner vẫn 2 cột; thẻ 2 cột; menu xuống hàng thứ hai.</li>
+          <li><strong>Điện thoại (390px):</strong> banner xếp dọc (chữ trên, ảnh dưới); thẻ 1 cột; header 3 hàng.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- ===== BANNER ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div>
+          <h1 class="hero-title" id="hero-title">PawCare – Spa và grooming thú cưng tại TP.HCM</h1>
+          <p class="hero-text">[câu mô tả ngắn về PawCare]</p>
+          <a class="btn btn-primary" href="products.html">Đặt lịch ngay</a>
+        </div>
+        <div class="img-box img-box-wide" role="img" aria-label="Banner">Banner</div>
+      </div>
+    </section>
+
+    <!-- ===== DỊCH VỤ NỔI BẬT ===== -->
+    <section class="section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="services-title">Dịch vụ nổi bật</h2>
+          <a href="products.html">Xem tất cả dịch vụ</a>
+        </div>
+
+        <div class="grid grid-4">
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh dịch vụ Tắm sấy">Ảnh dịch vụ</div>
+            <h3 class="card-title">Tắm sấy</h3>
+            <p class="card-price">Giá từ [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Tắm sấy">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt tỉa tạo kiểu">Ảnh dịch vụ</div>
+            <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
+            <p class="card-price">Giá từ [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh dịch vụ Vệ sinh tai">Ảnh dịch vụ</div>
+            <h3 class="card-title">Vệ sinh tai</h3>
+            <p class="card-price">Giá từ [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vệ sinh tai">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt móng">Ảnh dịch vụ</div>
+            <h3 class="card-title">Cắt móng</h3>
+            <p class="card-price">Giá từ [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt móng">Xem chi tiết</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SẢN PHẨM NỔI BẬT ===== -->
+    <section class="section" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="products-title">Sản phẩm nổi bật</h2>
+          <a href="products.html">Xem tất cả sản phẩm</a>
+        </div>
+
+        <div class="grid grid-4">
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho chó">Ảnh sản phẩm</div>
+            <h3 class="card-title">Thức ăn hạt cho chó</h3>
+            <p class="card-price">Giá [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho chó">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho mèo">Ảnh sản phẩm</div>
+            <h3 class="card-title">Thức ăn hạt cho mèo</h3>
+            <p class="card-price">Giá [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho mèo">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh sản phẩm Pate cho mèo">Ảnh sản phẩm</div>
+            <h3 class="card-title">Pate cho mèo</h3>
+            <p class="card-price">Giá [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Pate cho mèo">Xem chi tiết</a>
+          </article>
+
+          <article class="card">
+            <div class="img-box" role="img" aria-label="Ảnh sản phẩm Lược chải lông">Ảnh sản phẩm</div>
+            <h3 class="card-title">Lược chải lông</h3>
+            <p class="card-price">Giá [giá]</p>
+            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Lược chải lông">Xem chi tiết</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VÌ SAO CHỌN PAWCARE ===== -->
+    <section class="section" aria-labelledby="why-title">
+      <div class="container">
+        <h2 id="why-title">Vì sao chọn PawCare</h2>
+
+        <div class="grid grid-3">
+          <div class="feature-box">
+            <h3>[Điểm nổi bật 1]</h3>
+            <p>[mô tả điểm nổi bật 1]</p>
+          </div>
+          <div class="feature-box">
+            <h3>[Điểm nổi bật 2]</h3>
+            <p>[mô tả điểm nổi bật 2]</p>
+          </div>
+          <div class="feature-box">
+            <h3>[Điểm nổi bật 3]</h3>
+            <p>[mô tả điểm nổi bật 3]</p>
+          </div>
+        </div>
+
+        <!-- Liên kết sang trang Giới thiệu -->
+        <p class="more-link"><a href="about.html">Tìm hiểu thêm về PawCare</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">PawCare</p>
+
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-title">Liên kết nhanh</h2>
+          <ul class="footer-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Liên hệ</h2>
+          <ul class="footer-list">
+            <li>Địa chỉ: [địa chỉ]</li>
+            <li>Hotline: [hotline]</li>
+            <li>Email: [email]</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Giờ mở cửa</h2>
+          <p>8:00–19:00</p>
+        </div>
+      </div>
+
+      <p class="copyright">© [năm] PawCare. [nội dung bản quyền]</p>
+    </div>
+  </footer>
+
+</body>
+</html>
