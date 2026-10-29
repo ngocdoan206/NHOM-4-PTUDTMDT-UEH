@@ -37,7 +37,7 @@ Dự án sử dụng phông chữ **Nunito**.
 
 *(Bạn có thể chèn ảnh logo của nhóm vào đây)*
 - **Logo vuông (Dùng cho Header/Favicon):** 
-  ![Logo vuông](../images/logo-pawcare-square.png)
+  ![Logo vuông](../images/logo-icon.png)
 - **Logo đầy đủ (Dùng cho Footer/Giới thiệu):**
   ![Logo đầy đủ](../images/logo-pawcare-full.png)
 
