@@ -39,7 +39,7 @@ Dự án sử dụng phông chữ **Nunito**.
 - **Logo vuông (Dùng cho Header/Favicon):** 
   ![Logo vuông](../images/logo-icon.png)
 - **Logo đầy đủ (Dùng cho Footer/Giới thiệu):**
-  ![Logo đầy đủ](../images/logo-pawcare-full.png)
+  ![Logo đầy đủ](../images/logo-full.png)
 
 ## 5. Các mốc hiển thị (Responsive Breakpoints)
 
