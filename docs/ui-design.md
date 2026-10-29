@@ -59,5 +59,3 @@ Dự án sử dụng phông chữ **Nunito**.
 - **Quy ước viết code giao diện:**
   - Tên class viết theo kiểu `kebab-case` (VD: `product-card`, `btn-primary`).
   - Tên file hình ảnh/logo viết chữ thường, không dấu, cách nhau bằng gạch ngang.
-  - Tên class viết theo kiểu `kebab-case` (VD: `product-card`, `btn-primary`).
-  - Tên file hình ảnh/logo viết chữ thường, không dấu, cách nhau bằng gạch ngang.
