@@ -4,7 +4,8 @@ Tài liệu này quy định các tiêu chuẩn về màu sắc, kiểu chữ, k
 
 ## 1. Bảng màu (Color Palette)
 
-- **Màu chính (Primary):** `#00A896` 
+- **Màu chính (Primary):** `#007A6E` 
+- **Màu logo (trang trí):** `#00A090`
 - **Màu Hover:** `#028090` 
 - **Màu nhấn (Accent):** `#f78c57` 
 - **Màu nền Web (Background):** `#F8F9FA` 
