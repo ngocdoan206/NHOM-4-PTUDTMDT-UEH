@@ -27,7 +27,6 @@ Dự án sử dụng phông chữ **Nunito**.
 
 ## 3. Khoảng cách (Spacing)
 
-- **4px:** Khoảng cách rất nhỏ (giữa icon và chữ).
 - **8px:** Khoảng cách nhỏ (giữa các dòng chữ liền kề).
 - **16px:** Khoảng cách tiêu chuẩn (padding trong thẻ card, nút bấm).
 - **24px:** Khoảng cách trung bình (giữa các section nhỏ).
@@ -35,7 +34,6 @@ Dự án sử dụng phông chữ **Nunito**.
 
 ## 4. Logo dự án
 
-*(Bạn có thể chèn ảnh logo của nhóm vào đây)*
 - **Logo vuông (Dùng cho Header/Favicon):** 
   ![Logo vuông](../images/logo-icon.png)
 - **Logo đầy đủ (Dùng cho Footer/Giới thiệu):**
