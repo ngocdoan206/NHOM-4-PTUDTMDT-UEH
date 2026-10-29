@@ -56,6 +56,8 @@ Dự án sử dụng phông chữ **Nunito**.
     - Nút chính: nền Nhấn (`#FC7060`), chữ `#212529`. Hover: nền `#00665C`, chữ Trắng.
     - Nút phụ: nền Trắng, viền Chính (`#007A6E`), chữ màu Chính. Hover: nền `#00665C`, chữ Trắng. Focus: vòng viền 2px.
   - **Thẻ (Cards):** Nền Trắng, bo góc `12px`.
+  - **Header:** logo bên trái; bên phải là menu 3 liên kết (Trang chủ, Dịch vụ & Sản phẩm, Giới thiệu), ô tìm kiếm (chỉ giao diện), nút Đặt lịch, biểu tượng giỏ hàng.
+  - **Footer:** tên cửa hàng, 3 cột (Liên kết nhanh, Liên hệ, Giờ mở cửa), dòng bản quyền.
 - **Quy ước viết code giao diện:**
   - Tên class viết theo kiểu `kebab-case` (VD: `product-card`, `btn-primary`).
   - Tên file hình ảnh/logo viết chữ thường, không dấu, cách nhau bằng gạch ngang.
