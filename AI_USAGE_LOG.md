@@ -1,5 +1,12 @@
 # NHẬT KÝ SỬ DỤNG AI – NHÓM 4 PAWCARE
 
+## Quy ước
+
+1. Mỗi buổi một phần lớn; mỗi người một mục riêng trong mỗi buổi, chỉ viết trong mục của mình.
+2. Mã mỗi lần ghi có dạng `B2-TN-01` (B + số buổi + tên mình + số thứ tự).
+3. Ghi ngay lúc dùng AI, đi qua nhánh riêng và pull request; commit dạng `docs: ghi nhật ký AI B2-TN-01`.
+4. Mỗi lần ghi gồm công cụ, bước đề bài, mục đích và prompt nguyên văn.
+
 ## Mục lục
 
 - [Buổi 1](#buổi-1)
