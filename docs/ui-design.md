@@ -11,7 +11,7 @@ Tài liệu này quy định các tiêu chuẩn về màu sắc, kiểu chữ, k
 - **Màu nền Web (Background):** `#F8F9FA` 
 - **Màu nền Card:** `#FFFFFF` 
 - **Màu Text chính (Primary Text):** `#212529` 
-- **Màu Text phụ (Secondary Text):** `#6C757D` 
+- **Màu Text phụ (Secondary Text):** `#5C6570`
 
 ## 2. Kiểu chữ (Typography)
 
