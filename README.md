@@ -101,3 +101,40 @@ Lịch chi tiết và người phụ trách: xem PROJECT_PLAN.md.
 - Phân tích website: docs/competitor-analysis.md
 - Quy trình nghiệp vụ: docs/business-workflow.md
 - Nhật ký sử dụng AI: AI_USAGE_LOG.md
+
+## Buổi 2 – Giao diện HTML5 & CSS3
+
+Giao diện tĩnh của PawCare gồm 4 trang. Buổi này **chưa có JavaScript, backend, cơ sở dữ liệu, giỏ hàng hay thanh toán**; nút "Đặt lịch" và ô tìm kiếm chỉ là giao diện.
+
+### Cách xem
+1. Tải repository về (Code > Download ZIP) và giải nén.
+2. Bấm đúp vào `index.html` để mở trang chủ bằng trình duyệt. Không cần cài đặt gì.
+3. Kiểm tra giao diện ở 1366, 768, 390 px bằng DevTools (F12, Ctrl + Shift + M).
+
+### Cấu trúc thư mục
+| Đường dẫn | Nội dung |
+|---|---|
+| `index.html`, `products.html`, `product-detail.html`, `about.html` | Bốn trang: Trang chủ, Danh sách, Chi tiết, Giới thiệu |
+| `css/style.css` | Tệp CSS dùng chung cho cả 4 trang |
+| `images/` | Hình ảnh và logo (xem `images/README.md`) |
+| `docs/ui-design.md` | Bảng màu, kiểu chữ, khoảng cách, thành phần dùng chung |
+| `docs/test-report.md` | Báo cáo kiểm thử |
+| `docs/screenshots/` | Ảnh chụp 4 trang ở 3 kích thước |
+| `AI_USAGE_LOG.md` | Nhật ký sử dụng AI |
+
+### Quy tắc làm việc
+- Tên tệp: chữ thường, không dấu, nối bằng gạch ngang; đã chốt thì không đổi.
+- Nhánh: `loại/tên-việc` (ví dụ `feat/trang-chu`). Commit: `loại: việc đã làm`, với `feat`, `fix`, `style`, `docs`, `images`.
+- Không commit thẳng vào nhánh chính. Làm trên nhánh riêng, mở pull request, có người duyệt, không tự gộp pull request của mình.
+- Dùng AI thì ghi vào `AI_USAGE_LOG.md` ngay, ở mục có tên mình.
+
+### Phân công Buổi 2
+| Thành viên | Việc chính |
+|---|---|
+| Đoàn Thị Thu Ngọc | Thiết lập kho, quy trình pull request, trang chi tiết |
+| Nguyễn Thanh Hà | Bảng màu, kiểu chữ, `docs/ui-design.md`, logo |
+| Nguyễn Hồng Hạnh | Phần nền `style.css`, trang chủ |
+| Phạm Bảo Ngọc | Trang danh sách |
+| Dương Thành Đạt | Trang giới thiệu, báo cáo kiểm thử, README |
+| Nguyễn Thị Huỳnh Giao | Ảnh, tích hợp và responsive, ảnh chụp |
+| Nguyễn Hoàng Bảo Nghi | Hover, focus, tổng hợp báo cáo AI |
