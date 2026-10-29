@@ -23,7 +23,7 @@ Dự án sử dụng phông chữ **Nunito**.
 | **H2 (Tiêu đề phần)** | `24px` (1.5rem) | Bold (700) | |
 | **H3 (Tiêu đề card/sản phẩm)** | `20px` (1.25rem)| SemiBold (600) | |
 | **Body (Nội dung thường)** | `16px` (1rem) | Regular (400) | |
-| **Small (Chữ nhỏ/ghi chú)** | `14px` (0.875rem)| Regular (400) | *In nghiêng (Italic)* |
+| **Small (Chữ nhỏ/ghi chú)** | `14px` (0.875rem)| Regular (400) |  |
 
 ## 3. Khoảng cách (Spacing)
 
