@@ -43,7 +43,9 @@ Dự án sử dụng phông chữ **Nunito**.
 
 ## 5. Các mốc hiển thị (Responsive Breakpoints)
 
-- **Mobile (Điện thoại):** `390px` 
+- **Mobile (điện thoại):** kiểm thử ở `390px`; áp dụng khi `max-width: 599px`
+- **Tablet (máy tính bảng):** kiểm thử ở `768px`; áp dụng khi `max-width: 1023px`
+- **Desktop (máy tính):** kiểm thử ở `1366px`; là bố cục mặc định
 - **Tablet (Máy tính bảng):** `768px` 
 - **Desktop (Máy tính bàn/Laptop):** `1366px`
 
