@@ -7,7 +7,7 @@ Tài liệu này quy định các tiêu chuẩn về màu sắc, kiểu chữ, k
 - **Màu chính (Primary):** `#007A6E` 
 - **Màu logo (trang trí):** `#00A090`
 - **Màu Hover:** `#00665C` 
-- **Màu nhấn (Accent):** `#f78c57` 
+- **Màu nhấn (Accent):** `#FC7060` 
 - **Màu nền Web (Background):** `#F8F9FA` 
 - **Màu nền Card:** `#FFFFFF` 
 - **Màu Text chính (Primary Text):** `#212529` 
