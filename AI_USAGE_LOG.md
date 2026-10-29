@@ -1,4 +1,15 @@
-# SỬ DỤNG AI 1 (CLAUDE) PHÂN TÍCH YÊU CẦU
+# NHẬT KÝ SỬ DỤNG AI – NHÓM 4 PAWCARE
+
+## Mục lục
+
+- [Buổi 1](#buổi-1)
+- [Buổi 2](#buổi-2)
+
+# BUỔI 1
+
+> Mã của Buổi 1: AI 1 (Claude) là B1-01; AI 2 (ChatGPT) là B1-02.
+
+## SỬ DỤNG AI 1 (CLAUDE) PHÂN TÍCH YÊU CẦU
 ## Prompt
 Bạn là chuyên gia phân tích nghiệp vụ cho dự án thương mại điện tử.
 Thông tin dự án:
@@ -517,3 +528,177 @@ Với mỗi vấn đề, hãy nêu lý do và đề xuất điều chỉnh.
 Nguyễn Thanh Hà
 
 *Ghi chú:* Prompt ghi thời gian thực hiện 7 tuần theo thời điểm hỏi AI. Kế hoạch thực tế là 15/10–15/12/2026 (xem PROJECT_PLAN.md).
+---
+
+# BUỔI 2
+
+### Nhật ký của Đoàn Thị Thu Ngọc
+
+#### B2-TN-01 – Lập kế hoạch triển khai giao diện
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 1 (Mục 2)
+- **Mục đích:** Phân loại yêu cầu, xác định nội dung 4 trang, đề xuất phân công, liệt kê rủi ro tích hợp.
+
+**Prompt (nguyên văn):**
+
+````text
+Nhóm tôi đang thực hiện dự án website thương mại điện tử trong môn Phát triển ứng dụng thương mại điện tử (Buổi 2: HTML5 & CSS3).
+
+Ở Buổi 1, nhóm đã hoàn thành:
+- Chủ đề cửa hàng: PawCare, tiệm spa và grooming thú cưng tại TP.HCM. Dịch vụ đặt lịch là chính, bán thức ăn và phụ kiện là phụ.
+- Đối tượng khách hàng: chủ nuôi chó mèo tại TP.HCM, chủ yếu dưới 45 tuổi, mới nuôi hoặc ít kinh nghiệm.
+- Website tham khảo: Pet Mart, Dog Paradise, Groomit.
+- Các yêu cầu đã xác định (F01–F15): [dán danh sách F01–F15 tại đây]
+- Bản phác thảo giao diện (wireframe của Thanh Hà): [mô tả bố cục từng trang hoặc đính kèm ảnh]
+- Thành viên và vai trò dự kiến: Thu Ngọc (nhóm trưởng), Thanh Hà (UI/UX), Hồng Hạnh (frontend), Bảo Ngọc (backend), Thành Đạt (backend), Huỳnh Giao (admin/dashboard), Bảo Nghi (đăng nhập, kiểm thử).
+- Thời hạn nộp Buổi 2: [ngày]
+
+Hãy giúp nhóm lập kế hoạch triển khai giao diện ở Buổi 2.
+
+Yêu cầu:
+1. Xác định nội dung cần xây dựng cho ít nhất 4 trang HTML.
+2. Xác định các thành phần giao diện dùng chung.
+3. Đề xuất cách tổ chức CSS và hình ảnh.
+4. Chia công việc thành các nhiệm vụ nhỏ.
+5. Đề xuất thứ tự thực hiện và tiêu chí hoàn thành.
+6. Xác định các vấn đề có thể xảy ra khi tích hợp mã nguồn.
+
+Ràng buộc từ đề bài:
+- Chưa viết mã HTML/CSS.
+- Không đề xuất backend, cơ sở dữ liệu hoặc thanh toán trực tuyến.
+- Kế hoạch phải kế thừa kết quả Buổi 1 và phù hợp với sinh viên mới học HTML5, CSS3.
+
+Lưu ý riêng cho nhóm:
+- Buổi 2 chỉ làm giao diện tĩnh, không dùng JavaScript. Với các yêu cầu F01–F15 cần JS/backend (đặt lịch theo giờ trống, tài khoản khách hàng, giỏ hàng...), hãy lập bảng phân loại: yêu cầu nào thể hiện được bằng giao diện tĩnh (ví dụ form đặt lịch hoặc trang đăng nhập chỉ để minh họa), yêu cầu nào hoãn lại cho buổi sau. Không tự bổ sung chức năng ngoài phạm vi.
+- Với 4 trang bắt buộc, hãy đề xuất cách áp dụng cho PawCare: trang Danh sách sản phẩm hiển thị dịch vụ và sản phẩm như thế nào, trang Chi tiết sản phẩm dùng cho dịch vụ hay sản phẩm nào (kèm lý do). Nhớ có tối thiểu 8 mục trên trang danh sách.
+- Vai trò backend, admin và đăng nhập chưa có việc đúng chuyên môn ở Buổi 2. Hãy chia lại công việc theo HTML/CSS, gồm cả việc quản lý GitHub (nhánh riêng, pull request, xử lý xung đột) và kiểm thử. Mỗi thành viên phải phụ trách một phần mã mà bạn ấy có thể giải thích được.
+- Giữ cấu trúc thư mục tham khảo của đề: index.html, products.html, product-detail.html, about.html, css/style.css, images/, docs/ui-design.md, README.md.
+
+Định dạng đầu ra (dùng tiếng Việt, ngắn gọn):
+1. Bảng nội dung 4 trang (trang | nội dung chính | thành phần dùng chung | người phụ trách).
+2. Bảng phân loại yêu cầu F01–F15 (làm ở Buổi 2 / hoãn / lý do).
+3. Bảng phân công nhiệm vụ (nhiệm vụ | người làm | thứ tự | tiêu chí hoàn thành).
+4. Danh sách rủi ro khi tích hợp mã và cách phòng tránh.
+Nếu thiếu thông tin để làm tốt, hãy ghi rõ giả định bạn đã dùng hoặc hỏi tôi tối đa 3 câu trước khi làm.
+````
+
+#### B2-TN-02 – Tạo bộ wireframe bằng HTML5 và CSS3
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 1 (Mục 2)
+- **Mục đích:** Tạo bộ wireframe 4 trang và một tệp CSS dùng chung để cả nhóm thống nhất bố cục.
+
+**Prompt (nguyên văn):**
+
+````text
+VAI TRÒ
+Bạn là lập trình viên frontend và UI/UX, đang hướng dẫn một nhóm sinh viên MỚI HỌC HTML5 và CSS3. Hãy viết mã nguồn dễ đọc, có chú thích tiếng Việt, đặt tên rõ ràng. Mỗi dòng mã quan trọng phải có thể giải thích được cho người mới.
+
+BỐI CẢNH
+Nhóm đang làm website thương mại điện tử tên PawCare: tiệm spa và grooming thú cưng tại TP.HCM, một chi nhánh. Đặt lịch dịch vụ là chức năng chính, bán thức ăn và phụ kiện là phần phụ. Khách chính là chủ nuôi chó mèo tại TP.HCM, mới nuôi hoặc ít kinh nghiệm, đặt lịch qua tin nhắn hoặc hotline. Bài tập Buổi 2 của môn "Phát triển ứng dụng WEB/TMĐT" yêu cầu 4 trang HTML. Giai đoạn này nhóm cần WIREFRAME BẰNG MÃ (độ chi tiết thấp, chưa phải thiết kế hoàn chỉnh) để cả nhóm thống nhất bố cục trước khi làm giao diện thật.
+
+SẢN PHẨM CẦN TẠO
+Bộ file wireframe chạy được khi mở trực tiếp bằng trình duyệt, không cần máy chủ:
+wireframe/
+  index.html            (Trang chủ)
+  products.html         (Danh sách dịch vụ và sản phẩm)
+  product-detail.html   (Chi tiết: lấy dịch vụ "Tắm sấy" làm ví dụ)
+  about.html            (Giới thiệu cửa hàng)
+  css/style.css         (một file CSS dùng chung cho cả 4 trang)
+  README.md             (cách mở, cấu trúc, quy ước đặt tên)
+
+RÀNG BUỘC KỸ THUẬT (bắt buộc)
+- Chỉ HTML5 và CSS3. KHÔNG JavaScript. KHÔNG Bootstrap, Tailwind hay thư viện CSS nào.
+- Dùng thẻ semantic: header, nav, main, section, article, footer. Mỗi trang có đúng một h1, thứ tự h2/h3 hợp lý.
+- Bố cục bằng Flexbox hoặc CSS Grid. Không định vị thủ công bằng position:absolute để xếp bố cục.
+- Responsive tại 3 kích thước: 1366px (máy tính), 768px (máy tính bảng), 390px (điện thoại). Dùng media query. Không tràn ngang ở cả ba kích thước. Không dùng hamburger JavaScript: ở điện thoại menu xếp gọn bằng flex-wrap hoặc xếp dọc.
+- Wireframe TRẮNG ĐEN XÁM: chỉ dùng thang xám. Chỗ đặt ảnh là khung xám có nhãn như "Ảnh dịch vụ", "Banner". Khai báo màu bằng biến CSS ở :root (ví dụ --color-bg, --color-surface, --color-text, --color-muted, --color-primary, --color-accent, --color-border) và gán giá trị xám, để sau này nhóm chỉ thay giá trị biến là đổi bảng màu.
+- Font hệ thống (system-ui, sans-serif). Khoảng cách dùng bội của 8px.
+- Hover và focus-visible rõ ràng cho mọi liên kết và nút (viền đậm hơn, không làm xê dịch bố cục). Tương phản chữ/nền đạt tối thiểu 4,5:1.
+- Đường dẫn tương đối. Tên file và class CSS viết thường, nối bằng dấu gạch ngang (ví dụ product-card). Không dùng style="" trong HTML.
+- Thẻ html có lang="vi". Mọi ảnh thật (nếu có) phải có alt; khung ảnh giả dùng div có aria-label.
+- Các nút "Đặt lịch", "Thêm vào giỏ", ô tìm kiếm chỉ là GIAO DIỆN, chưa có chức năng. Không viết form gửi dữ liệu, không backend.
+
+THÀNH PHẦN DÙNG CHUNG (sao chép y hệt ở 4 trang)
+- Header: logo chữ "PawCare" (khung xám giữ chỗ logo), menu 3 liên kết đúng đường dẫn: Trang chủ (index.html), Dịch vụ & Sản phẩm (products.html), Giới thiệu (about.html), ô tìm kiếm (giao diện), nút "Đặt lịch" dẫn tới products.html, biểu tượng giỏ hàng (khung giữ chỗ). Trang hiện tại có trạng thái "đang chọn" (aria-current="page").
+- Footer: tên cửa hàng, 3 cột (Liên kết nhanh, Liên hệ, Giờ mở cửa), dòng bản quyền. Giờ mở cửa: 8:00–19:00. Địa chỉ, hotline, email: để placeholder "[địa chỉ]", "[hotline]", "[email]". Không bịa thông tin.
+
+NỘI DUNG TỪNG TRANG
+1) index.html
+- Banner: tiêu đề, một câu mô tả ngắn, nút "Đặt lịch ngay" (dẫn products.html), khung ảnh lớn bên phải trên máy tính, xếp dọc ở điện thoại.
+- Khu "Dịch vụ nổi bật": 4 thẻ (Tắm sấy, Cắt tỉa tạo kiểu, Vệ sinh tai, Cắt móng), mỗi thẻ có khung ảnh, tên, dòng "Giá từ [giá]", liên kết "Xem chi tiết".
+- Khu "Sản phẩm nổi bật": 4 thẻ sản phẩm, cùng cấu trúc thẻ.
+- Khu "Vì sao chọn PawCare": 3 ô, nội dung placeholder "[Điểm nổi bật 1/2/3]".
+- Liên kết sang products.html và about.html.
+2) products.html
+- Tiêu đề trang và một dòng mô tả.
+- Phần "Dịch vụ" gồm 7 thẻ: Tắm sấy; Cắt tỉa tạo kiểu; Vệ sinh tai; Cắt móng; Combo Tắm sấy + Vệ sinh tai + Cắt móng; Combo Tắm sấy + Cắt tỉa; Trọn gói. ⚠ (tên combo chờ nhóm chốt)
+- Phần "Sản phẩm bán kèm" gồm 8 thẻ: thức ăn hạt cho chó; thức ăn hạt cho mèo; pate cho mèo; snack thưởng cho chó; đồ gặm cho chó; vòng cổ và dây dắt; bát ăn; lược chải lông. ⚠
+- Mỗi thẻ: khung ảnh, tên, giá "[giá]", nút/liên kết "Xem chi tiết" dẫn product-detail.html.
+- Lưới: 4 cột ở 1366px, 2 cột ở 768px, 1 cột ở 390px. Các thẻ cao đều nhau kể cả khi tên dài khác nhau.
+3) product-detail.html (dịch vụ "Tắm sấy")
+- Đường dẫn "Quay lại danh sách" (products.html).
+- Bên trái: khung ảnh chính và 3 khung ảnh nhỏ. Bên phải: tên, giá "Giá từ [giá]", mô tả ngắn "[mô tả]".
+- Thuộc tính: Áp dụng cho (chó, mèo), Thời lượng ước tính "[thời lượng]", Hình thức (tại tiệm).
+- Bảng giá mẫu: hàng là mốc cân nặng ("Dưới 5 kg", "5–10 kg", "10–20 kg", "Trên 20 kg"), cột là độ dài lông ("Lông ngắn", "Lông dài"), ô là "[giá]".
+- Nút "Đặt lịch" (to, dễ bấm). Ở điện thoại ảnh nằm trên, thông tin nằm dưới.
+- Dưới cùng: khu "Dịch vụ/sản phẩm liên quan" gồm 3 thẻ.
+4) about.html
+- Giới thiệu PawCare (2 đoạn placeholder), ảnh minh họa (khung xám), 3 giá trị (placeholder), khu thông tin liên hệ (placeholder như footer), liên kết "Đặt lịch" dẫn products.html. Các đoạn được chia thành các section có tiêu đề, không đặt trong một đoạn dài.
+
+CHÚ THÍCH TRONG WIREFRAME
+Ở đầu mỗi trang thêm một khối chú thích ngắn (thẻ details đóng sẵn, nhãn "Ghi chú wireframe") nêu mục đích trang, các thành phần chính và hành vi dự kiến trên máy tính / máy tính bảng / điện thoại. Không dùng JavaScript.
+
+CÁCH TRẢ LỜI
+1. Trước tiên mô tả ngắn cấu trúc và lý do chọn Grid hay Flexbox cho từng khu vực.
+2. In đầy đủ nội dung của TỪNG file, mỗi file trong một khối mã riêng có tên file ở trên.
+3. Cuối cùng cho bảng tự kiểm tra: ở mỗi mục dưới đây ghi Đã đáp ứng / Chưa đáp ứng và chỉ rõ chỗ trong mã: đủ 4 trang; liên kết giữa các trang đúng; một file CSS dùng chung; không JavaScript và không framework; Grid/Flexbox; 3 mốc responsive; hover và focus-visible; thẻ semantic; không style trong HTML; không bịa thông tin kinh doanh.
+4. Nêu rõ các giả định bạn đã đặt ra ở những chỗ đề không nói.
+5. KHÔNG khẳng định đã chạy thử trên trình duyệt hay đã sửa lỗi thành công, vì bạn không có trình duyệt. Chỉ ghi "cần kiểm tra bằng DevTools ở 1366/768/390".
+6. Không thêm trang, chức năng, màu sắc hay thông tin ngoài yêu cầu. Nếu thiếu thông tin thì dùng placeholder dạng "[...]" và liệt kê danh sách placeholder ở cuối.
+````
+
+#### B2-TN-03 – Kiểm tra cấu trúc dự án
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 2 (Mục 3)
+- **Mục đích:** Kiểm tra cấu trúc thư mục hiện tại, đề xuất cách tổ chức, quy ước đặt tên và lỗi tích hợp.
+
+**Prompt (nguyên văn):**
+
+````text
+Nhóm tôi đang phát triển website thương mại điện tử từ dự án Buổi 1.
+
+Cấu trúc thư mục hiện tại:
+[.gitignore, AGENTS.md, AI_USAGE_LOG.md, PROJECT_PLAN.md, README.md, REQUIREMENTS.md, docs/business-workflow.md, docs/competitor analytics.md]
+
+Nhóm dự kiến có các trang:
+index.html, products.html, product-detail.html, about.html.
+
+Hãy giúp nhóm:
+1. Kiểm tra cấu trúc thư mục hiện tại.
+2. Đề xuất cách tổ chức file HTML, CSS và hình ảnh.
+3. Xác định các thành phần giao diện nên dùng chung.
+4. Đề xuất quy ước đặt tên file và class CSS.
+5. Hướng dẫn cách liên kết CSS và hình ảnh bằng đường dẫn tương đối.
+6. Chỉ ra các lỗi có thể xảy ra khi tích hợp mã nguồn từ nhiều thành viên.
+
+Không tạo lại toàn bộ dự án.
+Không sử dụng framework CSS.
+Giải thích rõ lý do của từng đề xuất.
+````
+
+### Nhật ký của Nguyễn Thanh Hà
+
+### Nhật ký của Nguyễn Hồng Hạnh
+
+### Nhật ký của Phạm Bảo Ngọc
+
+### Nhật ký của Dương Thành Đạt
+
+### Nhật ký của Nguyễn Thị Huỳnh Giao
+
+### Nhật ký của Nguyễn Hoàng Bảo Nghi
+
+
