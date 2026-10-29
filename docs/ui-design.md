@@ -54,7 +54,7 @@ Dự án sử dụng phông chữ **Nunito**.
 - **Thành phần dùng chung:**
   - **Nút bấm (Buttons):** Bo góc `border-radius: 8px`. 
     - Nút chính: nền Nhấn (`#f78c57`), chữ Trắng.
-    - Nút phụ: nền Trắng, viền Chính (`#00A896`), chữ màu Chính.
+    - Nút phụ: nền Trắng, viền Chính (`#007A6E`), chữ màu Chính. Hover: nền `#00665C`, chữ Trắng. Focus: vòng viền 2px.
   - **Thẻ (Cards):** Nền Trắng, bo góc `12px`.
 - **Quy ước viết code giao diện:**
   - Tên class viết theo kiểu `kebab-case` (VD: `product-card`, `btn-primary`).
