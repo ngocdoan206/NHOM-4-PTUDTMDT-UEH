@@ -4,6 +4,8 @@ Tài liệu này quy định các tiêu chuẩn về màu sắc, kiểu chữ, k
 
 ## 1. Bảng màu (Color Palette)
 
+### 1.1. Màu cốt lõi
+
 - **Màu chính (Primary):** `#007A6E` 
 - **Màu logo (trang trí):** `#00A090`
 - **Màu Hover:** `#00665C` 
@@ -12,6 +14,29 @@ Tài liệu này quy định các tiêu chuẩn về màu sắc, kiểu chữ, k
 - **Màu nền Card:** `#FFFFFF` 
 - **Màu Text chính (Primary Text):** `#212529` 
 - **Màu Text phụ (Secondary Text):** `#5C6570`
+
+### 1.2. Màu bổ sung cho Header
+
+Các màu dưới đây chỉ dùng cho Header, được khai báo trong `:root` của `css/style.css`.
+
+| Vai trò | Mã màu | Biến CSS | Ghi chú |
+| :--- | :--- | :--- | :--- |
+| Nền Header | `#E8F5F3` | `--color-header-bg` | Teal rất nhạt, tách Header khỏi nền web. |
+| Đường kẻ dưới Header | `#B8DCD7` | `--color-header-line` | Chỉ trang trí, đường kẻ mảnh 1px. |
+| Hover nút Đặt lịch | `#EF6551` | `--color-accent-hover` | Cam đậm hơn Accent một chút, chữ giữ `#212529`. |
+| Vầng sáng focus ô tìm kiếm | `#BFDEDB` | `--color-focus-ring` | Dùng kèm viền `#00665C` khi focus. |
+
+### 1.3. Màu dùng lại và màu tạm
+
+- **Màu viền (`--color-border`):** dùng lại Text phụ `#5C6570`.
+- **Màu nền khối phụ (`--color-surface`):** dùng lại màu nền Card `#FFFFFF`.
+- **Màu khung ảnh giả (`--color-placeholder`):** `#D9D9D9`. Đây là màu **tạm** cho khung ảnh giả, sẽ xóa khi thay bằng ảnh thật.
+
+### 1.4. Quy tắc dùng màu
+
+- Mọi mã màu chỉ được khai báo trong `:root`. Phần còn lại của CSS dùng `var(--tên-biến)`.
+- Màu logo `#00A090` chỉ dùng trang trí, không dùng cho chữ (độ tương phản trên nền trắng thấp).
+- Màu Accent `#FC7060` dùng làm nền nút chính, không dùng làm màu vòng focus hoặc màu chữ.
 
 ## 2. Kiểu chữ (Typography)
 
@@ -50,12 +75,17 @@ Dự án sử dụng phông chữ **Nunito**.
 ## 6. Quy ước đặt tên & Thành phần dùng chung
 
 - **Thành phần dùng chung:**
-  - **Nút bấm (Buttons):** Bo góc `border-radius: 8px`. 
+  - **Nút bấm (Buttons):** Bo góc `border-radius: 8px`. Có hiệu ứng chuyển màu mượt (`0.2s`).
     - Nút chính: nền Nhấn (`#FC7060`), chữ `#212529`. Hover: nền `#00665C`, chữ Trắng.
     - Nút phụ: nền Trắng, viền Chính (`#007A6E`), chữ màu Chính. Hover: nền `#00665C`, chữ Trắng. Focus: vòng viền 2px.
   - **Thẻ (Cards):** Nền Trắng, bo góc `12px`.
-  - **Header:** logo bên trái; bên phải là menu 3 liên kết (Trang chủ, Dịch vụ & Sản phẩm, Giới thiệu), ô tìm kiếm (chỉ giao diện), nút Đặt lịch, biểu tượng giỏ hàng.
+  - **Header:** nền `#E8F5F3`, đường kẻ dưới `1px` màu `#B8DCD7`. Logo bên trái; bên phải là menu 3 liên kết (Trang chủ, Dịch vụ & Sản phẩm, Giới thiệu), ô tìm kiếm (chỉ giao diện), nút Đặt lịch, biểu tượng giỏ hàng.
+    - **Menu:** chữ `#212529`. Hover: chữ `#00665C`, nền trắng, viền `#00665C`. Trang hiện tại (`aria-current`): chữ `#007A6E`, nền trắng, viền `#007A6E`.
+    - **Ô tìm kiếm:** nền trắng, viền `1px` `#5C6570`, bo tròn hoàn toàn (`999px`), icon kính lúp bên trái. Hover: viền `#007A6E`. Focus: viền `#00665C` kèm vầng sáng `#BFDEDB`. Nhãn "Tìm kiếm" chỉ dành cho trình đọc màn hình.
+    - **Giỏ hàng:** ô vuông `40px`, nền trắng, viền `1px` `#5C6570`, bo góc `8px`, icon giỏ hàng màu Chính `#007A6E`.
   - **Footer:** tên cửa hàng, 3 cột (Liên kết nhanh, Liên hệ, Giờ mở cửa), dòng bản quyền.
+  - **Biểu tượng (Icons):** dùng SVG inline theo phong cách outline của thư viện Lucide, kích thước `20px`, `stroke-width="2"`, màu kế thừa qua `currentColor`. Không dùng file ảnh hoặc emoji làm icon giao diện.
+  - **Liên kết và focus:** liên kết chữ màu Chính `#007A6E`, hover `#00665C`. Focus bàn phím (`:focus-visible`): vòng viền `3px` màu `#00665C`, cách `2px`.
 - **Quy ước viết code giao diện:**
   - Tên class viết theo kiểu `kebab-case` (VD: `product-card`, `btn-primary`).
   - Tên file hình ảnh/logo viết chữ thường, không dấu, cách nhau bằng gạch ngang.
