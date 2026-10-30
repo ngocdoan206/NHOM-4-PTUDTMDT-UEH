@@ -703,6 +703,40 @@ Giải thích rõ lý do của từng đề xuất.
 ### Nhật ký của Phạm Bảo Ngọc
 
 ### Nhật ký của Dương Thành Đạt
+#### B2-TD-01 – Hoàn thiện nội dung trang giới thiệu (about.html)
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 6 (Mục 7.3–7.4), Phần B – Trang giới thiệu cửa hàng
+- **Mục đích:** Viết nội dung 2 đoạn giới thiệu và 3 giá trị cho about.html, dựa trên README.md và bảng 4 điểm khác biệt đã chốt trong docx, không thêm thông tin kinh doanh mới.
+
+**Prompt (nguyên văn):**
+
+````text
+Nhóm tôi đang xây dựng trang about.html cho cửa hàng thương mại điện tử.
+
+Thông tin cửa hàng:
+- Tên: PawCare
+- Lĩnh vực: Spa, grooming chó mèo tại TP.HCM (dịch vụ chính), kèm bán thức ăn và phụ kiện thú cưng (phụ)
+- Đối tượng khách hàng: Chủ nuôi chó mèo tại TP.HCM, chủ yếu dưới 45 tuổi, mới nuôi hoặc ít kinh nghiệm, hiện đặt lịch qua tin nhắn hoặc hotline
+- Điểm nổi bật: (1) Đặt lịch theo giờ trống và chọn groomer, giữ chỗ 10 phút; (2) Báo giá tự động theo loài, cân nặng, độ dài lông; (3) Lộ trình chăm sóc theo hồ sơ từng bé; (4) Dịch vụ và sản phẩm chung một giỏ hàng
+- HTML/CSS hiện tại: [dán mã about.html và phần .about-intro, .feature-box trong style.css]
+
+Hãy giúp nhóm hoàn thiện trang giới thiệu.
+
+Yêu cầu:
+1. Nội dung được chia thành các phần rõ ràng.
+2. Có tiêu đề, đoạn giới thiệu và hình ảnh phù hợp.
+3. Bố cục dễ đọc, khoảng cách hợp lý.
+4. Sử dụng HTML semantic khi phù hợp.
+5. Phong cách nhất quán với các trang khác.
+6. Có thể hiển thị tốt trên điện thoại.
+
+Không tự tạo thông tin kinh doanh không có trong dữ liệu.
+Chỉ cung cấp phần mã cần bổ sung hoặc chỉnh sửa.
+Không sử dụng JavaScript hoặc framework CSS.
+````
+
+**Kết quả & kiểm tra:** AI đề xuất nội dung 2 đoạn giới thiệu và 3 giá trị; đối chiếu lại với README.md và bảng 4 điểm khác biệt trong docx trước khi dùng, không có thông tin bịa thêm ngoài dữ liệu nhóm đã chốt. Thông tin liên hệ giữ nguyên dạng placeholder vì cả nhóm chưa chốt.
 
 ### Nhật ký của Nguyễn Thị Huỳnh Giao
 
