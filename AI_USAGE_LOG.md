@@ -696,6 +696,53 @@ Không sử dụng framework CSS.
 Giải thích rõ lý do của từng đề xuất.
 ````
 
+#### B2-TN-04 – Hoàn thiện trang chi tiết sản phẩm (product-detail.html)
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 6 (Mục 7), Phần A
+- **Mục đích:** Hoàn thiện trang chi tiết dịch vụ Tắm sấy: tìm giá tham khảo của đối thủ, thay đường dẫn ảnh, bổ sung nội dung hữu ích và chỉnh CSS để ảnh vừa khung. Bản tự kiểm tra của người phụ trách ghi ở cuối mục.
+
+**Prompt:**
+
+````text
+VAI TRÒ
+Bạn là lập trình viên frontend và UI/UX, đang hướng dẫn nhóm sinh viên mới học HTML5 và CSS3. Mã phải dễ đọc, có chú thích tiếng Việt, giải thích được cho người mới.
+
+BỐI CẢNH
+Nhóm làm website PawCare: tiệm spa và grooming chó mèo tại TP.HCM, một chi nhánh. Tôi phụ trách trang product-detail.html (dịch vụ "Tắm sấy"). Đính kèm là HTML và CSS hiện tại của dự án.
+
+NHIỆM VỤ
+Rà soát và cải thiện trang chi tiết theo các yêu cầu:
+1. Bố trí rõ ràng giữa khu ảnh và khu thông tin.
+2. Có đủ: hình ảnh sản phẩm, tên và giá bán, mô tả, thuộc tính phù hợp, nút mua hàng dạng giao diện, liên kết quay lại danh sách.
+3. Nút "Đặt lịch" dễ nhận biết.
+4. Bố cục phù hợp màn hình lớn và nhỏ (1366, 768, 390 px).
+5. Dùng Grid hoặc Flexbox đúng chỗ, giải thích lý do chọn.
+6. Thống nhất với trang chủ (màu, font, nút, thẻ trong css/style.css).
+
+RÀNG BUỘC
+- Chỉ HTML5 và CSS3. Không JavaScript, backend, thanh toán thật, framework CSS.
+- Không đổi phần header, footer và các lớp CSS dùng chung của trang khác.
+- Không tự bịa thông tin kinh doanh. Dữ liệu không có thì để "[...]".
+- Giữ nguyên quyết định nhóm: giữ 3 ảnh nhỏ (thumb), không thêm breadcrumb.
+
+CÁCH TRẢ LỜI
+1. Liệt kê ngắn các vấn đề bạn thấy trong mã hiện tại.
+2. Với mỗi chỉnh sửa: ghi số dòng, đoạn cũ, đoạn mới, và giải thích thuộc tính CSS quan trọng.
+3. Chỉ cung cấp phần cần bổ sung hoặc sửa, không in lại cả tệp.
+4. Cuối cùng cho bảng tự kiểm tra từng yêu cầu: Đã đáp ứng / Chưa đáp ứng, chỉ rõ chỗ trong mã.
+5. Không khẳng định đã chạy thử trình duyệt; ghi "cần kiểm tra bằng DevTools ở 1366/768/390".
+````
+
+*Đính kèm khi gửi: product-detail.html và css/style.css hiện tại của dự án.*
+
+**Kết quả và cách xử lý:**
+
+- Giá: giữ giá từng dòng do nhóm tự đặt trong khoảng đó.
+- Nội dung thêm: quy trình, lưu ý, câu hỏi thường gặp, thẻ liên quan; loại bỏ đề xuất breadcrumb; giữ 3 ảnh nhỏ theo quyết định của nhóm.
+- CSS: bản đầu dùng chế độ cắt ảnh nên ảnh mất phần rìa, đã yêu cầu sửa thành hiển thị trọn ảnh; bỏ đoạn trùng với style.css.
+- Kiểm tra: tự dán mã vào tệp, xem bằng Live Preview rồi commit lên nhánh riêng.
+
 ### Nhật ký của Nguyễn Thanh Hà
 
 ### Nhật ký của Nguyễn Hồng Hạnh
