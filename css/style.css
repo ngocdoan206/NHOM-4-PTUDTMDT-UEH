@@ -11,21 +11,29 @@
    media query bên dưới ghi đè cho máy tính bảng và điện thoại.
    ========================================================= */
 
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 /* ---------- 1. BIẾN CSS ----------
    Muốn đổi bảng màu thật sau này: chỉ sửa giá trị ở đây. */
 :root {
-  /* Màu – hiện chỉ dùng thang xám */
-  --color-bg: #ffffff;          /* nền trang */
-  --color-surface: #f2f2f2;     /* nền khối phụ: banner, footer, ghi chú */
-  --color-placeholder: #d9d9d9; /* nền khung ảnh giả */
-  --color-text: #1a1a1a;        /* chữ chính: ~17:1 trên nền trắng */
-  --color-muted: #595959;       /* chữ phụ: ~7:1 trên trắng, ~6,4:1 trên #f2f2f2 */
-  --color-primary: #333333;     /* nền nút chính (chữ trắng ~12,6:1) */
-  --color-on-primary: #ffffff;  /* chữ đặt trên nền nút chính */
-  --color-accent: #000000;      /* màu nhấn khi hover / focus */
-  --color-border: #767676;      /* viền: ≥ 3:1 so với nền trắng */
-
+ /* Màu – theo docs/ui-design.md, mục 1 */
+  --color-bg: #F8F9FA;             /* nền web */
+  --color-card: #FFFFFF;           /* nền card, header, ô nhập */
+  --color-surface: var(--color-card); /* nền khối phụ (docs chưa quy định riêng → dùng màu card) */
+  --color-text: #212529;           /* chữ chính */
+  --color-muted: #5C6570;          /* chữ phụ */
+  --color-primary: #007A6E;        /* màu chính: liên kết, viền nút phụ */
+  --color-primary-hover: #00665C;  /* hover, focus */
+  --color-on-primary: #FFFFFF;     /* chữ đặt trên nền màu chính/hover */
+  --color-accent: #FC7060;         /* nền nút chính */
+  --color-logo: #00A090;           /* màu logo – chỉ dùng trang trí */
+  --color-border: var(--color-muted); /* docs chưa quy định màu viền → dùng màu chữ phụ (≥ 3:1) */
+  --color-placeholder: #D9D9D9;    /* TẠM: nền khung ảnh giả, xóa khi có ảnh thật */
+  /* Màu bổ sung cho Header (docs chưa quy định → cần cập nhật docs) */
+  --color-header-bg: #E8F5F3;      /* nền Header: teal nhạt (phương án B). A: var(--color-card), C: #FFF3F0 */
+  --color-accent-hover: #EF6551;   /* hover nút Đặt lịch: cam đậm hơn một chút (chữ #212529 ≈ 4,9:1) */
+  --color-focus-ring: #BFDEDB;     /* vầng sáng teal quanh ô tìm kiếm khi focus */
+  --color-header-line: #B8DCD7;    /* đường kẻ dưới Header: teal nhạt, chỉ trang trí */
+  --radius-pill: 999px;            /* bo tròn hoàn toàn cho ô tìm kiếm */
   /* Khoảng cách – luôn là bội của 8px */
   --space-1: 8px;
   --space-2: 16px;
@@ -35,8 +43,9 @@
   --space-8: 64px;
 
   /* Chữ, bo góc, viền */
-  --font-base: system-ui, sans-serif; /* font có sẵn của hệ điều hành */
-  --radius: 8px;
+  --font-base: "Nunito", system-ui, sans-serif;
+  --radius: 8px;                   /* nút, ô nhập */
+  --radius-card: 12px;             /* card */
   --border-width: 2px;
 
   /* Chiều rộng tối đa của nội dung */
@@ -53,13 +62,28 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   font-family: var(--font-base);
-  font-size: 16px;
+  font-size: 1rem;              /* 16px */
+  font-weight: 400;
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 h1,
@@ -67,34 +91,35 @@ h2,
 h3 {
   margin: 0 0 var(--space-2);
   line-height: 1.25;
+  color: var(--color-text);
 }
 
-h1 { font-size: 32px; }
-h2 { font-size: 24px; }
-h3 { font-size: 18px; }
+h1 { font-size: 2rem;    font-weight: 700; }  /* 32px */
+h2 { font-size: 1.5rem;  font-weight: 700; }  /* 24px */
+h3 { font-size: 1.25rem; font-weight: 600; }  /* 20px */
 
 p {
   margin: 0 0 var(--space-2);
 }
 
-/* Liên kết dạng chữ: hover làm gạch chân dày hơn (không xê dịch bố cục) */
+/* Liên kết chữ: màu chính (≈4,9:1 trên nền web), hover đổi màu + gạch dày hơn */
 a {
-  color: var(--color-text);
+  color: var(--color-primary);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
 a:hover {
+  color: var(--color-primary-hover);
   text-decoration-thickness: 3px;
 }
 
-/* Focus khi dùng bàn phím (phím Tab).
-   outline nằm ngoài hộp nên KHÔNG làm xê dịch bố cục. */
+/* Focus bàn phím: dùng màu hover đậm (≈7:1) thay vì màu nhấn cam (chỉ ≈2,6:1) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--color-primary-hover);
   outline-offset: 2px;
 }
 
@@ -155,8 +180,9 @@ summary:focus-visible {
 /* ---------- 4. HEADER ---------- */
 
 .site-header {
-  background-color: var(--color-bg);
-  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--color-header-bg);
+  /* Đường kẻ mảnh 1px, chỉ trang trí */
+  border-bottom: 1px solid var(--color-header-line);
 }
 
 /* Flexbox: xếp logo – menu – tìm kiếm – nút – giỏ hàng trên một hàng */
@@ -175,21 +201,19 @@ summary:focus-visible {
   gap: var(--space-1);
   font-size: 20px;
   font-weight: 700;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
-/* Ô vuông xám giữ chỗ cho logo thật */
-.logo-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo:hover {
+  color: var(--color-primary-hover);
+}
+
+.logo-img {
+  display: block;
   width: 40px;
   height: 40px;
-  font-size: 12px;
-  font-weight: 400;
-  background-color: var(--color-placeholder);
-  border: var(--border-width) dashed var(--color-border);
-  border-radius: var(--radius);
+  object-fit: contain;
 }
 
 /* Menu chiếm phần trống còn lại, đẩy ô tìm kiếm sang phải */
@@ -206,65 +230,136 @@ summary:focus-visible {
   list-style: none;
 }
 
-/* Viền trong suốt có sẵn → khi hover chỉ đổi màu viền, không đổi kích thước */
+/* Viền trong suốt có sẵn → hover chỉ đổi màu, không đổi kích thước */
 .nav-list a {
   display: block;
   padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
   text-decoration: none;
   border: var(--border-width) solid transparent;
   border-radius: var(--radius);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .nav-list a:hover {
-  border-color: var(--color-border);
+  color: var(--color-primary-hover);
+  background-color: var(--color-card);
+  border-color: var(--color-primary-hover);
 }
 
-/* Trang hiện tại ("đang chọn").
-   [aria-current] bắt cả giá trị "page" (đúng trang đó)
-   và "true" (trang con, ví dụ trang chi tiết thuộc mục Dịch vụ & Sản phẩm) */
+/* Trang hiện tại: bắt cả aria-current="page" và "true". Đặt SAU :hover */
 .nav-list a[aria-current] {
-  background-color: var(--color-surface);
-  border-color: var(--color-accent);
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
 }
 
-/* Ô tìm kiếm – chỉ là giao diện */
+/* Ô tìm kiếm – chỉ là giao diện.
+   .search là khung định vị: icon kính lúp nằm tuyệt đối bên trái ô nhập. */
 .search {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-1);
 }
 
+/* Nhãn chỉ dành cho trình đọc màn hình (icon + placeholder đã đủ nghĩa với mắt thường) */
 .search label {
-  font-size: 14px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: var(--space-2);
+  width: 20px;
+  height: 20px;
   color: var(--color-muted);
+  transform: translateY(-50%);
+  pointer-events: none;          /* bấm vào icon vẫn rơi vào ô nhập */
+  transition: color 0.2s ease;
 }
 
 .search input {
-  width: 200px;
+  width: 240px;
   min-height: 40px;
-  padding: 0 var(--space-1);
+  padding: 0 var(--space-2) 0 var(--space-6);  /* chừa chỗ cho icon bên trái */
   font: inherit;
   color: var(--color-text);
-  background-color: var(--color-bg);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  -webkit-appearance: none;      /* Safari: cho phép bo tròn ô type="search" */
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search input::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
 }
 
 .search input:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-primary);
 }
 
-/* Khung giữ chỗ biểu tượng giỏ hàng */
+/* Focus: viền đậm thêm 1px + vầng sáng teal. Không đổi kích thước ô.
+   outline trong suốt vẫn hiện ở chế độ High Contrast của Windows. */
+.search input:focus-visible {
+  border-color: var(--color-primary-hover);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--color-primary-hover),
+              0 0 0 4px var(--color-focus-ring);
+}
+
+.search:focus-within svg {
+  color: var(--color-primary-hover);
+}
+
+/* Nút Đặt lịch: icon lịch + chữ, canh giữa theo chiều dọc */
+.header-btn {
+  gap: var(--space-1);
+}
+
+.header-btn svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* Biểu tượng giỏ hàng (chưa có nghiệp vụ) */
 .cart-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
+  width: 40px;
   height: 40px;
-  font-size: 12px;
-  background-color: var(--color-placeholder);
-  border: var(--border-width) dashed var(--color-border);
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
+}
+
+.cart-box svg {
+  width: 20px;
+  height: 20px;
+}
+/* Người dùng bật "giảm chuyển động" → tắt hiệu ứng chuyển màu */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .nav-list a,
+  .search svg,
+  .search input {
+    transition: none;
+  }
 }
 
 
@@ -282,33 +377,39 @@ summary:focus-visible {
   text-decoration: none;
   border: var(--border-width) solid var(--color-primary);
   border-radius: var(--radius);
-  cursor: pointer;
+  cursor: pointer;  
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Nút chính: nền đậm, chữ trắng */
+/* Nút chính: nền nhấn cam, chữ tối (≈5,7:1). Hover: nền #00665C, chữ trắng */
 .btn-primary {
-  color: var(--color-on-primary);
-  background-color: var(--color-primary);
-}
-
-/* box-shadow vẽ thêm viền bên ngoài → trông viền đậm hơn mà không xê dịch */
-.btn-primary:hover {
+  color: var(--color-text);
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px var(--color-accent);
 }
 
-/* Nút phụ: nền trắng, có viền */
+.btn-primary:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Nút phụ: nền trắng, viền + chữ màu chính. Hover: nền #00665C, chữ trắng */
 .btn-outline {
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  border-color: var(--color-border);
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
 }
 
-/* inset = vẽ thêm viền vào phía trong → viền dày hơn, kích thước giữ nguyên */
 .btn-outline:hover {
-  border-color: var(--color-accent);
-  box-shadow: inset 0 0 0 1px var(--color-accent);
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Docs: nút phụ khi focus có vòng viền 2px */
+.btn-outline:focus-visible {
+  outline-width: var(--border-width);
 }
 
 /* Nút to, dễ bấm (trang chi tiết) */
@@ -366,15 +467,15 @@ summary:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* Thẻ dịch vụ / sản phẩm: Flexbox theo chiều dọc */
+/* Thẻ dịch vụ / sản phẩm: nền trắng, bo góc 12px */
 .card {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   padding: var(--space-2);
-  background-color: var(--color-bg);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
 }
 
 .card-title {
@@ -576,6 +677,7 @@ summary:focus-visible {
   margin-bottom: var(--space-3);
   font-size: 20px;
   font-weight: 700;
+  color: var(--color-primary);
 }
 
 /* Grid 3 cột: Liên kết nhanh – Liên hệ – Giờ mở cửa */
@@ -588,6 +690,7 @@ summary:focus-visible {
 .footer-title {
   margin-bottom: var(--space-1);
   font-size: 16px;
+  font-weight: 700;
 }
 
 .footer-list {

@@ -11,11 +11,13 @@
   <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
   <header class="site-header">
     <div class="container header-inner">
+      <!-- Logo vuông thật + chữ PawCare (alt rỗng vì đã có chữ PawCare bên cạnh) -->
       <a class="logo" href="index.html">
-        <span class="logo-box" aria-hidden="true">Logo</span>
+        <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
         PawCare
       </a>
 
+      <!-- Menu chính: 3 liên kết -->
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="nav-list">
           <li><a href="index.html">Trang chủ</a></li>
@@ -24,14 +26,37 @@
         </ul>
       </nav>
 
+      <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
       <div class="search" role="search">
         <label for="search-input">Tìm kiếm</label>
+        <!-- Icon kính lúp (Lucide "search"), kế thừa màu từ CSS qua currentColor -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
         <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
       </div>
 
-      <a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
+      <!-- Nút Đặt lịch dẫn tới trang danh sách -->
+      <a class="btn btn-primary header-btn" href="products.html">
+        <!-- Icon lịch (Lucide "calendar") -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M8 2v4"></path>
+          <path d="M16 2v4"></path>
+          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+          <path d="M3 10h18"></path>
+        </svg>
+        Đặt lịch
+      </a>
 
-      <div class="cart-box" role="img" aria-label="Biểu tượng giỏ hàng">Giỏ</div>
+      <!-- Biểu tượng giỏ hàng (Lucide "shopping-cart"), chưa xử lý nghiệp vụ -->
+      <div class="cart-box" role="img" aria-label="Giỏ hàng">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="21" r="1"></circle>
+          <circle cx="19" cy="21" r="1"></circle>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+        </svg>
+      </div>
     </div>
   </header>
 
@@ -127,9 +152,9 @@
         <div>
           <h2 class="footer-title">Liên hệ</h2>
           <ul class="footer-list">
-            <li>Địa chỉ: [địa chỉ]</li>
-            <li>Hotline: [hotline]</li>
-            <li>Email: [email]</li>
+            <li>Địa chỉ: 279 Nguyễn Tri Phương, Phường Diên Hồng</li>
+            <li>Hotline: 0123456789</li>
+            <li>Email: pawcare@ueh.edu.st.vn</li>
           </ul>
         </div>
 
@@ -139,7 +164,7 @@
         </div>
       </div>
 
-      <p class="copyright">© [năm] PawCare. [nội dung bản quyền]</p>
+      <p class="copyright">© 2026 PawCare. [nội dung bản quyền]</p>
     </div>
   </footer>
 
