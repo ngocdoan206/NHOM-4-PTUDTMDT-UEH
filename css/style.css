@@ -541,23 +541,27 @@ summary:focus-visible {
   gap: var(--space-2);
 }
 
-/* Ảnh thật của banner và thẻ: giữ tỉ lệ, không méo.
-   Nền xám tạm giữ khung khi file ảnh chưa có (xóa cùng --color-placeholder sau này) */
+/* Ảnh thật của banner và thẻ: hiện trọn vẹn, không cắt, không méo.
+   Tỉ lệ khung khớp tỉ lệ ảnh nên không có viền thừa. */
 .hero-img,
 .card-img {
   display: block;
   width: 100%;
-  object-fit: cover;
-  background-color: var(--color-placeholder);
+  object-fit: contain;
+  background-color: var(--color-card);
   border-radius: var(--radius);
 }
 
 .hero-img {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1366 / 500;     /* khớp banner 1366×500 */
 }
 
 .card-img {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 3;          /* khớp ảnh dịch vụ 400×300 */
+}
+
+.card-img-square {
+  aspect-ratio: 1 / 1;          /* khớp ảnh sản phẩm 400×400 */
 }
 
 /* Thẻ trang chủ: mô tả ngắn và dòng hướng dẫn giá */
@@ -633,6 +637,88 @@ summary:focus-visible {
 .detail-price {
   font-size: 24px;
   font-weight: 700;
+}
+
+/* ----- Cột ảnh trang chi tiết ----- */
+.gallery img {
+  display: block;
+  width: 100%;
+  object-fit: contain;          /* ảnh hiện trọn vẹn, không cắt */
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+}
+
+.gallery-main {
+  margin: 0;
+}
+
+.gallery-main img {
+  aspect-ratio: 1 / 1;          /* khớp ảnh chính 600×600 */
+}
+
+.gallery-main figcaption {
+  margin-top: var(--space-1);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.thumbs img {
+  aspect-ratio: 1 / 1;
+}
+
+/* ----- Bảng giá: tô xen kẽ dòng, ghi chú cuối bảng ----- */
+.price-table tbody tr:nth-child(even) {
+  background-color: var(--color-bg);
+}
+
+.price-table tfoot td {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* ----- Danh sách quy trình / lưu ý ----- */
+.step-list,
+.note-list {
+  margin: 0;
+  padding-left: var(--space-3);
+}
+
+.step-list li,
+.note-list li {
+  margin-bottom: var(--space-1);
+}
+
+/* ----- Câu hỏi thường gặp ----- */
+.faq-item {
+  margin-bottom: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-item p {
+  margin: var(--space-1) 0 0;
+}
+
+/* ----- Thẻ: nổi lên khi rê chuột ----- */
+.card {
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(33, 37, 41, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
 }
 
 /* Danh sách thuộc tính / liên hệ: Grid 2 cột (nhãn – giá trị) */
@@ -714,6 +800,14 @@ summary:focus-visible {
   font-size: 20px;
 }
 
+/* Ảnh cửa hàng trang Giới thiệu (600×400) */
+.about-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
 
 /* ---------- 9. FOOTER ---------- */
 
