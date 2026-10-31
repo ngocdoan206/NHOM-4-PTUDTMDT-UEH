@@ -534,6 +534,57 @@ summary:focus-visible {
 .more-link {
   margin: var(--space-3) 0 0;
 }
+/* Banner: nhóm 2 nút CTA */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Ảnh thật của banner và thẻ: giữ tỉ lệ, không méo.
+   Nền xám tạm giữ khung khi file ảnh chưa có (xóa cùng --color-placeholder sau này) */
+.hero-img,
+.card-img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  background-color: var(--color-placeholder);
+  border-radius: var(--radius);
+}
+
+.hero-img {
+  aspect-ratio: 16 / 10;
+}
+
+.card-img {
+  aspect-ratio: 4 / 3;
+}
+
+/* Thẻ trang chủ: mô tả ngắn và dòng hướng dẫn giá */
+.card-text {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.card-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* "Vì sao chọn PawCare": khung icon nhỏ */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
 
 /* 8.2 Danh sách – tiêu đề trang */
 .page-head {
@@ -746,6 +797,10 @@ summary:focus-visible {
   .about-intro {
     grid-template-columns: 1fr 1fr;
   }
+    /* 3 ô "Vì sao chọn PawCare" xếp 1 cột cho đủ rộng để đọc */
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 10.2 ĐIỆN THOẠI (mốc kiểm tra: 390px) */
@@ -815,5 +870,9 @@ summary:focus-visible {
 
   .footer-cols {
     grid-template-columns: 1fr;
+  }
+    /* Hai nút banner xếp dọc, rộng hết màn hình */
+  .hero-actions .btn {
+    flex: 1 1 100%;
   }
 }
