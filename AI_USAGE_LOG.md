@@ -1413,7 +1413,1128 @@ Không cần giải thích lại toàn bộ HTML/CSS cơ bản. Chỉ tập trun
 #### B2-PBN-01 – Xây dựng danh sách sản phẩm (products.html)
 - **Công cụ:** Claude
 - **Bước đề bài:** Bước 5 (Mục 6) Xây dựng trang danh sách sản phẩm
-- **Mục đích:** Hiển thị sản phẩm theo bố cục nhất quán, dễ đọc và phù hợp với chủ đề cửa hàng.
+- **Mục đích:** Hoàn thiện danh sách 7 dịch vụ + 8 sản phẩm bán kèm; lưới 4/2/1 cột ở 1366/768/390 px; thẻ cao đều; ảnh có alt; hover/focus; không dùng JavaScript, framework CSS hay backend; chỉ sửa phần cần thiết.
+
+**Prompt (nguyên văn):**
+
+````text
+Nhóm tôi đang xây dựng trang products.html cho cửa hàng thương mại điện tử.
+
+HTML hiện tại:
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dịch vụ &amp; Sản phẩm – PawCare (wireframe)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo vuông thật + chữ PawCare (alt rỗng vì đã có chữ PawCare bên cạnh) -->
+      <a class="logo" href="index.html">
+        <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
+        PawCare
+      </a>
+
+      <!-- Menu chính: 3 liên kết -->
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html" aria-current="page">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
+      </nav>
+
+      <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
+      <div class="search" role="search">
+        <label for="search-input">Tìm kiếm</label>
+        <!-- Icon kính lúp (Lucide "search"), kế thừa màu từ CSS qua currentColor -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+      </div>
+
+      <!-- Nút Đặt lịch dẫn tới trang danh sách -->
+      <a class="btn btn-primary header-btn" href="products.html">
+        <!-- Icon lịch (Lucide "calendar") -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M8 2v4"></path>
+          <path d="M16 2v4"></path>
+          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+          <path d="M3 10h18"></path>
+        </svg>
+        Đặt lịch
+      </a>
+
+      <!-- Biểu tượng giỏ hàng (Lucide "shopping-cart"), chưa xử lý nghiệp vụ -->
+      <div class="cart-box" role="img" aria-label="Giỏ hàng">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="21" r="1"></circle>
+          <circle cx="19" cy="21" r="1"></circle>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== GHI CHÚ WIREFRAME ===== -->
+    <details class="wireframe-note">
+      <summary>Ghi chú wireframe</summary>
+      <p><strong>Mục đích:</strong> cho khách xem toàn bộ dịch vụ (chức năng chính) và sản phẩm bán kèm (phần phụ), rồi bấm vào trang chi tiết.</p>
+      <ul>
+        <li><strong>Thành phần:</strong> tiêu đề trang, phần Dịch vụ (7 thẻ), phần Sản phẩm bán kèm (8 thẻ).</li>
+        <li><strong>Máy tính (1366px):</strong> lưới 4 cột.</li>
+        <li><strong>Máy tính bảng (768px):</strong> lưới 2 cột.</li>
+        <li><strong>Điện thoại (390px):</strong> lưới 1 cột.</li>
+        <li>Thẻ trong cùng lưới cao đều nhau; nút "Xem chi tiết" luôn nằm ở đáy thẻ.</li>
+        <li>⚠ Tên combo và danh sách sản phẩm đang chờ nhóm chốt.</li>
+      </ul>
+    </details>
+
+    <!-- ===== TIÊU ĐỀ TRANG ===== -->
+    <div class="page-head">
+      <h1>Dịch vụ &amp; Sản phẩm</h1>
+      <p class="page-desc">[mô tả ngắn cho trang danh sách]</p>
+    </div>
+
+    <!-- ===== DỊCH VỤ (7 thẻ) ===== -->
+    <section class="section" aria-labelledby="services-title">
+      <div class="section-head">
+        <h2 id="services-title">Dịch vụ</h2>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Tắm sấy">Ảnh dịch vụ</div>
+          <h3 class="card-title">Tắm sấy</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Tắm sấy">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt tỉa tạo kiểu">Ảnh dịch vụ</div>
+          <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Vệ sinh tai">Ảnh dịch vụ</div>
+          <h3 class="card-title">Vệ sinh tai</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vệ sinh tai">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Cắt móng">Ảnh dịch vụ</div>
+          <h3 class="card-title">Cắt móng</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt móng">Xem chi tiết</a>
+        </article>
+
+        <!-- ⚠ Tên combo chờ nhóm chốt -->
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Combo Tắm sấy, Vệ sinh tai, Cắt móng">Ảnh dịch vụ</div>
+          <h3 class="card-title">Combo Tắm sấy + Vệ sinh tai + Cắt móng</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Combo Tắm sấy, Vệ sinh tai, Cắt móng">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Combo Tắm sấy, Cắt tỉa">Ảnh dịch vụ</div>
+          <h3 class="card-title">Combo Tắm sấy + Cắt tỉa</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Combo Tắm sấy, Cắt tỉa">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh dịch vụ Trọn gói">Ảnh dịch vụ</div>
+          <h3 class="card-title">Trọn gói</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Trọn gói">Xem chi tiết</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SẢN PHẨM BÁN KÈM (8 thẻ) ⚠ danh sách chờ nhóm chốt ===== -->
+    <section class="section" aria-labelledby="products-title">
+      <div class="section-head">
+        <h2 id="products-title">Sản phẩm bán kèm</h2>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Thức ăn hạt cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Thức ăn hạt cho mèo">Ảnh sản phẩm</div>
+          <h3 class="card-title">Thức ăn hạt cho mèo</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho mèo">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Pate cho mèo">Ảnh sản phẩm</div>
+          <h3 class="card-title">Pate cho mèo</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Pate cho mèo">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Snack thưởng cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Snack thưởng cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Snack thưởng cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Đồ gặm cho chó">Ảnh sản phẩm</div>
+          <h3 class="card-title">Đồ gặm cho chó</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Đồ gặm cho chó">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Vòng cổ và dây dắt">Ảnh sản phẩm</div>
+          <h3 class="card-title">Vòng cổ và dây dắt</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vòng cổ và dây dắt">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Bát ăn">Ảnh sản phẩm</div>
+          <h3 class="card-title">Bát ăn</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Bát ăn">Xem chi tiết</a>
+        </article>
+
+        <article class="card">
+          <div class="img-box" role="img" aria-label="Ảnh sản phẩm Lược chải lông">Ảnh sản phẩm</div>
+          <h3 class="card-title">Lược chải lông</h3>
+          <p class="card-price">[giá]</p>
+          <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Lược chải lông">Xem chi tiết</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">PawCare</p>
+
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-title">Liên kết nhanh</h2>
+          <ul class="footer-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Liên hệ</h2>
+          <ul class="footer-list">
+            <li>Địa chỉ: 279 Nguyễn Tri Phương, Phường Diên Hồng</li>
+            <li>Hotline: 0123456789</li>
+            <li>Email: pawcare@ueh.edu.st.vn</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-title">Giờ mở cửa</h2>
+          <p>8:00–19:00</p>
+        </div>
+      </div>
+
+      <p class="copyright">© 2026 PawCare. [nội dung bản quyền]</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+CSS hiện tại:
+/* =========================================================
+   PawCare – WIREFRAME (độ chi tiết thấp)
+   File CSS dùng chung cho cả 4 trang.
+   Thứ tự đọc file:
+     1. Biến CSS          6. Khung ảnh giả
+     2. Nền tảng          7. Lưới và thẻ (card)
+     3. Khung chứa        8. Riêng từng trang
+     4. Header            9. Footer
+     5. Nút và liên kết  10. Responsive (768px, 390px)
+   Cách viết: "desktop trước" – kiểu mặc định dành cho 1366px,
+   media query bên dưới ghi đè cho máy tính bảng và điện thoại.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+/* ---------- 1. BIẾN CSS ----------
+   Muốn đổi bảng màu thật sau này: chỉ sửa giá trị ở đây. */
+:root {
+ /* Màu – theo docs/ui-design.md, mục 1 */
+  --color-bg: #F8F9FA;             /* nền web */
+  --color-card: #FFFFFF;           /* nền card, header, ô nhập */
+  --color-surface: var(--color-card); /* nền khối phụ (docs chưa quy định riêng → dùng màu card) */
+  --color-text: #212529;           /* chữ chính */
+  --color-muted: #5C6570;          /* chữ phụ */
+  --color-primary: #007A6E;        /* màu chính: liên kết, viền nút phụ */
+  --color-primary-hover: #00665C;  /* hover, focus */
+  --color-on-primary: #FFFFFF;     /* chữ đặt trên nền màu chính/hover */
+  --color-accent: #FC7060;         /* nền nút chính */
+  --color-logo: #00A090;           /* màu logo – chỉ dùng trang trí */
+  --color-border: var(--color-muted); /* docs chưa quy định màu viền → dùng màu chữ phụ (≥ 3:1) */
+  --color-placeholder: #D9D9D9;    /* TẠM: nền khung ảnh giả, xóa khi có ảnh thật */
+  /* Màu bổ sung cho Header (docs chưa quy định → cần cập nhật docs) */
+  --color-header-bg: #E8F5F3;      /* nền Header: teal nhạt (phương án B). A: var(--color-card), C: #FFF3F0 */
+  --color-accent-hover: #EF6551;   /* hover nút Đặt lịch: cam đậm hơn một chút (chữ #212529 ≈ 4,9:1) */
+  --color-focus-ring: #BFDEDB;     /* vầng sáng teal quanh ô tìm kiếm khi focus */
+  --color-header-line: #B8DCD7;    /* đường kẻ dưới Header: teal nhạt, chỉ trang trí */
+  --radius-pill: 999px;            /* bo tròn hoàn toàn cho ô tìm kiếm */
+  /* Khoảng cách – luôn là bội của 8px */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Chữ, bo góc, viền */
+  --font-base: "Nunito", system-ui, sans-serif;
+  --radius: 8px;                   /* nút, ô nhập */
+  --radius-card: 12px;             /* card */
+  --border-width: 2px;
+
+  /* Chiều rộng tối đa của nội dung */
+  --container-width: 1200px;
+}
+
+
+/* ---------- 2. NỀN TẢNG ---------- */
+
+/* Tính width/height gồm cả padding và viền → dễ canh, tránh tràn ngang */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: 1rem;              /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-2);
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+h1 { font-size: 2rem;    font-weight: 700; }  /* 32px */
+h2 { font-size: 1.5rem;  font-weight: 700; }  /* 24px */
+h3 { font-size: 1.25rem; font-weight: 600; }  /* 20px */
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+/* Liên kết chữ: màu chính (≈4,9:1 trên nền web), hover đổi màu + gạch dày hơn */
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration-thickness: 3px;
+}
+
+/* Focus bàn phím: dùng màu hover đậm (≈7:1) thay vì màu nhấn cam (chỉ ≈2,6:1) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 3. KHUNG CHỨA ---------- */
+
+/* Giữ nội dung ở giữa, không rộng quá 1200px */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+/* Mỗi khu nội dung lớn cách nhau đều */
+.section {
+  padding: var(--space-6) 0;
+}
+
+/* Dòng tiêu đề khu + liên kết "Xem tất cả" nằm cùng hàng (Flexbox) */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;               /* hẹp quá thì liên kết xuống dòng */
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+/* Khối "Ghi chú wireframe" (thẻ details, đóng sẵn) */
+.wireframe-note {
+  margin: var(--space-3) 0;
+  padding: var(--space-2);
+  background-color: var(--color-surface);
+  border: var(--border-width) dashed var(--color-border);
+  border-radius: var(--radius);
+}
+
+.wireframe-note summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wireframe-note p,
+.wireframe-note ul {
+  margin: var(--space-1) 0 0;
+}
+
+.wireframe-note ul {
+  padding-left: var(--space-3);
+}
+
+
+/* ---------- 4. HEADER ---------- */
+
+.site-header {
+  background-color: var(--color-header-bg);
+  /* Đường kẻ mảnh 1px, chỉ trang trí */
+  border-bottom: 1px solid var(--color-header-line);
+}
+
+/* Flexbox: xếp logo – menu – tìm kiếm – nút – giỏ hàng trên một hàng */
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;               /* cho phép xuống hàng ở màn hình nhỏ */
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--color-primary-hover);
+}
+
+.logo-img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Menu chiếm phần trống còn lại, đẩy ô tìm kiếm sang phải */
+.main-nav {
+  flex: 1;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Viền trong suốt có sẵn → hover chỉ đổi màu, không đổi kích thước */
+.nav-list a {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  text-decoration: none;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-list a:hover {
+  color: var(--color-primary-hover);
+  background-color: var(--color-card);
+  border-color: var(--color-primary-hover);
+}
+
+/* Trang hiện tại: bắt cả aria-current="page" và "true". Đặt SAU :hover */
+.nav-list a[aria-current] {
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
+}
+
+/* Ô tìm kiếm – chỉ là giao diện.
+   .search là khung định vị: icon kính lúp nằm tuyệt đối bên trái ô nhập. */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Nhãn chỉ dành cho trình đọc màn hình (icon + placeholder đã đủ nghĩa với mắt thường) */
+.search label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: var(--space-2);
+  width: 20px;
+  height: 20px;
+  color: var(--color-muted);
+  transform: translateY(-50%);
+  pointer-events: none;          /* bấm vào icon vẫn rơi vào ô nhập */
+  transition: color 0.2s ease;
+}
+
+.search input {
+  width: 240px;
+  min-height: 40px;
+  padding: 0 var(--space-2) 0 var(--space-6);  /* chừa chỗ cho icon bên trái */
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  -webkit-appearance: none;      /* Safari: cho phép bo tròn ô type="search" */
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search input::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.search input:hover {
+  border-color: var(--color-primary);
+}
+
+/* Focus: viền đậm thêm 1px + vầng sáng teal. Không đổi kích thước ô.
+   outline trong suốt vẫn hiện ở chế độ High Contrast của Windows. */
+.search input:focus-visible {
+  border-color: var(--color-primary-hover);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--color-primary-hover),
+              0 0 0 4px var(--color-focus-ring);
+}
+
+.search:focus-within svg {
+  color: var(--color-primary-hover);
+}
+
+/* Nút Đặt lịch: icon lịch + chữ, canh giữa theo chiều dọc */
+.header-btn {
+  gap: var(--space-1);
+}
+
+.header-btn svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* Biểu tượng giỏ hàng (chưa có nghiệp vụ) */
+.cart-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.cart-box svg {
+  width: 20px;
+  height: 20px;
+}
+/* Người dùng bật "giảm chuyển động" → tắt hiệu ứng chuyển màu */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .nav-list a,
+  .search svg,
+  .search input {
+    transition: none;
+  }
+}
+
+
+/* ---------- 5. NÚT ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--radius);
+  cursor: pointer;  
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Nút chính: nền nhấn cam, chữ tối (≈5,7:1). Hover: nền #00665C, chữ trắng */
+.btn-primary {
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Nút phụ: nền trắng, viền + chữ màu chính. Hover: nền #00665C, chữ trắng */
+.btn-outline {
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Docs: nút phụ khi focus có vòng viền 2px */
+.btn-outline:focus-visible {
+  outline-width: var(--border-width);
+}
+
+/* Nút to, dễ bấm (trang chi tiết) */
+.btn-large {
+  width: 100%;
+  max-width: 320px;
+  min-height: 56px;
+  padding: var(--space-2) var(--space-4);
+  font-size: 18px;
+}
+
+
+/* ---------- 6. KHUNG ẢNH GIẢ ---------- */
+
+/* Khung xám có nhãn, thay cho ảnh thật */
+.img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;          /* giữ tỉ lệ khung dù rộng hẹp thế nào */
+  padding: var(--space-1);
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-text);
+  background-color: var(--color-placeholder);
+  border: var(--border-width) dashed var(--color-border);
+  border-radius: var(--radius);
+}
+
+.img-box-wide {
+  aspect-ratio: 16 / 10;        /* banner, ảnh chính */
+}
+
+.img-box-square {
+  aspect-ratio: 1 / 1;          /* ảnh nhỏ (thumbnail) */
+}
+
+
+/* ---------- 7. LƯỚI VÀ THẺ ---------- */
+
+/* CSS Grid cho danh sách thẻ.
+   minmax(0, 1fr): cột co lại được, chữ dài không làm tràn ngang. */
+.grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;          /* mọi hàng cao bằng hàng cao nhất → thẻ cao đều */
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Thẻ dịch vụ / sản phẩm: nền trắng, bo góc 12px */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.card-title {
+  margin: 0;
+  overflow-wrap: anywhere;      /* tên dài thì xuống dòng, không tràn */
+}
+
+.card-price {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* margin-top: auto đẩy nút xuống đáy thẻ → các nút thẳng hàng */
+.card-action {
+  margin-top: auto;
+}
+
+/* Ô "Vì sao chọn PawCare", ô "Giá trị" */
+.feature-box {
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.feature-box p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+
+/* ---------- 8. RIÊNG TỪNG TRANG ---------- */
+
+/* 8.1 Trang chủ – Banner: Grid 2 cột (chữ trái, ảnh phải) */
+.hero {
+  padding: var(--space-8) 0;
+  background-color: var(--color-surface);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.hero-title {
+  font-size: 40px;
+}
+
+.hero-text {
+  font-size: 18px;
+  color: var(--color-muted);
+}
+
+.more-link {
+  margin: var(--space-3) 0 0;
+}
+
+/* 8.2 Danh sách – tiêu đề trang */
+.page-head {
+  padding-top: var(--space-2);
+}
+
+.page-desc {
+  color: var(--color-muted);
+}
+
+/* 8.3 Chi tiết – Grid 2 cột: ảnh trái, thông tin phải */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: var(--space-6);
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.detail-info h2 {
+  margin-bottom: var(--space-1);
+}
+
+.detail-price {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Danh sách thuộc tính / liên hệ: Grid 2 cột (nhãn – giá trị) */
+.attr-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.attr-list dt {
+  font-weight: 600;
+}
+
+.attr-list dd {
+  margin: 0;
+}
+
+/* Bảng giá: nếu quá hẹp thì cuộn trong khung, trang không tràn ngang */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.price-table caption {
+  padding-bottom: var(--space-1);
+  text-align: left;
+  color: var(--color-muted);
+}
+
+.price-table th,
+.price-table td {
+  padding: var(--space-1) var(--space-2);
+  text-align: left;
+  border: 1px solid var(--color-border);
+}
+
+.price-table thead th {
+  background-color: var(--color-surface);
+}
+
+/* 8.4 Giới thiệu – Grid 2 cột: chữ trái, ảnh phải */
+.about-intro {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-text p {
+  margin: 0;
+}
+
+/* Khối kêu gọi "Đặt lịch" */
+.cta-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.cta-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+
+/* ---------- 9. FOOTER ---------- */
+
+.site-footer {
+  margin-top: var(--space-8);
+  padding: var(--space-6) 0 var(--space-3);
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.footer-brand {
+  margin-bottom: var(--space-3);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Grid 3 cột: Liên kết nhanh – Liên hệ – Giờ mở cửa */
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.footer-title {
+  margin-bottom: var(--space-1);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.copyright {
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  font-size: 14px;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* ---------- 10. RESPONSIVE ---------- */
+
+/* 10.1 MÁY TÍNH BẢNG (mốc kiểm tra: 768px) */
+@media (max-width: 1023px) {
+  /* Menu xuống hàng thứ hai, chiếm hết chiều ngang */
+  .main-nav {
+    order: 5;
+    flex-basis: 100%;
+  }
+
+  /* Ô tìm kiếm, nút, giỏ hàng dồn sang phải ở hàng một */
+  .search {
+    margin-left: auto;
+  }
+
+  /* 4 cột → 2 cột */
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .detail {
+    gap: var(--space-4);
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 10.2 ĐIỆN THOẠI (mốc kiểm tra: 390px) */
+@media (max-width: 599px) {
+  .container {
+    padding: 0 var(--space-2);
+  }
+
+  /* Header 3 hàng: [logo ... Đặt lịch, giỏ] / [tìm kiếm] / [menu] */
+  .header-btn {
+    margin-left: auto;
+  }
+
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  .search input {
+    flex: 1;
+    width: auto;
+    min-width: 0;               /* cho phép ô nhập co lại, tránh tràn */
+  }
+
+  /* Mọi lưới thẻ → 1 cột */
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-auto-rows: auto;       /* 1 cột thì không cần ép cao đều */
+  }
+
+  /* Banner xếp dọc: chữ trên, ảnh dưới */
+  .hero {
+    padding: var(--space-6) 0;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  /* Chi tiết: ảnh trên, thông tin dưới */
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-large {
+    max-width: none;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-3);
+  }
+
+  .footer-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+Danh sách sản phẩm:
+## 1. Dịch vụ (Services)
+
+| Tên dịch vụ | Giá đề xuất (VNĐ) | Đường dẫn hình ảnh (`src`) |
+| :--- | :--- | :--- |
+| Tắm sấy | 120.000 | images/services/tam-say.jpg |
+| Cắt tỉa tạo kiểu | 200.000 | images/services/cat-tia.jpg |
+| Vệ sinh tai | 40.000 | images/services/ve-sinh-tai.jpg |
+| Cắt móng | 40.000 | images/services/cat-mong.jpg |
+| Combo Tắm sấy + Vệ sinh tai + Cắt móng | 170.000 | images/services/combo-tam-tai-mong.jpg |
+| Combo Tắm sấy + Cắt tỉa | 280.000 | images/services/combo-tam-cat-tia.jpg |
+| Trọn gói | 350.000 | images/services/combo-tron-goi.jpg |
+
+## 2. Sản phẩm bán kèm (Products)
+
+| Tên sản phẩm | Giá đề xuất (VNĐ) | Đường dẫn hình ảnh (`src`) |
+| :--- | :--- | :--- |
+| Thức ăn hạt cho chó | 150.000 | images/products/thucan-hat-cho.jpg |
+| Thức ăn hạt cho mèo | 135.000 | images/products/thucan-hat-meo.jpg |
+| Pate cho mèo | 25.000 | images/products/pate-meo.jpg |
+| Snack thưởng cho chó | 45.000 | images/products/snack-cho.jpg |
+| Đồ gặm cho chó | 35.000 | images/products/do-gam-cho.jpg |
+| Vòng cổ và dây dắt | 85.000 | images/products/vongco-daydat.jpg |
+| Bát ăn | 50.000 | images/products/bat-an.jpg |
+| Lược chải lông | 65.000 | images/products/luoc-chai-long.jpg |
+
+Hãy giúp nhóm hoàn thiện giao diện danh sách sản phẩm.
+
+Yêu cầu:
+1. Hiển thị ít nhất 8 sản phẩm.
+2. Các thẻ sản phẩm có cấu trúc nhất quán.
+3. Hình ảnh, tên và giá được trình bày rõ ràng.
+4. Sử dụng CSS Grid hoặc Flexbox phù hợp.
+5. Các sản phẩm có khoảng cách hợp lý.
+6. Các nút xem chi tiết có liên kết phù hợp.
+7. Có hover và focus khi cần thiết.
+8. Có thể điều chỉnh số cột theo kích thước màn hình.
+
+Giải thích vì sao chọn Grid hoặc Flexbox.
+Chỉ sửa phần cần thiết.
+Không dùng JavaScript, framework CSS hoặc dữ liệu backend.
+````
+
+- **Kết quả đạt được:**
+  - `products.html`: thay khung ảnh giả bằng `<img>` (có `alt`, `width`/`height`, `loading="lazy"`), điền giá, đổi liên kết thành `product-detail.html?id=<slug>`, điền mô tả trang, thêm dòng nạp `css/products.css`.
+  - `css/style.css`: giữ nguyên.
+- **Giải thích chọn kỹ thuật:** Grid cho lưới thẻ (bố cục 2 chiều, đổi số cột theo breakpoint, `grid-auto-rows: 1fr` cho thẻ cao đều); Flexbox trong thẻ (xếp dọc, `margin-top: auto` đẩy giá và nút xuống đáy).
+- **Kiểm tra:** Đã chạy thử bằng trình duyệt với ảnh tạm ở 1366/768/390 px: đúng 4/2/1 cột, thẻ cùng hàng cao bằng nhau, giá và nút thẳng hàng, không tràn ngang. 
 
 ### Nhật ký của Dương Thành Đạt
 #### B2-TD-01 – Hoàn thiện nội dung trang giới thiệu (about.html)
