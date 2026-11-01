@@ -744,6 +744,47 @@ CÁCH TRẢ LỜI
 - Kiểm tra: tự dán mã vào tệp, xem bằng Live Preview rồi commit lên nhánh riêng.
 
 ### Nhật ký của Nguyễn Thanh Hà
+#### B2-TH-01 – Thiết kế hệ thống nhận diện UI & Viết tài liệu docs/ui-design.md
+
+- **Công cụ:** Gemini
+- **Bước đề bài:** Buổi 2 – Bước 2 (Mục 3.1) & Bước 3 (Mục 4.1)[cite: 34, 35, 36, 37]
+- **Mục đích:** Xây dựng và thống nhất hệ thống thiết kế UI (Design System) cho toàn bộ website PawCare bao gồm: Bảng màu 7 màu, Kiểu chữ Nunito, Khoảng cách Spacing 8-point, Các mốc Responsive (1366px, 768px, 390px), Quy ước Nút bấm / Thẻ / Naming class[cite: 25, 26, 35]; kiểm tra độ tương phản tiếp cận (Accessibility) qua WebAIM Contrast Checker; xuất nội dung tài liệu `docs/ui-design.md`[cite: 26, 35].
+
+**Prompt:**
+
+```text
+VAI TRÒ
+Bạn là chuyên gia UI/UX và thiết kế hệ thống (Design System) cho ứng dụng web thương mại điện tử.
+
+BỐI CẢNH
+Nhóm đang phát triển giao diện website PawCare: tiệm spa, grooming và đồ dùng chó mèo dành cho Gen Z và người đi làm trẻ (22–35 tuổi) tại TP.HCM. Website gồm 4 trang HTML5/CSS3 (index.html, products.html, product-detail.html, about.html). Tôi phụ trách xây dựng tài liệu thiết kế UI (docs/ui-design.md) và thiết kế bộ Logo dự án.
+
+NHIỆM VỤ
+Hãy đề xuất hệ thống thiết kế UI toàn diện cho dự án PawCare bao gồm:
+1. Bảng màu (7 màu): Màu chính (Primary), Hover, Nhấn (Accent), Nền Web, Nền Card, Text chính, Text phụ.
+2. Kiểu chữ (Typography): Chọn 1 phông chữ duy nhất hỗ trợ tiếng Việt tốt (bo tròn nhẹ, thân thiện với chủ nuôi thú cưng), quy định cỡ chữ và trọng lượng (weight) cho H1, H2, H3, Body, Small.
+3. Khoảng cách (Spacing): Bội số của 8px (4px, 8px, 16px, 24px, 32px, 48px).
+4. Mốc Responsive Breakpoints: 1366px (Desktop), 768px (Tablet), 390px (Mobile).
+5. Thành phần dùng chung: Nút bấm (Button Primary/Secondary), Thẻ (Card), Header, Footer.
+6. Quy ước đặt tên Class & Tệp: Viết theo kiểu kebab-case, quy ước đặt tên file hình ảnh.
+
+RÀNG BUỘC
+- Đảm bảo độ tương phản giữa chữ và nền đạt tiêu chuẩn WCAG AA (tối thiểu 4.5:1 cho chữ thường qua WebAIM Contrast Checker).
+- Không sử dụng CSS framework (Bootstrap/Tailwind) hay JavaScript.
+- Xuất kết quả dưới dạng cấu trúc Markdown chuẩn để dán trực tiếp vào docs/ui-design.md.
+
+CÁCH TRẢ LỜI
+1. Liệt kê bảng màu kèm mã HEX và kết quả kiểm tra tương phản WebAIM.
+2. Cung cấp bảng quy định Typography và Spacing.
+3. Cung cấp trọn vẹn nội dung file docs/ui-design.md bằng định dạng Markdown.
+````
+**Kết quả và cách xử lý:**
+- Bảng màu & Typography: Thống nhất sử dụng phông chữ Nunito và bộ 7 mã màu: Màu chính Xanh ngọc (#00A896), Hover (#028090), Nhấn Cam (#f78c57), Nền Web (#F8F9FA), Nền Card (#FFFFFF), Text chính (#212529), Text phụ (#6C757D).
+- Kiểm tra tương phản (Accessibility): Khi kiểm tra thử nghiệm cặp chữ Trắng trên nền Xanh ngọc (#00A896) qua WebAIM Contrast Checker, hệ thống báo Fail với tỉ lệ tương phản 2.98:1 (chưa đạt chuẩn WCAG AA). Đã điều chỉnh lại quy tắc nút bấm: Nút chính (.btn-primary) dùng màu nền Cam Nhấn (#f78c57) chữ #212529 hoặc nền Xanh ngọc đậm (#028090) chữ Trắng để đạt tỉ lệ tương phản chuẩn.   
+- Khắc phục liên kết ảnh Logo: File ui-design.md nằm trong thư mục docs/ còn tệp ảnh logo nằm trong thư mục images/ ở cấp thư mục gốc. Đã điều chỉnh đường dẫn tương đối từ ./assets/ thành ../images/logo-icon.png để hiển thị đúng ảnh.   
+- Xử lý phản hồi trên GitHub Pull Request: Khi nhận review trên GitHub PR về lỗi lặp đoạn văn bản trong mục "Quy ước viết code giao diện", đã tiến hành xóa phần thừa trong file, thực hiện git commit, git push cập nhật nhánh riêng và ấn chọn "Resolve conversation".   
+image_dac136.png
+- Kiểm tra: Dán mã Markdown vào tệp docs/ui-design.md, kiểm tra hiển thị qua Markdown Preview VS Code rồi commit lên nhánh riêng.
 
 ### Nhật ký của Nguyễn Hồng Hạnh
 
