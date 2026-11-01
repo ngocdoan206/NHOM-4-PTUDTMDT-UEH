@@ -541,9 +541,8 @@ summary:focus-visible {
   gap: var(--space-2);
 }
 
-/* Ảnh thật của banner và thẻ: hiện trọn vẹn, không cắt, không méo.
+/* Ảnh thẻ: hiện trọn vẹn, không cắt, không méo.
    Tỉ lệ khung khớp tỉ lệ ảnh nên không có viền thừa. */
-.hero-img,
 .card-img {
   display: block;
   width: 100%;
@@ -552,12 +551,21 @@ summary:focus-visible {
   border-radius: var(--radius);
 }
 
-.hero-img {
-  aspect-ratio: 1366 / 500;     /* khớp banner 1366×500 */
-}
-
 .card-img {
   aspect-ratio: 4 / 3;          /* khớp ảnh dịch vụ 400×300 */
+}
+
+/* Ảnh banner: lấp đầy khung (cover), không méo, không khoảng trắng.
+   Ảnh gốc 1366×500 nên desktop dùng khung 2/1 để cắt ít nhất.
+   Nếu chó/mèo/logo bị cắt, chỉnh object-position (VD: 30% center). */
+.hero-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--color-card);
+  border-radius: var(--radius);
 }
 
 .card-img-square {
@@ -895,6 +903,14 @@ summary:focus-visible {
   .why-grid {
     grid-template-columns: 1fr;
   }
+    /* Banner: xếp dọc (chữ trên, ảnh dưới); ảnh rộng hết khung nên ít bị cắt */
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-img {
+    aspect-ratio: 21 / 9;
+  }
 }
 
 /* 10.2 ĐIỆN THOẠI (mốc kiểm tra: 390px) */
@@ -936,7 +952,7 @@ summary:focus-visible {
   }
 
   .hero-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero-title {
@@ -968,5 +984,9 @@ summary:focus-visible {
     /* Hai nút banner xếp dọc, rộng hết màn hình */
   .hero-actions .btn {
     flex: 1 1 100%;
+  }
+    /* Banner mobile: khung cao hơn một chút để ảnh không quá nhỏ */
+  .hero-img {
+    aspect-ratio: 16 / 9;
   }
 }
