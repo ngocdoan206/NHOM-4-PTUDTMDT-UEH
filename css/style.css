@@ -867,7 +867,111 @@ summary:focus-visible {
   border-top: 1px solid var(--color-border);
 }
 
+/* =========================================================
+   BỔ SUNG BƯỚC 8: HOVER, FOCUS & TRẢI NGHIỆM NGƯỜI DÙNG
+   ========================================================= */
 
+/* 1. Hiệu ứng nâng & nhấn cho nút bấm (.btn) */
+.btn {
+  transition: color 0.2s ease, 
+              background-color 0.2s ease, 
+              border-color 0.2s ease, 
+              transform 0.15s ease, 
+              box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 2. Hiệu ứng cho thẻ sản phẩm/dịch vụ (.card) & phóng to ảnh */
+.card {
+  overflow: hidden; /* Giữ ảnh phóng to không tràn ra ngoài viền card */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(33, 37, 41, 0.12);
+  border-color: var(--color-primary-hover);
+}
+
+.card-img,
+.card-img-square {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img,
+.card:hover .card-img-square {
+  transform: scale(1.04); /* Phóng to nhẹ hình ảnh khi hover vào thẻ */
+}
+
+/* 3. Hiệu ứng cho nút giỏ hàng (.cart-box) */
+.cart-box {
+  transition: color 0.2s ease, 
+              background-color 0.2s ease, 
+              border-color 0.2s ease, 
+              transform 0.15s ease;
+}
+
+.cart-box:hover {
+  color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  background-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.cart-box:focus-visible {
+  outline: 3px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+
+/* 4. Thẻ ảnh nhỏ (Thumbs) ở trang Chi tiết sản phẩm */
+.thumbs img {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.thumbs img:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+}
+
+.thumbs img:focus-visible {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: 1px;
+}
+
+/* 5. Tương tác cho các mục FAQ (thẻ details / summary) */
+.faq-item summary {
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.faq-item summary:hover {
+  color: var(--color-primary-hover);
+}
+
+/* 6. Cập nhật tắt chuyển động cho người dùng bật "prefers-reduced-motion" */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .card,
+  .card-img,
+  .card-img-square,
+  .cart-box,
+  .thumbs img,
+  .faq-item summary {
+    transition: none !important;
+    transform: none !important;
+  }
+}
 /* ---------- 10. RESPONSIVE ---------- */
 
 /* 10.1 MÁY TÍNH BẢNG (mốc kiểm tra: 768px) */
