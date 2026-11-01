@@ -1410,6 +1410,10 @@ Hãy giải thích ngắn gọn bằng tiếng Việt:
 Không cần giải thích lại toàn bộ HTML/CSS cơ bản. Chỉ tập trung vào những phần mới hoặc đã thay đổi trong task này.
 ````
 ### Nhật ký của Phạm Bảo Ngọc
+#### B2-PBN-01 – Xây dựng danh sách sản phẩm (products.html)
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 5 (Mục 6) Xây dựng trang danh sách sản phẩm
+- **Mục đích:** Hiển thị sản phẩm theo bố cục nhất quán, dễ đọc và phù hợp với chủ đề cửa hàng.
 
 ### Nhật ký của Dương Thành Đạt
 #### B2-TD-01 – Hoàn thiện nội dung trang giới thiệu (about.html)
