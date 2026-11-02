@@ -40,7 +40,7 @@
 **Thực hiện:** Dương Thành Đạt
 **Ngày kiểm thử:** 02/11/2026
 **Môi trường:** Chrome (phiên bản mới nhất), DevTools chế độ responsive, độ rộng 1366/768/390 px
-**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu); `docs/screenshots/index-loi-gia-placeholder.png` (lỗi giá, mục 4.3)
+**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu); `docs/screenshots/index-loi-gia-1366.png`, `index-loi-gia-768.png`, `index-loi-gia-390.png` (lỗi giá, mục 4.3)
 
 ### 4.1. Trang Giới thiệu (`about.html`) — 1366 / 768 / 390px
 
@@ -72,6 +72,7 @@ Không phát hiện lỗi trên trang Giới thiệu.
 - **Lưu ý:** không phải lỗi responsive — hiển thị y vậy ở mọi kích thước màn hình, không riêng 390px.
 - **Đối chiếu:** `products.html` và `product-detail.html` đã có giá thật đầy đủ, chỉ `index.html` còn thiếu.
 - **Đề xuất:** cần cập nhật giá thật cho 4 sản phẩm này.
+- **Ảnh minh chứng:** `docs/screenshots/index-loi-gia-1366.png`, `index-loi-gia-768.png`, `index-loi-gia-390.png` (lỗi hiện ở cả 3 kích thước, xác nhận không phải lỗi responsive)
 
 ### 4.4. Hạn chế đã biết (ngoài phạm vi kiểm thử trang Giới thiệu)
 
