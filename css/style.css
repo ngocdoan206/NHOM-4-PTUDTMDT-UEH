@@ -1158,3 +1158,25 @@ border-color: var(--color-primary-hover);
     margin-bottom: var(--space-2);     /* Khoảng cách giữa H1 và H2 "Về PawCare" */
   }
 }
+
+/* Zoom nhẹ ảnh khi rê chuột vào thẻ, giống trang chủ */
+.card-media {
+  overflow: hidden;                 /* ảnh phóng to không tràn ra ngoài khung */
+  border-radius: var(--radius);
+}
+
+.card-media img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-media img {
+  transform: scale(1.04);           /* phóng to nhẹ khi rê chuột vào thẻ */
+}
+
+/* Người dùng bật "giảm chuyển động" thì tắt hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+  .card-media img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
