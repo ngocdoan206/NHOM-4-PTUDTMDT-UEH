@@ -92,7 +92,7 @@ Không phát hiện lỗi trên trang Giới thiệu.
 | # | Tiêu chí | Kết quả |
 | :-: | :--- | :--- |
 | 1 | Các trang có liên kết đúng không? | **ĐẠT** — rà soát toàn bộ `href` ở cả 4 trang, tất cả trỏ đúng trang/anchor có thật |
-| 2 | CSS có được áp dụng nhất quán không? | **KHÔNG ĐẠT (đã sửa)** — `products.html` liên kết tới `css/products.css` không tồn tại trong repo (lỗi 404); đã xóa dòng liên kết hỏng. Ngoài ra còn hạn chế 2 khối `@media (max-width: 599px)` trùng lặp (xem mục 4.4) |
+| 2 | CSS có được áp dụng nhất quán không? | **KHÔNG ĐẠT** — `products.html` liên kết tới `css/products.css` nhưng file này chưa tồn tại trong repo (lỗi 404 khi tải trang); ngoài phạm vi kiểm thử của Đạt (`products.html` do Phạm Bảo Ngọc phụ trách), đã ghi nhận để bạn phụ trách xử lý. Ngoài ra còn hạn chế 2 khối `@media (max-width: 599px)` trùng lặp (xem mục 4.4) |
 | 3 | Hình ảnh có đường dẫn phù hợp không? | **ĐẠT** — rà soát 22 đường dẫn ảnh trên cả 4 trang, không ảnh nào bị vỡ |
 | 4 | Danh sách sản phẩm có đủ ít nhất 8 sản phẩm không? | **ĐẠT** — `products.html` có đúng 8 thẻ trong khu vực "Sản phẩm" |
 | 5 | Các trang có bố cục hợp lý không? | **ĐẠT** — xem mục 2 (Nghi) và mục 4.1 (Đạt, trang Giới thiệu) |
@@ -103,12 +103,12 @@ Không phát hiện lỗi trên trang Giới thiệu.
 
 **Công cụ:** Claude. Nhóm chọn 2 vấn đề thực tế AI phát hiện khi rà soát mã nguồn:
 
-**Vấn đề 1 — Liên kết CSS hỏng trong `products.html`**
+**Vấn đề 1 — Liên kết CSS trỏ tới file chưa tồn tại trong `products.html`**
 - Vị trí: `products.html`, dòng 9 — `<link rel="stylesheet" href="css/products.css">`.
-- Lý do cần xem xét: file `css/products.css` không tồn tại trong repo, gây lỗi tải tài nguyên 404.
-- Mức độ ưu tiên: Cao (ảnh hưởng hiệu năng tải trang, dù không vỡ giao diện vì `style.css` đã đủ style).
-- Quyết định: áp dụng đề xuất — xóa dòng liên kết hỏng.
-- Kết quả kiểm tra: đã xóa, tải lại `products.html` trên trình duyệt không còn báo lỗi 404 ở tab Network.
+- Lý do cần xem xét: comment ngay phía trên dòng này ("CSS riêng của trang danh sách: nạp SAU style.css để ghi đè khi cần") cho thấy đây là chủ đích thiết kế, nhưng file `css/products.css` chưa từng được tạo — gây lỗi 404 khi tải trang.
+- Mức độ ưu tiên: Cao (ảnh hưởng hiệu năng tải trang).
+- Quyết định: **chưa áp dụng** — `products.html` thuộc phạm vi phụ trách của Phạm Bảo Ngọc, không phải của Đạt; chỉ ghi nhận phát hiện để bạn xử lý (tạo file `css/products.css` còn thiếu).
+- Kết quả: không thay đổi code, chỉ ghi nhận.
 
 **Vấn đề 2 — 2 khối `@media (max-width: 599px)` trùng lặp trong `css/style.css`**
 - Vị trí: `css/style.css`, dòng ~1022 và ~1103.
