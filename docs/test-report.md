@@ -1,8 +1,8 @@
 # Báo Cáo Kiểm Thử - Bước 8: Hiệu Ứng Hover, Focus & UX
 
 **Dự án:** PawCare Website  
-**Thực hiện:** [Điền tên nhóm/thành viên]  
-**Ngày kiểm thử:** [Điền ngày thực hiện]  
+**Thực hiện:** Nhóm 4  
+**Ngày kiểm thử:** 01/11/2026  
 
 ---
 
