@@ -81,7 +81,7 @@ Không phát hiện lỗi trên trang Giới thiệu.
 | # | Tiêu chí | Kết quả |
 | :-: | :--- | :--- |
 | 1 | Các trang có liên kết đúng không? | **ĐẠT** — rà soát toàn bộ `href` ở cả 4 trang, tất cả trỏ đúng trang/anchor có thật |
-| 2 | CSS có được áp dụng nhất quán không? | **KHÔNG ĐẠT** — `products.html` liên kết tới `css/products.css` nhưng file này chưa tồn tại trong repo (lỗi 404 khi tải trang); ngoài phạm vi kiểm thử của Đạt (`products.html` do Phạm Bảo Ngọc phụ trách), đã ghi nhận để bạn phụ trách xử lý. Ngoài ra còn hạn chế 2 khối `@media (max-width: 599px)` trùng lặp (xem mục 4.4) |
+| 2 | CSS có được áp dụng nhất quán không? | **KHÔNG ĐẠT** — `products.html` liên kết tới `css/products.css` nhưng file này chưa tồn tại trong repo (lỗi 404 khi tải trang); ngoài phạm vi kiểm thử của Đạt (`products.html` do Phạm Bảo Ngọc phụ trách), đã ghi nhận để bạn phụ trách xử lý. Ngoài ra còn hạn chế 2 khối `@media (max-width: 599px)` trùng lặp (xem mục 4.3) |
 | 3 | Hình ảnh có đường dẫn phù hợp không? | **ĐẠT** — rà soát 22 đường dẫn ảnh trên cả 4 trang, không ảnh nào bị vỡ |
 | 4 | Danh sách sản phẩm có đủ ít nhất 8 sản phẩm không? | **ĐẠT** — `products.html` có đúng 8 thẻ trong khu vực "Sản phẩm" |
 | 5 | Các trang có bố cục hợp lý không? | **ĐẠT** — xem mục 2 (Nghi) và mục 4.1 (Đạt, trang Giới thiệu) |
@@ -103,5 +103,5 @@ Không phát hiện lỗi trên trang Giới thiệu.
 - Vị trí: `css/style.css`, dòng ~1022 và ~1103.
 - Lý do cần xem xét: 3 selector (`.container`, `.search`, `.search input`) bị khai báo trùng ở cả 2 khối, gây khó bảo trì.
 - Mức độ ưu tiên: Trung bình (giao diện vẫn hiển thị đúng do cascade CSS, không phải lỗi hiển thị).
-- Quyết định: **chưa áp dụng** đề xuất gộp lại — do đã quá hạn nộp, nhóm quyết định ghi nhận là hạn chế đã biết (mục 4.4) để xử lý ở đợt sau thay vì sửa gấp, tránh phát sinh lỗi mới sát deadline.
+- Quyết định: **chưa áp dụng** đề xuất gộp lại — do đã quá hạn nộp, nhóm quyết định ghi nhận là hạn chế đã biết (mục 4.3) để xử lý ở đợt sau thay vì sửa gấp, tránh phát sinh lỗi mới sát deadline.
 - Kết quả: không thay đổi code, chỉ ghi nhận.
