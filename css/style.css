@@ -869,133 +869,46 @@ summary:focus-visible {
 
 /* ---------- 10. RESPONSIVE ---------- */
 
-/* 10.1 MÁY TÍNH BẢNG (Mốc kiểm tra: 768px) */
-@media (max-width: 1023px) {
-  .header-inner {
-    flex-wrap: wrap;             
-  }
-
-  .main-nav {
-    order: 5;
-    flex-basis: 100%;
-  }
-
-  .nav-list {
-    justify-content: center;     
-  }
-
-  
-  .grid-4,
-  .grid-3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hero-title {
-    font-size: 32px;
-  }
-
-  .detail {
-    gap: var(--space-4);
-  }
-
-  .about-intro {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-img {
-    aspect-ratio: 16 / 9;        
-  }
-}
-
-/* 10.2 ĐIỆN THOẠI (Mốc kiểm tra: 390px) */
+/* ĐIỆN THOẠI (Mốc kiểm tra: 390px) */
 @media (max-width: 599px) {
-  .container {
-    padding: 0 var(--space-2);
+  
+  /* [THÊM MỚI] Thêm padding trên và dưới cho toàn bộ khối site-header */
+  .site-header {
+    padding-top: var(--space-2);       /* 16px khoảng trống an toàn phía trên cùng */
+    padding-bottom: var(--space-1);    /* 8px khoảng trống phía dưới */
   }
-
+  .header-inner {
+    padding-top: var(--space-2);       /* [ĐÃ SỬA] Đảm bảo khoảng đệm phía trên logo & nút */
+    padding-bottom: var(--space-2);    /* 16px khoảng đệm phía dưới */
+    align-items: center;               /* [THÊM MỚI] Dóng hàng giữa theo chiều dọc cho Logo và các nút */
+  }
+  .logo {
+    align-items: center;               /* Dóng icon và chữ PawCare cùng hàng dọc */
+  }
   .header-btn {
-    margin-left: auto;
+    margin-left: auto;                 /* Đẩy nút Đặt lịch và Giỏ hàng sang sát mép phải */
   }
-
   .search {
     order: 4;
     flex-basis: 100%;
-    width: 100%;                
+    width: 100%;
     margin-left: 0;
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo khoảng cách giữa ô tìm kiếm với hàng Logo */
   }
-
   .search input {
     flex: 1;
-    width: 100%;                 
+    width: 100%;
+    min-width: 0;
   }
-
   .nav-list {
-    justify-content: space-between; 
-    gap: 4px;                    
+    justify-content: space-between;
+    gap: 4px;
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo khoảng cách giữa Menu với ô Tìm kiếm */
   }
 
   .nav-list a {
     padding: var(--space-1) 10px;
-    font-size: 14px;             
-  }
-
-  .grid-4,
-  .grid-3 {
-    grid-template-columns: 1fr;  
-  }
-
-  .grid-4 {
-    grid-auto-rows: auto;
-  }
-
-  .hero {
-    padding: var(--space-6) 0;
-  }
-
-  .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
-
-  .detail {
-    grid-template-columns: 1fr;
-  }
-
-  .btn-large {
-    max-width: none;
-  }
-
-  .about-intro {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-box {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: var(--space-3);
-  }
-
-  .footer-cols {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-actions .btn {
-    flex: 1 1 100%;              
-  }
-
-  .hero-img {
-    aspect-ratio: 4 / 3;        
+    font-size: 14px;
   }
 }
 
