@@ -2572,6 +2572,245 @@ Không sử dụng JavaScript hoặc framework CSS.
 
 **Kết quả & kiểm tra:** AI đề xuất nội dung 2 đoạn giới thiệu và 3 giá trị; đối chiếu lại với README.md và bảng 4 điểm khác biệt trong docx trước khi dùng, không có thông tin bịa thêm ngoài dữ liệu nhóm đã chốt. Thông tin liên hệ giữ nguyên dạng placeholder vì cả nhóm chưa chốt.
 
+#### B2-TD-02 – Rà soát toàn bộ website và đánh giá chất lượng mã nguồn (Bước 9)
+ 
+- **Công cụ:** Claude
+- **Bước đề bài:** Bước 9 (Mục 10.2 – Prompt 9A và Mục 10.4 – Prompt 9B)
+- **Mục đích:** Lập danh sách kiểm thử cho bốn trang theo bảy tiêu chí của đề, rồi chọn hai vấn đề AI đề xuất để xác minh trong mã nguồn và quyết định có áp dụng hay không.
+ 
+**Prompt 9A (nguyên văn):**
+ 
+````text
+Nhóm tôi đã hoàn thiện phiên bản Buổi 2 của website thương mại điện tử.
+ 
+Dự án gồm:
+- index.html
+- products.html
+- product-detail.html
+- about.html
+- css/style.css
+- thư mục images
+ 
+Đây là cấu trúc dự án và các đoạn mã cần kiểm tra:
+PawCare/
+├── index.html
+├── products.html
+├── product-detail.html
+├── about.html
+├── README.md
+├── AI_USAGE_LOG.md
+├── css/
+│   └── style.css
+├── images/
+│   ├── logo/ (logo-full.png, logo-icon.png)
+│   ├── pages/ (banner-trangchu.jpg, gioithieu-cuahang.jpg)
+│   ├── products/ (8 ảnh: thucan-hat-cho, thucan-hat-meo, pate-meo, snack-cho, do-gam-cho, vongco-daydat, bat-an, luoc-chai-long)
+│   └── services/ (11 ảnh: tam-say, tam-say-buoc-tam, tam-say-buoc-say, tam-say-hoan-thanh, tam-say-chitiet, cat-tia, cat-mong, ve-sinh-tai, combo-tam-tai-mong, combo-tam-cat-tia, combo-tron-goi)
+└── docs/
+    ├── ui-design.md
+    ├── test-report.md
+    └── screenshots/
+ 
+Hãy giúp nhóm lập danh sách kiểm thử theo các tiêu chí:
+1. Các trang có liên kết đúng không?
+2. CSS có được áp dụng nhất quán không?
+3. Hình ảnh có đường dẫn phù hợp không?
+4. Danh sách sản phẩm có đủ ít nhất 8 sản phẩm không?
+5. Các trang có bố cục hợp lý không?
+6. Có lỗi responsive nào cần kiểm tra không?
+7. Hover và focus có hoạt động phù hợp không?
+ 
+Với mỗi lỗi, hãy nêu cách kiểm tra và hướng khắc phục.
+Không khẳng định một lỗi đã tồn tại nếu chưa có bằng chứng.
+Không viết lại toàn bộ dự án.
+````
+ 
+**Kết quả & kiểm tra (Prompt 9A):** Đối chiếu từng tiêu chí với mã nguồn trên nhánh chính và với kết quả kiểm thử trên Chrome (1366/768/390 px). Tiêu chí 1, 3, 4, 5, 6, 7 đạt: các href đều trỏ tới tệp hoặc vị trí neo có thật; 36 thẻ img dùng 22 tệp ảnh đều tồn tại; products.html có 8 thẻ sản phẩm và 7 thẻ dịch vụ. Tiêu chí 2 không đạt: products.html liên kết tới css/products.css nhưng tệp này chưa có trong repository. Kết quả ghi trong docs/test-report.md, mục 5.
+ 
+**Prompt 9B (nguyên văn):**
+ 
+````text
+Tôi muốn đánh giá chất lượng mã HTML/CSS của dự án nhóm.
+ 
+Đây là mã nguồn cần đánh giá:
+[products.html, dòng 1-10]
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dịch vụ &amp; Sản phẩm – PawCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS riêng của trang danh sách: nạp SAU style.css để ghi đè khi cần -->
+  <link rel="stylesheet" href="css/products.css">
+</head>
+ 
+[css/style.css, dòng 1033-1108]
+@media (max-width: 599px) {
+  .container {
+    padding: 0 var(--space-2);
+  }
+ 
+  /* Header 3 hàng: [logo ... Đặt lịch, giỏ] / [tìm kiếm] / [menu] */
+  .header-btn {
+    margin-left: auto;
+  }
+ 
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+ 
+  .search input {
+    flex: 1;
+    width: auto;
+    min-width: 0;               /* cho phép ô nhập co lại, tránh tràn */
+  }
+ 
+  /* Mọi lưới thẻ → 1 cột */
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+ 
+  .grid-4 {
+    grid-auto-rows: auto;       /* 1 cột thì không cần ép cao đều */
+  }
+ 
+  /* Banner xếp dọc: chữ trên, ảnh dưới */
+  .hero {
+    padding: var(--space-6) 0;
+  }
+ 
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+ 
+  .hero-title {
+    font-size: 28px;
+  }
+ 
+  /* Chi tiết: ảnh trên, thông tin dưới */
+  .detail {
+    grid-template-columns: 1fr;
+  }
+ 
+  .btn-large {
+    max-width: none;
+  }
+ 
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+ 
+  .cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-3);
+  }
+ 
+  .footer-cols {
+    grid-template-columns: 1fr;
+  }
+    /* Hai nút banner xếp dọc, rộng hết màn hình */
+  .hero-actions .btn {
+    flex: 1 1 100%;
+  }
+    /* Banner mobile: khung cao hơn một chút để ảnh không quá nhỏ */
+  .hero-img {
+    aspect-ratio: 16 / 9;
+  }
+}
+ 
+[css/style.css, dòng 1114-1173]
+@media (max-width: 599px) {
+  /* 1. Đảm bảo lề 2 bên của toàn bộ trang không bị chạm sát mép màn hình */
+  .container {
+    padding: 0 var(--space-2);         /* 16px lề an toàn 2 bên */
+  }
+ 
+  /* 2. Khung Header: Tạo khoảng trống lề trên và lề dưới */
+  .site-header {
+    padding-top: var(--space-2);       /* [THÊM MỚI] 16px lề trên cùng cho Header */
+    padding-bottom: var(--space-2);    /* [THÊM MỚI] 16px lề dưới cùng cho Header */
+  }
+ 
+  .header-inner {
+    padding-top: 0;                    /* [ĐÃ SỬA] Reset padding trong để tránh bị nhân đôi khoảng cách */
+    padding-bottom: 0;
+    gap: var(--space-2);               /* [THÊM MỚI] Giữ khoảng cách 16px giữa hàng nút, ô tìm kiếm và menu */
+  }
+ 
+  /* 3. Ô tìm kiếm: Tạo khoảng cách với hàng Logo */
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với hàng Logo phía trên */
+    margin-left: 0;
+  }
+ 
+  .search input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+ 
+  /* 4. Menu Navigation: Sửa lỗi tràn viền và dính mép dưới */
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;      /* Căn trái các mục menu */
+    gap: var(--space-1);               /* Khoảng cách 8px giữa các ô menu */
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với ô tìm kiếm phía trên */
+    margin-bottom: var(--space-1);     /* [THÊM MỚI] Tạo khoảng đệm 8px trút xuống trước đường kẻ dưới */
+  }
+ 
+  .nav-list a {
+    padding: 6px 12px;                 /* [ĐÃ SỬA] Thu gọn padding để nút menu gọn gàng, vừa vặn */
+    font-size: 14px;
+  }
+ 
+  /* 5. Khối tiêu đề trang (Giới thiệu PawCare): Tạo độ thở với Header */
+  .page-head {
+    padding-top: var(--space-4);       /* [ĐÃ SỬA] Tăng khoảng đệm trên từ 16px lên 32px */
+    margin-bottom: var(--space-3);     /* Khoảng cách 24px phía dưới tiêu đề */
+  }
+ 
+  /* 6. Thẻ h1 "Giới thiệu PawCare" */
+  .page-head h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-2);     /* Khoảng cách giữa H1 và H2 "Về PawCare" */
+  }
+}
+ 
+Hãy rà soát:
+1. Cấu trúc HTML và việc sử dụng thẻ semantic.
+2. Cách tổ chức CSS.
+3. Cách dùng Grid/Flexbox.
+4. Khả năng responsive.
+5. Trạng thái hover/focus.
+6. Những đoạn mã khó hiểu hoặc có thể đơn giản hóa.
+ 
+Với mỗi vấn đề, hãy nêu:
+- Đoạn mã liên quan.
+- Lý do cần xem xét.
+- Mức độ ưu tiên.
+- Hướng khắc phục.
+- Cách kiểm tra kết quả.
+ 
+Không tự động sửa toàn bộ mã nguồn.
+Phân biệt lỗi đã xác định được với vấn đề chỉ cần kiểm tra thêm.
+Ưu tiên cách giải thích phù hợp với sinh viên mới học CSS3.
+````
+ 
+**Kết quả & kiểm tra (Prompt 9B):** Chọn hai vấn đề và xác minh trong mã nguồn:
+1. products.html, dòng 9, liên kết tới css/products.css nhưng tệp chưa tồn tại. Mức ưu tiên cao. Quyết định: chưa áp dụng vì trang thuộc phần của Phạm Bảo Ngọc; chỉ ghi nhận.
+2. css/style.css có hai khối `@media (max-width: 599px)` khai báo trùng .container, .search, .search input. Khối sau nằm sau nên giao diện vẫn đúng. Mức ưu tiên trung bình. Quyết định: chưa áp dụng vì đã quá hạn nộp, tránh sửa lớn tệp CSS dùng chung; ghi nhận để xử lý sau.
+ 
+Cả hai vấn đề được ghi vào docs/test-report.md (mục 6) và phần "Hạn chế hiện tại" của README.md.
+
 ### Nhật ký của Nguyễn Thị Huỳnh Giao
 
 ### Nhật ký của Nguyễn Hoàng Bảo Nghi
