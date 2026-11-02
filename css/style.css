@@ -1095,3 +1095,68 @@ summary:focus-visible {
     aspect-ratio: 16 / 9;
   }
 }
+
+/* =========================================================
+   ĐIỀU CHỈNH KHOẢNG CÁCH HEADER & NỘI DUNG (390px MOBILE)
+   ========================================================= */
+
+@media (max-width: 599px) {
+  /* 1. Đảm bảo lề 2 bên của toàn bộ trang không bị chạm sát mép màn hình */
+  .container {
+    padding: 0 var(--space-2);         /* 16px lề an toàn 2 bên */
+  }
+
+  /* 2. Khung Header: Tạo khoảng trống lề trên và lề dưới */
+  .site-header {
+    padding-top: var(--space-2);       /* [THÊM MỚI] 16px lề trên cùng cho Header */
+    padding-bottom: var(--space-2);    /* [THÊM MỚI] 16px lề dưới cùng cho Header */
+  }
+
+  .header-inner {
+    padding-top: 0;                    /* [ĐÃ SỬA] Reset padding trong để tránh bị nhân đôi khoảng cách */
+    padding-bottom: 0;
+    gap: var(--space-2);               /* [THÊM MỚI] Giữ khoảng cách 16px giữa hàng nút, ô tìm kiếm và menu */
+  }
+
+  /* 3. Ô tìm kiếm: Tạo khoảng cách với hàng Logo */
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với hàng Logo phía trên */
+    margin-left: 0;
+  }
+
+  .search input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* 4. Menu Navigation: Sửa lỗi tràn viền và dính mép dưới */
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;      /* Căn trái các mục menu */
+    gap: var(--space-1);               /* Khoảng cách 8px giữa các ô menu */
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với ô tìm kiếm phía trên */
+    margin-bottom: var(--space-1);     /* [THÊM MỚI] Tạo khoảng đệm 8px trút xuống trước đường kẻ dưới */
+  }
+
+  .nav-list a {
+    padding: 6px 12px;                 /* [ĐÃ SỬA] Thu gọn padding để nút menu gọn gàng, vừa vặn */
+    font-size: 14px;
+  }
+
+  /* 5. Khối tiêu đề trang (Giới thiệu PawCare): Tạo độ thở với Header */
+  .page-head {
+    padding-top: var(--space-4);       /* [ĐÃ SỬA] Tăng khoảng đệm trên từ 16px lên 32px */
+    margin-bottom: var(--space-3);     /* Khoảng cách 24px phía dưới tiêu đề */
+  }
+
+  /* 6. Thẻ h1 "Giới thiệu PawCare" */
+  .page-head h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-2);     /* Khoảng cách giữa H1 và H2 "Về PawCare" */
+  }
+}
