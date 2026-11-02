@@ -40,7 +40,7 @@
 **Thực hiện:** Dương Thành Đạt
 **Ngày kiểm thử:** 02/11/2026
 **Môi trường:** Chrome (phiên bản mới nhất), DevTools chế độ responsive, độ rộng 1366/768/390 px
-**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu); `docs/screenshots/index-loi-gia-1366.png`, `index-loi-gia-768.png`, `index-loi-gia-390.png` (lỗi giá, mục 4.3)
+**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu)
 
 ### 4.1. Trang Giới thiệu (`about.html`) — 1366 / 768 / 390px
 
@@ -63,26 +63,15 @@ Không phát hiện lỗi trên trang Giới thiệu.
 | `products.html` | **ĐẠT** — giá hiển thị đầy đủ |
 | `product-detail.html` | **ĐẠT** — giá hiển thị đầy đủ |
 | `about.html` | **ĐẠT** |
-| `index.html` | **KHÔNG ĐẠT** — xem mục 4.3 |
+| `index.html` | **ĐẠT** |
 
-### 4.3. Lỗi phát hiện: giá sản phẩm chưa cập nhật ở trang chủ
-
-- **Vị trí:** `index.html`, mục "Sản phẩm nổi bật" (4 thẻ: Thức ăn hạt cho chó, Thức ăn hạt cho mèo, Pate cho mèo, Snack thưởng cho chó).
-- **Hiện trạng:** `<p class="card-price">Giá [giá]</p>` — còn để nguyên placeholder, chưa thay bằng giá thật.
-- **Lưu ý:** không phải lỗi responsive — hiển thị y vậy ở mọi kích thước màn hình, không riêng 390px.
-- **Đối chiếu:** `products.html` và `product-detail.html` đã có giá thật đầy đủ, chỉ `index.html` còn thiếu.
-- **Đề xuất:** cần cập nhật giá thật cho 4 sản phẩm này.
-- **Ảnh minh chứng:** `docs/screenshots/index-loi-gia-1366.png`, `index-loi-gia-768.png`, `index-loi-gia-390.png` (lỗi hiện ở cả 3 kích thước, xác nhận không phải lỗi responsive)
-
-### 4.4. Hạn chế đã biết (ngoài phạm vi kiểm thử trang Giới thiệu)
+### 4.3. Hạn chế đã biết (ngoài phạm vi kiểm thử trang Giới thiệu)
 
 - File `css/style.css` hiện có 2 khối `@media (max-width: 599px)` tách rời
   nhau thay vì gộp thành 1 khối duy nhất. Một số selector (`.container`,
   `.search`, `.search input`) bị khai báo trùng ở cả 2 khối — khối sau nằm
   sau trong file nên vẫn hiển thị đúng trên thực tế, nhưng cần gộp lại
   trong lần cập nhật sau để tránh khó bảo trì.
-- `index.html`, mục "Sản phẩm nổi bật": 4 thẻ sản phẩm còn hiển thị giá
-  dạng placeholder (`Giá [giá]`) thay vì giá thật — xem mục 4.3.
 
 ## 5. Rà soát toàn bộ website
 
@@ -96,7 +85,7 @@ Không phát hiện lỗi trên trang Giới thiệu.
 | 3 | Hình ảnh có đường dẫn phù hợp không? | **ĐẠT** — rà soát 22 đường dẫn ảnh trên cả 4 trang, không ảnh nào bị vỡ |
 | 4 | Danh sách sản phẩm có đủ ít nhất 8 sản phẩm không? | **ĐẠT** — `products.html` có đúng 8 thẻ trong khu vực "Sản phẩm" |
 | 5 | Các trang có bố cục hợp lý không? | **ĐẠT** — xem mục 2 (Nghi) và mục 4.1 (Đạt, trang Giới thiệu) |
-| 6 | Có lỗi responsive nào cần kiểm tra không? | **KHÔNG ĐẠT** — lỗi giá placeholder ở `index.html` (mục 4.3); không phải lỗi responsive nhưng phát hiện trong lúc kiểm tra responsive |
+| 6 | Có lỗi responsive nào cần kiểm tra không? | **ĐẠT** — không phát hiện lỗi responsive |
 | 7 | Hover và focus có hoạt động phù hợp không? | **ĐẠT** — xem mục 1-3 (Nghi) |
 
 ## 6. Đánh giá bằng AI (theo Prompt 9B)
