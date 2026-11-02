@@ -188,7 +188,7 @@ summary:focus-visible {
 /* Flexbox: xếp logo – menu – tìm kiếm – nút – giỏ hàng trên một hàng */
 .header-inner {
   display: flex;
-  flex-wrap: nowrap;               /* cho phép xuống hàng ở màn hình nhỏ */
+  flex-wrap: wrap;               /* cho phép xuống hàng ở màn hình nhỏ */
   align-items: center;
   gap: var(--space-2);
   padding-top: var(--space-2);
@@ -867,51 +867,6 @@ summary:focus-visible {
   border-top: 1px solid var(--color-border);
 }
 
-/* ---------- 10. RESPONSIVE ---------- */
-
-/* ĐIỆN THOẠI (Mốc kiểm tra: 390px) */
-@media (max-width: 599px) {
-  
-  /* [THÊM MỚI] Thêm padding trên và dưới cho toàn bộ khối site-header */
-  .site-header {
-    padding-top: var(--space-2);       /* 16px khoảng trống an toàn phía trên cùng */
-    padding-bottom: var(--space-1);    /* 8px khoảng trống phía dưới */
-  }
-  .header-inner {
-    padding-top: var(--space-2);       /* [ĐÃ SỬA] Đảm bảo khoảng đệm phía trên logo & nút */
-    padding-bottom: var(--space-2);    /* 16px khoảng đệm phía dưới */
-    align-items: center;               /* [THÊM MỚI] Dóng hàng giữa theo chiều dọc cho Logo và các nút */
-  }
-  .logo {
-    align-items: center;               /* Dóng icon và chữ PawCare cùng hàng dọc */
-  }
-  .header-btn {
-    margin-left: auto;                 /* Đẩy nút Đặt lịch và Giỏ hàng sang sát mép phải */
-  }
-  .search {
-    order: 4;
-    flex-basis: 100%;
-    width: 100%;
-    margin-left: 0;
-    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo khoảng cách giữa ô tìm kiếm với hàng Logo */
-  }
-  .search input {
-    flex: 1;
-    width: 100%;
-    min-width: 0;
-  }
-  .nav-list {
-    justify-content: space-between;
-    gap: 4px;
-    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo khoảng cách giữa Menu với ô Tìm kiếm */
-  }
-
-  .nav-list a {
-    padding: var(--space-1) 10px;
-    font-size: 14px;
-  }
-}
-
 /* =========================================================
    BỔ SUNG BƯỚC 8: HOVER, FOCUS & TRẢI NGHIỆM NGƯỜI DÙNG
    ========================================================= */
@@ -1017,6 +972,7 @@ summary:focus-visible {
     transform: none !important;
   }
 }
+
 /* ---------- 10. RESPONSIVE ---------- */
 
 /* 10.1 MÁY TÍNH BẢNG (mốc kiểm tra: 768px) */
@@ -1137,5 +1093,70 @@ summary:focus-visible {
     /* Banner mobile: khung cao hơn một chút để ảnh không quá nhỏ */
   .hero-img {
     aspect-ratio: 16 / 9;
+  }
+}
+
+/* =========================================================
+   ĐIỀU CHỈNH KHOẢNG CÁCH HEADER & NỘI DUNG (390px MOBILE)
+   ========================================================= */
+
+@media (max-width: 599px) {
+  /* 1. Đảm bảo lề 2 bên của toàn bộ trang không bị chạm sát mép màn hình */
+  .container {
+    padding: 0 var(--space-2);         /* 16px lề an toàn 2 bên */
+  }
+
+  /* 2. Khung Header: Tạo khoảng trống lề trên và lề dưới */
+  .site-header {
+    padding-top: var(--space-2);       /* [THÊM MỚI] 16px lề trên cùng cho Header */
+    padding-bottom: var(--space-2);    /* [THÊM MỚI] 16px lề dưới cùng cho Header */
+  }
+
+  .header-inner {
+    padding-top: 0;                    /* [ĐÃ SỬA] Reset padding trong để tránh bị nhân đôi khoảng cách */
+    padding-bottom: 0;
+    gap: var(--space-2);               /* [THÊM MỚI] Giữ khoảng cách 16px giữa hàng nút, ô tìm kiếm và menu */
+  }
+
+  /* 3. Ô tìm kiếm: Tạo khoảng cách với hàng Logo */
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với hàng Logo phía trên */
+    margin-left: 0;
+  }
+
+  .search input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* 4. Menu Navigation: Sửa lỗi tràn viền và dính mép dưới */
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;      /* Căn trái các mục menu */
+    gap: var(--space-1);               /* Khoảng cách 8px giữa các ô menu */
+    margin-top: var(--space-1);        /* [THÊM MỚI] Tạo cách 8px với ô tìm kiếm phía trên */
+    margin-bottom: var(--space-1);     /* [THÊM MỚI] Tạo khoảng đệm 8px trút xuống trước đường kẻ dưới */
+  }
+
+  .nav-list a {
+    padding: 6px 12px;                 /* [ĐÃ SỬA] Thu gọn padding để nút menu gọn gàng, vừa vặn */
+    font-size: 14px;
+  }
+
+  /* 5. Khối tiêu đề trang (Giới thiệu PawCare): Tạo độ thở với Header */
+  .page-head {
+    padding-top: var(--space-4);       /* [ĐÃ SỬA] Tăng khoảng đệm trên từ 16px lên 32px */
+    margin-bottom: var(--space-3);     /* Khoảng cách 24px phía dưới tiêu đề */
+  }
+
+  /* 6. Thẻ h1 "Giới thiệu PawCare" */
+  .page-head h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-2);     /* Khoảng cách giữa H1 và H2 "Về PawCare" */
   }
 }
