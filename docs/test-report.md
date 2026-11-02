@@ -1,9 +1,10 @@
 # Báo Cáo Kiểm Thử - Bước 8: Hiệu Ứng Hover, Focus & UX
 
 **Dự án:** PawCare Website  
-**Thực hiện:** Nhóm 4  
+**Thực hiện:** Nguyễn Hoàng Bảo Nghi  
 **Ngày kiểm thử:** 01/11/2026  
-
+**Môi trường:** Chrome (phiên bản mới nhất), DevTools chế độ responsive, độ rộng 1366/768/390 px  
+**Bằng chứng:** docs/screenshots/ (ảnh hover và focus)
 ---
 
 ## 1. Nội dung cải thiện kỹ thuật
@@ -18,9 +19,9 @@
 
 | Trang kiểm thử | Thao tác chuột (`:hover`) | Điều hướng bàn phím (Phím `Tab`) | Xê dịch bố cục (Layout Shift) | Trạng thái |
 | :--- | :--- | :--- | :--- | :--- |
-| **Trang chủ (`index.html`)** | Đạt - Menu, nút bấm, banner & thẻ nổi mượt | Đạt - Vầng sáng focus di chuyển chuẩn từ Logo -> Menu -> Tìm kiếm -> Nút | Đạt - Không tràn/vỡ khung | **ĐẠT** |
+| **Trang chủ (`index.html`)** | Đạt - Menu, nút bấm trong banner và thẻ dịch vụ/sản phẩm đổi trạng thái mượt | Đạt - Vầng sáng focus di chuyển chuẩn từ Logo -> Menu -> Tìm kiếm -> Nút | Đạt - Không tràn/vỡ khung | **ĐẠT** |
 | **Danh sách sản phẩm (`products.html`)** | Đạt - Thẻ nổi mượt, ảnh zoom nhẹ | Đạt - Phím Tab ăn đúng từng thẻ sản phẩm và nút "Xem chi tiết" | Đạt - Không che hay đẩy thẻ bên cạnh | **ĐẠT** |
-| **Chi tiết sản phẩm (`product-detail.html`)** | Đạt - Ảnh thumbs đổi màu viền mượt | Đạt - Focus nhảy chuẩn qua nút mua hàng, thumbnail và link quay lại | Đạt - Giữ nguyên vị trí | **ĐẠT** |
+| **Chi tiết sản phẩm (`product-detail.html`)** | Đạt - Nút "Đặt lịch" đổi nền và nổi nhẹ; ảnh nhỏ đổi viền | Đạt - Focus đi theo thứ tự menu → liên kết quay lại → câu hỏi thường gặp → nút "Đặt lịch" → thẻ liên quan; ảnh nhỏ không nhận focus vì chỉ là ảnh minh họa | Đạt - Giữ nguyên vị trí | **ĐẠT** |
 | **Giới thiệu (`about.html`)** | Đạt - Khối CTA & các nút phản hồi tốt | Đạt - Phím Tab di chuyển chuẩn qua toàn bộ các liên kết | Đạt - Chuẩn bố cục | **ĐẠT** |
 
 ---
@@ -28,7 +29,7 @@
 ## 3. Quy trình xử lý lỗi & Giải trình kỹ thuật
 
 * **Xử lý xê dịch bố cục:** Không thay đổi `margin`, `padding` hay `border-width` ở trạng thái `:hover`. Sử dụng thuộc tính `transform: translateY(...)` kết hợp `box-shadow` để hiệu ứng chỉ diễn ra trên lớp thị giác mà không đẩy lệch các thẻ xung quanh.
-* **Độ tương phản (Contrast):** Chữ và nền ở trạng thái hover/focus luôn đạt tỷ lệ tương phản ≥ 4.5:1.
+* **Độ tương phản (Contrast):** Chữ trắng trên nền hover `#00665C` đạt 6,87:1; chữ menu `#00665C` trên nền trắng khi hover đạt 6,87:1; chữ `#212529` trên nền nút chính `#FC7060` đạt 5,60:1. Viền focus `#00665C` đạt trên 3:1 so với nền trang (WCAG 1.4.11 và 2.4.7).
 
 ---
 
@@ -38,6 +39,8 @@
 
 **Thực hiện:** Dương Thành Đạt
 **Ngày kiểm thử:** 02/11/2026
+**Môi trường:** Chrome (phiên bản mới nhất), DevTools chế độ responsive, độ rộng 1366/768/390 px
+**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu); `docs/screenshots/index-loi-gia-placeholder.png` (lỗi giá, mục 4.3)
 
 ### 4.1. Trang Giới thiệu (`about.html`) — 1366 / 768 / 390px
 
