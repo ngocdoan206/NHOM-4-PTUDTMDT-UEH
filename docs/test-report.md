@@ -69,3 +69,13 @@ Không phát hiện lỗi trên trang Giới thiệu.
 - **Lưu ý:** không phải lỗi responsive — hiển thị y vậy ở mọi kích thước màn hình, không riêng 390px.
 - **Đối chiếu:** `products.html` và `product-detail.html` đã có giá thật đầy đủ, chỉ `index.html` còn thiếu.
 - **Đề xuất:** cần cập nhật giá thật cho 4 sản phẩm này.
+
+### 4.4. Hạn chế đã biết (ngoài phạm vi kiểm thử trang Giới thiệu)
+
+- File `css/style.css` hiện có 2 khối `@media (max-width: 599px)` tách rời
+  nhau thay vì gộp thành 1 khối duy nhất. Một số selector (`.container`,
+  `.search`, `.search input`) bị khai báo trùng ở cả 2 khối — khối sau nằm
+  sau trong file nên vẫn hiển thị đúng trên thực tế, nhưng cần gộp lại
+  trong lần cập nhật sau để tránh khó bảo trì.
+- `index.html`, mục "Sản phẩm nổi bật": 4 thẻ sản phẩm còn hiển thị giá
+  dạng placeholder (`Giá [giá]`) thay vì giá thật — xem mục 4.3.
