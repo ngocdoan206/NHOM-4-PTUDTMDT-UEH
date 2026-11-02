@@ -106,6 +106,8 @@ Lịch chi tiết và người phụ trách: xem PROJECT_PLAN.md.
 
 Giao diện tĩnh của PawCare gồm 4 trang. Buổi này **chưa có JavaScript, backend, cơ sở dữ liệu, giỏ hàng hay thanh toán**; nút "Đặt lịch" và ô tìm kiếm chỉ là giao diện.
 
+**Công nghệ sử dụng:** HTML5 và CSS3 (Grid, Flexbox, media query); không dùng JavaScript hay framework CSS.
+
 ### Cách xem
 1. Tải repository về (Code > Download ZIP) và giải nén.
 2. Bấm đúp vào `index.html` để mở trang chủ bằng trình duyệt. Không cần cài đặt gì.
