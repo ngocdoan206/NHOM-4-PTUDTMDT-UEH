@@ -141,5 +141,4 @@ Giao diện tĩnh của PawCare gồm 4 trang. Buổi này **chưa có JavaScrip
 
 ### Hạn chế hiện tại
 - `css/style.css` có 2 khối `@media (max-width: 599px)` trùng lặp một phần, chưa gộp lại (chi tiết: `docs/test-report.md`, mục 4.4).
-- `index.html`, mục "Sản phẩm nổi bật": 4 sản phẩm còn hiển thị giá dạng placeholder `Giá [giá]` thay vì giá thật (chi tiết: `docs/test-report.md`, mục 4.3).
 - `products.html` liên kết CSS tới file `css/products.css` chưa tồn tại, gây lỗi 404 khi tải trang (chi tiết: `docs/test-report.md`, mục 6).
