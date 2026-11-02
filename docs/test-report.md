@@ -83,3 +83,36 @@ Không phát hiện lỗi trên trang Giới thiệu.
   trong lần cập nhật sau để tránh khó bảo trì.
 - `index.html`, mục "Sản phẩm nổi bật": 4 thẻ sản phẩm còn hiển thị giá
   dạng placeholder (`Giá [giá]`) thay vì giá thật — xem mục 4.3.
+
+## 5. Rà soát toàn bộ website
+
+**Thực hiện:** Dương Thành Đạt
+**Ngày kiểm thử:** 03/11/2026
+
+| # | Tiêu chí | Kết quả |
+| :-: | :--- | :--- |
+| 1 | Các trang có liên kết đúng không? | **ĐẠT** — rà soát toàn bộ `href` ở cả 4 trang, tất cả trỏ đúng trang/anchor có thật |
+| 2 | CSS có được áp dụng nhất quán không? | **KHÔNG ĐẠT (đã sửa)** — `products.html` liên kết tới `css/products.css` không tồn tại trong repo (lỗi 404); đã xóa dòng liên kết hỏng. Ngoài ra còn hạn chế 2 khối `@media (max-width: 599px)` trùng lặp (xem mục 4.4) |
+| 3 | Hình ảnh có đường dẫn phù hợp không? | **ĐẠT** — rà soát 22 đường dẫn ảnh trên cả 4 trang, không ảnh nào bị vỡ |
+| 4 | Danh sách sản phẩm có đủ ít nhất 8 sản phẩm không? | **ĐẠT** — `products.html` có đúng 8 thẻ trong khu vực "Sản phẩm" |
+| 5 | Các trang có bố cục hợp lý không? | **ĐẠT** — xem mục 2 (Nghi) và mục 4.1 (Đạt, trang Giới thiệu) |
+| 6 | Có lỗi responsive nào cần kiểm tra không? | **KHÔNG ĐẠT** — lỗi giá placeholder ở `index.html` (mục 4.3); không phải lỗi responsive nhưng phát hiện trong lúc kiểm tra responsive |
+| 7 | Hover và focus có hoạt động phù hợp không? | **ĐẠT** — xem mục 1-3 (Nghi) |
+
+## 6. Đánh giá bằng AI (theo Prompt 9B)
+
+**Công cụ:** Claude. Nhóm chọn 2 vấn đề thực tế AI phát hiện khi rà soát mã nguồn:
+
+**Vấn đề 1 — Liên kết CSS hỏng trong `products.html`**
+- Vị trí: `products.html`, dòng 9 — `<link rel="stylesheet" href="css/products.css">`.
+- Lý do cần xem xét: file `css/products.css` không tồn tại trong repo, gây lỗi tải tài nguyên 404.
+- Mức độ ưu tiên: Cao (ảnh hưởng hiệu năng tải trang, dù không vỡ giao diện vì `style.css` đã đủ style).
+- Quyết định: áp dụng đề xuất — xóa dòng liên kết hỏng.
+- Kết quả kiểm tra: đã xóa, tải lại `products.html` trên trình duyệt không còn báo lỗi 404 ở tab Network.
+
+**Vấn đề 2 — 2 khối `@media (max-width: 599px)` trùng lặp trong `css/style.css`**
+- Vị trí: `css/style.css`, dòng ~1022 và ~1103.
+- Lý do cần xem xét: 3 selector (`.container`, `.search`, `.search input`) bị khai báo trùng ở cả 2 khối, gây khó bảo trì.
+- Mức độ ưu tiên: Trung bình (giao diện vẫn hiển thị đúng do cascade CSS, không phải lỗi hiển thị).
+- Quyết định: **chưa áp dụng** đề xuất gộp lại — do đã quá hạn nộp, nhóm quyết định ghi nhận là hạn chế đã biết (mục 4.4) để xử lý ở đợt sau thay vì sửa gấp, tránh phát sinh lỗi mới sát deadline.
+- Kết quả: không thay đổi code, chỉ ghi nhận.
