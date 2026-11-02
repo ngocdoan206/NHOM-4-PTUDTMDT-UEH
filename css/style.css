@@ -912,6 +912,12 @@ summary:focus-visible {
   transform: scale(1.04); /* Phóng to nhẹ hình ảnh khi hover vào thẻ */
 }
 
+/* Người dùng bàn phím: Tab vào nút trong thẻ thì thẻ cũng nổi lên như khi hover */
+.card:focus-within {
+box-shadow: 0 8px 24px rgba(33, 37, 41, 0.12);
+border-color: var(--color-primary-hover);
+}
+
 /* 3. Hiệu ứng cho nút giỏ hàng (.cart-box) */
 .cart-box {
   transition: color 0.2s ease, 
@@ -932,23 +938,15 @@ summary:focus-visible {
   outline-offset: 2px;
 }
 
-/* 4. Thẻ ảnh nhỏ (Thumbs) ở trang Chi tiết sản phẩm */
-.thumbs img {
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
+   /* 4. Ảnh nhỏ (thumbs): chỉ là ảnh minh họa, không bấm được nên chỉ đổi viền nhẹ */
+   .thumbs img {
+     border: 2px solid transparent;
+     transition: border-color 0.2s ease;
+   }
 
-.thumbs img:hover {
-  opacity: 0.85;
-  transform: scale(1.05);
-  border-color: var(--color-primary);
-}
-
-.thumbs img:focus-visible {
-  outline: 2px solid var(--color-primary-hover);
-  outline-offset: 1px;
-}
+   .thumbs img:hover {
+     border-color: var(--color-primary);
+   }
 
 /* 5. Tương tác cho các mục FAQ (thẻ details / summary) */
 .faq-item summary {
