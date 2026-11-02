@@ -2575,47 +2575,70 @@ Không sử dụng JavaScript hoặc framework CSS.
 ### Nhật ký của Nguyễn Thị Huỳnh Giao
 
 ### Nhật ký của Nguyễn Hoàng Bảo Nghi
-# B2-CS-02 – Bổ sung hover, focus và cải thiện trải nghiệm người dùng
+# B2-CS-02 – # BỔ SUNG HIỆU ỨNG HOVER CHO WEBSITE PAWCARE
 
-- **Công cụ:** ChatGPT
-- **Bước đề bài:** Bước 8 (Mục 9.1–9.2)
-- **Phần:** B – Cải thiện hiệu ứng tương tác
-- **Mục đích:** Bổ sung hiệu ứng `:hover`, `:focus-visible` và `transition` cho các thành phần có thể tương tác (menu, nút bấm, ô tìm kiếm, thẻ sản phẩm và dịch vụ) nhằm nâng cao trải nghiệm người dùng và khả năng tiếp cận, đồng thời tránh gây vỡ bố cục.
+**Công cụ:** Claude
 
-## Prompt (nguyên văn)
+- **Bước đề bài:** Bước bổ sung giao diện (CSS) – Phần B, hoàn thiện trang giới thiệu cửa hàng.
+- **Mục đích:** Bổ sung hiệu ứng hover cho các thành phần trên website PawCare, giúp giao diện sinh động hơn, tăng khả năng tương tác và duy trì sự đồng nhất với phong cách thiết kế hiện tại. Không làm thay đổi cấu trúc HTML hoặc các chức năng sẵn có.
 
-Nhóm tôi đang xây dựng website thương mại điện tử PawCare – cửa hàng cung cấp dịch vụ spa, grooming chó mèo và kinh doanh thức ăn, phụ kiện thú cưng tại TP.HCM.
+## Prompt (nguyên văn):
 
-Nhóm muốn cải thiện trải nghiệm người dùng cho toàn bộ website PawCare bằng CSS3. Dưới đây là mã HTML đại diện của các thành phần cần bổ sung hiệu ứng tương tác:
+```text
+Nhóm tôi đang hoàn thiện giao diện website thương mại điện tử PawCare và muốn bổ sung hiệu ứng hover bằng CSS cho trang about.html.
 
-**HTML/CSS hiện tại:** [Đính kèm mã HTML của các trang `index.html`, `products.html`, `product-detail.html`, `about.html` và file `style.css`.]
+Thông tin cửa hàng:
+- Tên: PawCare.
+- Lĩnh vực: Spa, grooming chó mèo tại TP.HCM (dịch vụ chính), kèm bán thức ăn và phụ kiện thú cưng (phụ).
+- Đối tượng khách hàng: Chủ nuôi chó mèo tại TP.HCM, chủ yếu dưới 45 tuổi, mới nuôi hoặc ít kinh nghiệm, hiện đặt lịch qua tin nhắn hoặc hotline.
+- Điểm nổi bật:
+  (1) Đặt lịch theo giờ trống và chọn groomer, giữ chỗ 10 phút.
+  (2) Báo giá tự động theo loài, cân nặng, độ dài lông.
+  (3) Lộ trình chăm sóc theo hồ sơ từng bé.
+  (4) Dịch vụ và sản phẩm chung một giỏ hàng.
 
-### HTML đại diện
+Thông tin HTML/CSS hiện tại:
 
-```html
-<!-- Header Navigation -->
-<nav class="main-nav" aria-label="Menu chính">
-  <ul class="nav-list">
-    <li><a href="index.html" aria-current="page">Trang chủ</a></li>
-    <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
-    <li><a href="about.html">Giới thiệu</a></li>
-  </ul>
-</nav>
+1. Các class bố cục trang giới thiệu:
+- .about-intro: Grid 2 cột, tỷ lệ 3fr 2fr, chữ bên trái và ảnh bên phải, khoảng cách 32px.
+- .about-text: Flexbox dạng cột, khoảng cách giữa các nội dung 24px.
+- .about-img: Ảnh rộng 100%, tỷ lệ 3:2, object-fit: contain, bo góc 8px.
+- .feature-box: Khối nội dung nền trắng, padding 24px, viền 2px, bo góc 8px.
+- .cta-box: Khối kêu gọi đặt lịch, sử dụng Flexbox, nền trắng, padding 32px, viền và bo góc 8px.
+- .cta-title: Tiêu đề khối kêu gọi đặt lịch, cỡ chữ 20px.
 
-<!-- Ô tìm kiếm -->
-<div class="search" role="search">
-  <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
-</div>
+2. Các class dùng chung có thể bổ sung hover:
+- .btn: Nút bấm chính và phụ, có hiệu ứng đổi màu khi hover.
+- .card: Thẻ nội dung, nền trắng, bo góc 12px.
+- .card-img: Hình ảnh trong thẻ, tỷ lệ 4:3.
+- .nav-list a: Các liên kết điều hướng trên thanh menu.
+- .cart-box: Biểu tượng giỏ hàng.
 
-<!-- Nút Đặt lịch & Giỏ hàng -->
-<a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
-<div class="cart-box" role="img" aria-label="Giỏ hàng"></div>
+3. Bảng màu và kiểu chữ CSS:
+- Màu chính: #007A6E.
+- Màu hover: #00665C.
+- Màu nhấn: #FC7060.
+- Màu nền: #F8F9FA.
+- Màu chữ chính: #212529.
+- Màu chữ phụ: #5C6570.
+- Font chữ: Nunito.
+- Bo góc thông thường: 8px.
+- Bo góc thẻ: 12px.
 
-<!-- Thẻ dịch vụ/sản phẩm -->
-<article class="card">
-  <img class="card-img" src="images/services/tam-say.jpg" alt="Dịch vụ tắm sấy cho thú cưng tại PawCare">
-  <h3 class="card-title">Tắm sấy</h3>
-  <p class="card-text">Làm sạch, dưỡng lông và sấy khô nhẹ nhàng giúp bé thơm tho, thoải mái.</p>
-  <p class="card-price">Giá từ công cụ báo giá</p>
-  <a class="btn btn-outline card-action" href="product-detail.html">Xem chi tiết</a>
-</article>
+Yêu cầu:
+1. Bổ sung hiệu ứng hover cho các thành phần phù hợp như nút bấm, thẻ nội dung, hình ảnh, liên kết và các khối giá trị.
+2. Đối với nút bấm, có thể sử dụng hiệu ứng nâng nhẹ khi rê chuột, kết hợp thay đổi màu nền và box-shadow.
+3. Đối với các thẻ nội dung và khối giá trị, tạo hiệu ứng nổi nhẹ để tăng khả năng nhận diện.
+4. Đối với hình ảnh, có thể sử dụng hiệu ứng phóng to nhẹ nhưng không làm ảnh bị méo hoặc tràn khỏi khung.
+5. Hiệu ứng chuyển động cần nhẹ nhàng, mượt mà, không quá nổi bật hoặc gây rối mắt.
+6. Sử dụng transition để tạo sự chuyển đổi tự nhiên giữa trạng thái bình thường và hover.
+7. Giữ nguyên màu sắc, font chữ, bố cục và phong cách thiết kế hiện tại của website.
+8. Không làm thay đổi nội dung, cấu trúc HTML hoặc ảnh hưởng đến chức năng hiện có.
+9. Đảm bảo giao diện vẫn hiển thị tốt trên máy tính bảng và điện thoại.
+10. Có hỗ trợ prefers-reduced-motion để hạn chế chuyển động đối với người dùng có nhu cầu giảm hiệu ứng.
+
+Không sử dụng JavaScript hoặc framework CSS.
+Không tự ý tạo thêm màu sắc hoặc thay đổi thiết kế ban đầu.
+Chỉ cung cấp phần mã CSS cần bổ sung hoặc chỉnh sửa, không viết lại toàn bộ file.
+```
+
