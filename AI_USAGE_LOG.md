@@ -2575,5 +2575,47 @@ Không sử dụng JavaScript hoặc framework CSS.
 ### Nhật ký của Nguyễn Thị Huỳnh Giao
 
 ### Nhật ký của Nguyễn Hoàng Bảo Nghi
+# B2-CS-02 – Bổ sung hover, focus và cải thiện trải nghiệm người dùng
 
+- **Công cụ:** ChatGPT
+- **Bước đề bài:** Bước 8 (Mục 9.1–9.2)
+- **Phần:** B – Cải thiện hiệu ứng tương tác
+- **Mục đích:** Bổ sung hiệu ứng `:hover`, `:focus-visible` và `transition` cho các thành phần có thể tương tác (menu, nút bấm, ô tìm kiếm, thẻ sản phẩm và dịch vụ) nhằm nâng cao trải nghiệm người dùng và khả năng tiếp cận, đồng thời tránh gây vỡ bố cục.
 
+## Prompt (nguyên văn)
+
+Nhóm tôi đang xây dựng website thương mại điện tử PawCare – cửa hàng cung cấp dịch vụ spa, grooming chó mèo và kinh doanh thức ăn, phụ kiện thú cưng tại TP.HCM.
+
+Nhóm muốn cải thiện trải nghiệm người dùng cho toàn bộ website PawCare bằng CSS3. Dưới đây là mã HTML đại diện của các thành phần cần bổ sung hiệu ứng tương tác:
+
+**HTML/CSS hiện tại:** [Đính kèm mã HTML của các trang `index.html`, `products.html`, `product-detail.html`, `about.html` và file `style.css`.]
+
+### HTML đại diện
+
+```html
+<!-- Header Navigation -->
+<nav class="main-nav" aria-label="Menu chính">
+  <ul class="nav-list">
+    <li><a href="index.html" aria-current="page">Trang chủ</a></li>
+    <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+  </ul>
+</nav>
+
+<!-- Ô tìm kiếm -->
+<div class="search" role="search">
+  <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+</div>
+
+<!-- Nút Đặt lịch & Giỏ hàng -->
+<a class="btn btn-primary header-btn" href="products.html">Đặt lịch</a>
+<div class="cart-box" role="img" aria-label="Giỏ hàng"></div>
+
+<!-- Thẻ dịch vụ/sản phẩm -->
+<article class="card">
+  <img class="card-img" src="images/services/tam-say.jpg" alt="Dịch vụ tắm sấy cho thú cưng tại PawCare">
+  <h3 class="card-title">Tắm sấy</h3>
+  <p class="card-text">Làm sạch, dưỡng lông và sấy khô nhẹ nhàng giúp bé thơm tho, thoải mái.</p>
+  <p class="card-price">Giá từ công cụ báo giá</p>
+  <a class="btn btn-outline card-action" href="product-detail.html">Xem chi tiết</a>
+</article>
