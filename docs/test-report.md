@@ -29,3 +29,43 @@
 
 * **Xử lý xê dịch bố cục:** Không thay đổi `margin`, `padding` hay `border-width` ở trạng thái `:hover`. Sử dụng thuộc tính `transform: translateY(...)` kết hợp `box-shadow` để hiệu ứng chỉ diễn ra trên lớp thị giác mà không đẩy lệch các thẻ xung quanh.
 * **Độ tương phản (Contrast):** Chữ và nền ở trạng thái hover/focus luôn đạt tỷ lệ tương phản ≥ 4.5:1.
+
+---
+
+---
+
+## 4. Kiểm thử trang Giới thiệu và bố cục responsive
+
+**Thực hiện:** Dương Thành Đạt
+**Ngày kiểm thử:** 02/11/2026
+
+### 4.1. Trang Giới thiệu (`about.html`) — 1366 / 768 / 390px
+
+| Hạng mục kiểm tra | Kết quả |
+| :--- | :--- |
+| Khối "Về PawCare" (2 cột chữ – ảnh ở ≥600px, xuống 1 cột ở 390px) | **ĐẠT** |
+| Khối "Giá trị của PawCare" (3 ô, giữ 3 cột ở cả 1366/768px, 1 cột ở 390px) | **ĐẠT** |
+| Khối "Thông tin liên hệ" | **ĐẠT** |
+| Khối kêu gọi đặt lịch (CTA) cuối trang | **ĐẠT** |
+| Ảnh minh họa cửa hàng (`gioithieu-cuahang.jpg`) | **ĐẠT** |
+| Không có thanh cuộn ngang ở cả 3 kích thước | **ĐẠT** |
+| Điều hướng bằng phím Tab, viền focus rõ ràng | **ĐẠT** |
+
+Không phát hiện lỗi trên trang Giới thiệu.
+
+### 4.2. Kiểm tra nhanh 4 trang ở 390px
+
+| Trang | Kết quả |
+| :--- | :--- |
+| `products.html` | **ĐẠT** — giá hiển thị đầy đủ |
+| `product-detail.html` | **ĐẠT** — giá hiển thị đầy đủ |
+| `about.html` | **ĐẠT** |
+| `index.html` | **KHÔNG ĐẠT** — xem mục 4.3 |
+
+### 4.3. Lỗi phát hiện: giá sản phẩm chưa cập nhật ở trang chủ
+
+- **Vị trí:** `index.html`, mục "Sản phẩm nổi bật" (4 thẻ: Thức ăn hạt cho chó, Thức ăn hạt cho mèo, Pate cho mèo, Snack thưởng cho chó).
+- **Hiện trạng:** `<p class="card-price">Giá [giá]</p>` — còn để nguyên placeholder, chưa thay bằng giá thật.
+- **Lưu ý:** không phải lỗi responsive — hiển thị y vậy ở mọi kích thước màn hình, không riêng 390px.
+- **Đối chiếu:** `products.html` và `product-detail.html` đã có giá thật đầy đủ, chỉ `index.html` còn thiếu.
+- **Đề xuất:** cần cập nhật giá thật cho 4 sản phẩm này.
