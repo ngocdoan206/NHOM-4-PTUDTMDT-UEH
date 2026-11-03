@@ -40,7 +40,7 @@
 **Thực hiện:** Dương Thành Đạt
 **Ngày kiểm thử:** 02/11/2026
 **Môi trường:** Chrome (phiên bản mới nhất), DevTools chế độ responsive, độ rộng 1366/768/390 px
-**Bằng chứng:** `docs/screenshots/about-1366.png`, `about-768.png`, `about-390.png` (trang Giới thiệu)
+**Bằng chứng:** `docs/screenshots/about-1366px.png`, `about-768px.png`, `about-390px.png` (trang Giới thiệu)
 
 ### 4.1. Trang Giới thiệu (`about.html`) — 1366 / 768 / 390px
 
@@ -100,7 +100,7 @@ Không phát hiện lỗi trên trang Giới thiệu.
 - Kết quả: không thay đổi code, chỉ ghi nhận.
 
 **Vấn đề 2 — 2 khối `@media (max-width: 599px)` trùng lặp trong `css/style.css`**
-- Vị trí: `css/style.css`, dòng ~1022 và ~1103.
+- Vị trí: `css/style.css`, dòng ~1033 và ~1114.
 - Lý do cần xem xét: 3 selector (`.container`, `.search`, `.search input`) bị khai báo trùng ở cả 2 khối, gây khó bảo trì.
 - Mức độ ưu tiên: Trung bình (giao diện vẫn hiển thị đúng do cascade CSS, không phải lỗi hiển thị).
 - Quyết định: **chưa áp dụng** đề xuất gộp lại — do đã quá hạn nộp, nhóm quyết định ghi nhận là hạn chế đã biết (mục 4.3) để xử lý ở đợt sau thay vì sửa gấp, tránh phát sinh lỗi mới sát deadline.
