@@ -772,6 +772,19 @@ summary:focus-visible {
   background-color: var(--color-surface);
 }
 
+/* [ĐÃ SỬA] Tạo khoảng cách thoáng cả phía trên lẫn phía dưới cho liên kết quay lại */
+.back-link {
+  display: inline-block;
+  margin-top: var(--space-3);    /* [THÊM MỚI] Tạo khoảng cách 24px với mép dưới Header */
+  margin-bottom: var(--space-3); /* Giữ khoảng cách 24px với khối hình ảnh/thông tin chi tiết */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 /* 8.4 Giới thiệu – Grid 2 cột: chữ trái, ảnh phải */
 .about-intro {
   display: grid;
