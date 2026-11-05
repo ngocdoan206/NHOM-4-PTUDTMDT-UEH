@@ -1,0 +1,114 @@
+
+Cart · HTML
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giỏ hàng | PawCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Nạp script: thứ tự quan trọng (dữ liệu → dùng chung → logic → giao diện → trang) -->
+  <script defer src="js/data/products.js"></script>
+  <script defer src="js/utils/format.js"></script>
+  <script defer src="js/services/cart.js"></script>
+  <script defer src="js/components/header.js"></script>
+  <script defer src="js/pages/cart-page.js"></script>
+</head>
+<body>
+ 
+  <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo vuông thật + chữ PawCare (alt rỗng vì đã có chữ PawCare bên cạnh) -->
+      <a class="logo" href="index.html">
+        <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
+        PawCare
+      </a>
+ 
+      <!-- Menu chính: 3 liên kết -->
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
+      </nav>
+ 
+      <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
+      <div class="search" role="search">
+        <label for="search-input">Tìm kiếm</label>
+        <!-- Icon kính lúp (Lucide "search"), kế thừa màu từ CSS qua currentColor -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
+      </div>
+ 
+      <!-- Nút Đặt lịch dẫn tới trang danh sách -->
+      <a class="btn btn-primary header-btn" href="products.html">
+        <!-- Icon lịch (Lucide "calendar") -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M8 2v4"></path>
+          <path d="M16 2v4"></path>
+          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+          <path d="M3 10h18"></path>
+        </svg>
+        Đặt lịch
+      </a>
+ 
+      <!-- Giỏ hàng: dẫn tới cart.html; số lượng do js/components/header.js cập nhật -->
+      <a class="cart-box" href="cart.html" aria-label="Giỏ hàng">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="21" r="1"></circle>
+          <circle cx="19" cy="21" r="1"></circle>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+        </svg>
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+ 
+<main class="container">
+  <h1>Giỏ hàng</h1>
+  <div id="cart-content"></div>
+  <p id="cart-empty" hidden>Giỏ hàng của bạn đang trống.</p>
+  <p><a href="products.html">← Tiếp tục xem dịch vụ</a></p>
+</main>
+ 
+  <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">PawCare</p>
+ 
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-title">Liên kết nhanh</h2>
+          <ul class="footer-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+        </div>
+ 
+        <div>
+          <h2 class="footer-title">Liên hệ</h2>
+          <ul class="footer-list">
+            <li>Địa chỉ: 279 Nguyễn Tri Phương, Phường Diên Hồng</li>
+            <li>Hotline: 0123456789</li>
+            <li>Email: pawcare@ueh.edu.st.vn</li>
+          </ul>
+        </div>
+ 
+        <div>
+          <h2 class="footer-title">Giờ mở cửa</h2>
+          <p>8:00–19:00</p>
+        </div>
+      </div>
+ 
+      <p class="copyright">© 2026 PawCare.</p>
+    </div>
+  </footer>
+ 
+</body>
+</html>

@@ -7,9 +7,15 @@
   <title>Trang chủ – PawCare (wireframe)</title>
   <!-- Một file CSS dùng chung cho cả 4 trang -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Nạp script: thứ tự quan trọng (dữ liệu → dùng chung → logic → giao diện → trang) -->
+  <script defer src="js/data/products.js"></script>
+  <script defer src="js/utils/format.js"></script>
+  <script defer src="js/services/cart.js"></script>
+  <script defer src="js/services/booking.js"></script>
+  <script defer src="js/components/header.js"></script>
 </head>
 <body>
-
+ 
   <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -18,7 +24,7 @@
         <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
         PawCare
       </a>
-
+ 
       <!-- Menu chính: 3 liên kết -->
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="nav-list">
@@ -27,7 +33,7 @@
           <li><a href="about.html">Giới thiệu</a></li>
         </ul>
       </nav>
-
+ 
       <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
       <div class="search" role="search">
         <label for="search-input">Tìm kiếm</label>
@@ -38,7 +44,7 @@
         </svg>
         <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
       </div>
-
+ 
       <!-- Nút Đặt lịch dẫn tới trang danh sách -->
       <a class="btn btn-primary header-btn" href="products.html">
         <!-- Icon lịch (Lucide "calendar") -->
@@ -50,20 +56,21 @@
         </svg>
         Đặt lịch
       </a>
-
-      <!-- Biểu tượng giỏ hàng (Lucide "shopping-cart"), chưa xử lý nghiệp vụ -->
-      <div class="cart-box" role="img" aria-label="Giỏ hàng">
+ 
+      <!-- Giỏ hàng: dẫn tới cart.html; số lượng do js/components/header.js cập nhật -->
+      <a class="cart-box" href="cart.html" aria-label="Giỏ hàng">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <circle cx="8" cy="21" r="1"></circle>
           <circle cx="19" cy="21" r="1"></circle>
           <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
         </svg>
-      </div>
+        <span id="cart-count">0</span>
+      </a>
     </div>
   </header>
-
+ 
   <main>
-
+ 
     <!-- ===== BANNER ===== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
@@ -75,100 +82,101 @@
             <a class="btn btn-outline" href="#services">Khám phá dịch vụ</a>
           </div>
         </div>
-        <img class="hero-img" src="images/pages/banner-trangchu.jpg" alt="Thú cưng được chăm sóc tại PawCare" width="1366" height="500">      </div>
+        <img class="hero-img" src="images/pages/banner-trangchu.jpg" alt="Thú cưng được chăm sóc tại PawCare" width="1366" height="500">
+      </div>
     </section>
-
+ 
     <!-- ===== DỊCH VỤ NỔI BẬT ===== -->
     <section class="section" id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-head">
           <h2 id="services-title">Dịch vụ nổi bật</h2>
         </div>
-
+ 
         <div class="grid grid-4">
           <article class="card">
             <img class="card-img" src="images/services/tam-say.jpg" alt="Dịch vụ tắm sấy cho thú cưng tại PawCare" width="800" height="600" loading="lazy">
             <h3 class="card-title">Tắm sấy</h3>
             <p class="card-text">Làm sạch, dưỡng lông và sấy khô nhẹ nhàng giúp bé thơm tho, thoải mái.</p>
             <p class="card-price"><data value="120000">Từ 120.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Tắm sấy">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=1" aria-label="Xem chi tiết Tắm sấy">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/services/cat-tia.jpg" alt="Dịch vụ cắt tỉa tạo kiểu cho thú cưng tại PawCare" width="800" height="600" loading="lazy">
             <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
             <p class="card-text">Cắt tỉa gọn gàng và tạo kiểu phù hợp với dáng lông của từng bé.</p>
             <p class="card-price"><data value="200000">Từ 200.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=2" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/services/ve-sinh-tai.jpg" alt="Dịch vụ vệ sinh tai cho thú cưng tại PawCare" width="800" height="600" loading="lazy">
             <h3 class="card-title">Vệ sinh tai</h3>
             <p class="card-text">Làm sạch tai cẩn thận, giúp bé sạch sẽ và thoải mái.</p>
             <p class="card-price"><data value="40000">Từ 40.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Vệ sinh tai">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=3" aria-label="Xem chi tiết Vệ sinh tai">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/services/cat-mong.jpg" alt="Dịch vụ cắt móng cho thú cưng tại PawCare" width="800" height="600" loading="lazy">
             <h3 class="card-title">Cắt móng</h3>
             <p class="card-text">Cắt gọn móng an toàn, giúp bé di chuyển thoải mái hơn.</p>
             <p class="card-price"><data value="40000">Từ 40.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Cắt móng">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=4" aria-label="Xem chi tiết Cắt móng">Xem chi tiết</a>
           </article>
         </div>
-
+ 
         <p class="more-link"><a href="products.html">Xem tất cả dịch vụ</a></p>
       </div>
     </section>
-
+ 
     <!-- ===== SẢN PHẨM NỔI BẬT ===== -->
     <section class="section" aria-labelledby="products-title">
       <div class="container">
         <div class="section-head">
           <h2 id="products-title">Sản phẩm nổi bật</h2>
         </div>
-
+ 
         <div class="grid grid-4">
           <article class="card">
             <img class="card-img" src="images/products/thucan-hat-cho.jpg" alt="Thức ăn hạt cho chó" width="800" height="600" loading="lazy">
             <h3 class="card-title">Thức ăn hạt cho chó</h3>
             <p class="card-price"><data value="150000">150.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho chó">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=8" aria-label="Xem chi tiết Thức ăn hạt cho chó">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/products/thucan-hat-meo.jpg" alt="Thức ăn hạt cho mèo" width="800" height="600" loading="lazy">
             <h3 class="card-title">Thức ăn hạt cho mèo</h3>
             <p class="card-price"><data value="135000">135.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Thức ăn hạt cho mèo">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=9" aria-label="Xem chi tiết Thức ăn hạt cho mèo">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/products/pate-meo.jpg" alt="Pate cho mèo" width="800" height="600" loading="lazy">
             <h3 class="card-title">Pate cho mèo</h3>
             <p class="card-price"><data value="25000">25.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Pate cho mèo">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=10" aria-label="Xem chi tiết Pate cho mèo">Xem chi tiết</a>
           </article>
-
+ 
           <article class="card">
             <img class="card-img" src="images/products/snack-cho.jpg" alt="Snack thưởng cho chó" width="800" height="600" loading="lazy">
             <h3 class="card-title">Snack thưởng cho chó</h3>
             <p class="card-price"><data value="45000">45.000 ₫</data></p>
-            <a class="btn btn-outline card-action" href="product-detail.html" aria-label="Xem chi tiết Snack thưởng cho chó">Xem chi tiết</a>
+            <a class="btn btn-outline card-action" href="product-detail.html?id=11" aria-label="Xem chi tiết Snack thưởng cho chó">Xem chi tiết</a>
           </article>
         </div>
-
+ 
         <p class="more-link"><a href="products.html">Xem tất cả sản phẩm</a></p>
       </div>
     </section>
-
+ 
     <!-- ===== VÌ SAO CHỌN PAWCARE ===== -->
     <section class="section" aria-labelledby="why-title">
       <div class="container">
         <h2 id="why-title">Vì sao chọn PawCare</h2>
-
+ 
         <div class="grid grid-3 why-grid">
           <div class="feature-box">
             <span class="feature-icon">
@@ -184,7 +192,7 @@
             <h3>Đặt lịch chủ động, không cần chờ xác nhận</h3>
             <p>Xem giờ trống, lựa chọn groomer phù hợp hoặc để PawCare tự sắp xếp. Hệ thống hỗ trợ giữ chỗ trong 10 phút và hạn chế trùng lịch.</p>
           </div>
-
+ 
           <div class="feature-box">
             <span class="feature-icon">
               <!-- Icon Lucide "calculator" -->
@@ -204,7 +212,7 @@
             <h3>Minh bạch chi phí trước khi đặt</h3>
             <p>Nhận báo giá dựa trên loài, cân nặng và độ dài lông của thú cưng. Biết trước chi phí dự kiến và thời lượng dịch vụ trước khi xác nhận lịch hẹn.</p>
           </div>
-
+ 
           <div class="feature-box">
             <span class="feature-icon">
               <!-- Icon Lucide "clipboard-list" -->
@@ -221,17 +229,17 @@
             <p>Lưu trữ thông tin thú cưng, theo dõi lịch sử grooming và phiếu kết quả sau dịch vụ. PawCare còn hỗ trợ gợi ý khẩu phần ăn, sản phẩm và chu kỳ chăm sóc phù hợp.</p>
           </div>
         </div>
-
+ 
         <!-- Liên kết sang trang Giới thiệu -->
         <p class="more-link"><a href="about.html">Tìm hiểu thêm về PawCare</a></p>
       </div>
     </section>
-
+ 
   <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
   <footer class="site-footer">
     <div class="container">
       <p class="footer-brand">PawCare</p>
-
+ 
       <div class="footer-cols">
         <div>
           <h2 class="footer-title">Liên kết nhanh</h2>
@@ -241,7 +249,7 @@
             <li><a href="about.html">Giới thiệu</a></li>
           </ul>
         </div>
-
+ 
         <div>
           <h2 class="footer-title">Liên hệ</h2>
           <ul class="footer-list">
@@ -250,16 +258,16 @@
             <li>Email: pawcare@ueh.edu.st.vn</li>
           </ul>
         </div>
-
+ 
         <div>
           <h2 class="footer-title">Giờ mở cửa</h2>
           <p>8:00–19:00</p>
         </div>
       </div>
-
+ 
       <p class="copyright">© 2026 PawCare.</p>
     </div>
   </footer>
-
+ 
 </body>
 </html>

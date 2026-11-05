@@ -1,3 +1,5 @@
+
+About · HTML
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -5,9 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giới thiệu – PawCare (wireframe)</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Nạp script: thứ tự quan trọng (dữ liệu → dùng chung → logic → giao diện → trang) -->
+  <script defer src="js/data/products.js"></script>
+  <script defer src="js/utils/format.js"></script>
+  <script defer src="js/services/cart.js"></script>
+  <script defer src="js/services/booking.js"></script>
+  <script defer src="js/components/header.js"></script>
 </head>
 <body>
-
+ 
   <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -16,7 +24,7 @@
         <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
         PawCare
       </a>
-
+ 
       <!-- Menu chính: 3 liên kết -->
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="nav-list">
@@ -25,7 +33,7 @@
           <li><a href="about.html" aria-current="page">Giới thiệu</a></li>
         </ul>
       </nav>
-
+ 
       <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
       <div class="search" role="search">
         <label for="search-input">Tìm kiếm</label>
@@ -36,7 +44,7 @@
         </svg>
         <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
       </div>
-
+ 
       <!-- Nút Đặt lịch dẫn tới trang danh sách -->
       <a class="btn btn-primary header-btn" href="products.html">
         <!-- Icon lịch (Lucide "calendar") -->
@@ -48,22 +56,23 @@
         </svg>
         Đặt lịch
       </a>
-
-      <!-- Biểu tượng giỏ hàng (Lucide "shopping-cart"), chưa xử lý nghiệp vụ -->
-      <div class="cart-box" role="img" aria-label="Giỏ hàng">
+ 
+      <!-- Giỏ hàng: dẫn tới cart.html; số lượng do js/components/header.js cập nhật -->
+      <a class="cart-box" href="cart.html" aria-label="Giỏ hàng">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <circle cx="8" cy="21" r="1"></circle>
           <circle cx="19" cy="21" r="1"></circle>
           <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
         </svg>
-      </div>
+        <span id="cart-count">0</span>
+      </a>
     </div>
   </header>
-
+ 
   <main class="container">
     
     <h1>Giới thiệu PawCare</h1>
-
+ 
     <!-- ===== GIỚI THIỆU: Grid 2 cột (chữ – ảnh) ===== -->
     <div class="about-intro">
       <div class="about-text">
@@ -71,20 +80,20 @@
           <h2 id="about-1-title">Về PawCare</h2>
           <p>PawCare là tiệm spa, grooming chó mèo ở TP.HCM, dành cho người mới nuôi hoặc ít kinh nghiệm chăm sóc thú cưng. Khách đặt lịch online theo giờ trống, chọn groomer, sau đó mua thêm thức ăn hoặc phụ kiện luôn trong một giỏ hàng, không cần đặt qua tin nhắn hay gọi hotline như trước.</p>
         </section>
-
+ 
         <section aria-labelledby="about-2-title">
           <h2 id="about-2-title">Cách PawCare chăm sóc thú cưng</h2>
           <p>PawCare cho khách xem giá và thời lượng trước khi đặt, không phải chờ đến tiệm mới biết phụ phí. Dựa trên hồ sơ của từng bé, PawCare cũng gợi ý lộ trình chăm sóc phù hợp, để lịch grooming không bị trễ.</p>
         </section>
       </div>
-
+ 
       <img class="about-img" src="images/pages/gioithieu-cuahang.jpg" alt="Ảnh minh họa cửa hàng PawCare" width="600" height="400">
     </div>
-
+ 
     <!-- ===== 3 GIÁ TRỊ ===== -->
     <section class="section" aria-labelledby="values-title">
       <h2 id="values-title">Giá trị của PawCare</h2>
-
+ 
       <div class="grid grid-3">
         <div class="feature-box">
           <h3>Xem đúng giờ còn trống</h3>
@@ -100,7 +109,7 @@
         </div>
       </div>
     </section>
-
+ 
     <!-- ===== THÔNG TIN LIÊN HỆ (cùng placeholder với footer) ===== -->
     <section class="section" aria-labelledby="contact-title">
       <h2 id="contact-title">Thông tin liên hệ</h2>
@@ -115,19 +124,19 @@
         <dd>8:00–19:00</dd>
       </dl>
     </section>
-
+ 
     <!-- ===== KÊU GỌI ĐẶT LỊCH ===== -->
     <section class="cta-box" aria-labelledby="cta-title">
       <h2 class="cta-title" id="cta-title">Đặt lịch cho thú cưng</h2>
       <a class="btn btn-primary" href="products.html">Đặt lịch</a>
     </section>
   </main>
-
+ 
   <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
   <footer class="site-footer">
     <div class="container">
       <p class="footer-brand">PawCare</p>
-
+ 
       <div class="footer-cols">
         <div>
           <h2 class="footer-title">Liên kết nhanh</h2>
@@ -137,7 +146,7 @@
             <li><a href="about.html">Giới thiệu</a></li>
           </ul>
         </div>
-
+ 
         <div>
           <h2 class="footer-title">Liên hệ</h2>
           <ul class="footer-list">
@@ -146,16 +155,16 @@
             <li>Email: pawcare@ueh.edu.st.vn</li>
           </ul>
         </div>
-
+ 
         <div>
           <h2 class="footer-title">Giờ mở cửa</h2>
           <p>8:00–19:00</p>
         </div>
       </div>
-
+ 
       <p class="copyright">© 2026 PawCare.</p>
     </div>
   </footer>
-
+ 
 </body>
 </html>
