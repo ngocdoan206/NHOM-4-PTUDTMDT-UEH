@@ -1,1 +1,8 @@
 
+
+# Dùng cho backend sau này
+node_modules/
+.env
+*.log
+.DS_Store
+Thumbs.db
