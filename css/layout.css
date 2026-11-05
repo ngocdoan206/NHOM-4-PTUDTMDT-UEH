@@ -1,0 +1,423 @@
+/* =========================================================
+   PawCare – layout.css
+   BỐ CỤC DÙNG CHUNG CHO MỌI TRANG:
+     1. Khung chứa (.container, .section, .section-head)
+     2. Lưới (.grid, .grid-3, .grid-4)
+     3. Header (logo, menu, tìm kiếm, nút Đặt lịch, giỏ hàng)
+     4. Footer
+     5. Responsive của các phần trên
+   ========================================================= */
+ 
+ 
+/* ---------- 1. KHUNG CHỨA ---------- */
+ 
+/* Giữ nội dung ở giữa, không rộng quá 1200px */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+ 
+/* Mỗi khu nội dung lớn cách nhau đều */
+.section {
+  padding: var(--space-6) 0;
+}
+ 
+/* Dòng tiêu đề khu + liên kết "Xem tất cả" nằm cùng hàng (Flexbox) */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;               /* hẹp quá thì liên kết xuống dòng */
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+ 
+.section-head h2 {
+  margin: 0;
+}
+ 
+ 
+/* ---------- 2. LƯỚI ---------- */
+ 
+/* CSS Grid cho danh sách thẻ.
+   minmax(0, 1fr): cột co lại được, chữ dài không làm tràn ngang. */
+.grid {
+  display: grid;
+  gap: var(--space-3);
+}
+ 
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;          /* mọi hàng cao bằng hàng cao nhất → thẻ cao đều */
+}
+ 
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+ 
+ 
+/* ---------- 3. HEADER ---------- */
+ 
+.site-header {
+  background-color: var(--color-header-bg);
+  /* Đường kẻ mảnh 1px, chỉ trang trí */
+  border-bottom: 1px solid var(--color-header-line);
+}
+ 
+/* Flexbox: xếp logo – menu – tìm kiếm – nút – giỏ hàng trên một hàng */
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;               /* cho phép xuống hàng ở màn hình nhỏ */
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+ 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+ 
+.logo:hover {
+  color: var(--color-primary-hover);
+}
+ 
+.logo-img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+ 
+/* Menu chiếm phần trống còn lại, đẩy ô tìm kiếm sang phải */
+.main-nav {
+  flex: 1;
+}
+ 
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+/* Viền trong suốt có sẵn → hover chỉ đổi màu, không đổi kích thước */
+.nav-list a {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  text-decoration: none;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+ 
+.nav-list a:hover {
+  color: var(--color-primary-hover);
+  background-color: var(--color-card);
+  border-color: var(--color-primary-hover);
+}
+ 
+/* Trang hiện tại: bắt cả aria-current="page" và "true". Đặt SAU :hover */
+.nav-list a[aria-current] {
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
+}
+ 
+/* Ô tìm kiếm.
+   .search là khung định vị: icon kính lúp nằm tuyệt đối bên trái ô nhập. */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+ 
+/* Nhãn chỉ dành cho trình đọc màn hình (icon + placeholder đã đủ nghĩa với mắt thường) */
+.search label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+ 
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: var(--space-2);
+  width: 20px;
+  height: 20px;
+  color: var(--color-muted);
+  transform: translateY(-50%);
+  pointer-events: none;          /* bấm vào icon vẫn rơi vào ô nhập */
+  transition: color 0.2s ease;
+}
+ 
+.search input {
+  width: 240px;
+  min-height: 40px;
+  padding: 0 var(--space-2) 0 var(--space-6);  /* chừa chỗ cho icon bên trái */
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  -webkit-appearance: none;      /* Safari: cho phép bo tròn ô type="search" */
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.search input::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+ 
+.search input:hover {
+  border-color: var(--color-primary);
+}
+ 
+/* Focus: viền đậm thêm 1px + vầng sáng teal. Không đổi kích thước ô.
+   outline trong suốt vẫn hiện ở chế độ High Contrast của Windows. */
+.search input:focus-visible {
+  border-color: var(--color-primary-hover);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--color-primary-hover),
+              0 0 0 4px var(--color-focus-ring);
+}
+ 
+.search:focus-within svg {
+  color: var(--color-primary-hover);
+}
+ 
+/* Nút Đặt lịch: icon lịch + chữ, canh giữa theo chiều dọc */
+.header-btn {
+  gap: var(--space-1);
+}
+ 
+.header-btn svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+ 
+/* Giỏ hàng: liên kết sang cart.html. Số lượng (#cart-count) do
+   js/components/header.js cập nhật. */
+.cart-box {
+  position: relative;            /* làm mốc để đặt số lượng ở góc */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: color 0.2s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              transform 0.15s ease;
+}
+ 
+/* Là thẻ <a> nên bỏ gạch chân (cần a.cart-box để thắng a:hover) */
+a.cart-box {
+  text-decoration: none;
+}
+ 
+.cart-box svg {
+  width: 20px;
+  height: 20px;
+}
+ 
+.cart-box:hover {
+  color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  background-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+ 
+/* Số lượng: chấm tròn ở góc trên bên phải biểu tượng giỏ.
+   Chữ tối trên nền cam (≈5,7:1) giống nút chính; không dùng chữ trắng (chỉ ≈2,8:1). */
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+ 
+ 
+/* ---------- 4. FOOTER ---------- */
+ 
+.site-footer {
+  margin-top: var(--space-8);
+  padding: var(--space-6) 0 var(--space-3);
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+}
+ 
+.footer-brand {
+  margin-bottom: var(--space-3);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+ 
+/* Grid 3 cột: Liên kết nhanh – Liên hệ – Giờ mở cửa */
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+ 
+.footer-title {
+  margin-bottom: var(--space-1);
+  font-size: 16px;
+  font-weight: 700;
+}
+ 
+.footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+.site-footer p {
+  margin: 0;
+}
+ 
+.copyright {
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  font-size: 14px;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}
+ 
+ 
+/* ---------- 5. RESPONSIVE (khung chứa, lưới, header, footer) ---------- */
+ 
+/* Người dùng bật "giảm chuyển động" → tắt hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+  .nav-list a,
+  .search svg,
+  .search input {
+    transition: none;
+  }
+ 
+  .cart-box {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+ 
+/* MÁY TÍNH BẢNG (mốc kiểm tra: 768px) */
+@media (max-width: 1023px) {
+  /* Menu xuống hàng thứ hai, chiếm hết chiều ngang */
+  .main-nav {
+    order: 5;
+    flex-basis: 100%;
+  }
+ 
+  /* Ô tìm kiếm, nút, giỏ hàng dồn sang phải ở hàng một */
+  .search {
+    margin-left: auto;
+  }
+ 
+  /* 4 cột → 2 cột */
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+ 
+/* ĐIỆN THOẠI (mốc kiểm tra: 390px) */
+@media (max-width: 599px) {
+  /* Lề an toàn 2 bên, không chạm sát mép màn hình */
+  .container {
+    padding: 0 var(--space-2);
+  }
+ 
+  /* Header: lề trên và lề dưới */
+  .site-header {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
+ 
+  /* Header 3 hàng: [logo ... Đặt lịch, giỏ] / [tìm kiếm] / [menu] */
+  .header-inner {
+    padding-top: 0;                /* reset padding trong để không bị nhân đôi khoảng cách */
+    padding-bottom: 0;
+    gap: var(--space-2);
+  }
+ 
+  .header-btn {
+    margin-left: auto;
+  }
+ 
+  .search {
+    order: 4;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: var(--space-1);    /* cách hàng logo 8px */
+    margin-left: 0;
+  }
+ 
+  .search input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;                  /* cho phép ô nhập co lại, tránh tràn */
+  }
+ 
+  /* Menu: căn trái, gọn, có khoảng đệm trước đường kẻ dưới header */
+  .nav-list {
+    justify-content: flex-start;
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-1);
+  }
+ 
+  .nav-list a {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+ 
+  /* Mọi lưới thẻ → 1 cột */
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+ 
+  .grid-4 {
+    grid-auto-rows: auto;          /* 1 cột thì không cần ép cao đều */
+  }
+ 
+  .footer-cols {
+    grid-template-columns: 1fr;
+  }
+}
+ 
