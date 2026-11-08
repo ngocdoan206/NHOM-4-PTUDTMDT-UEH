@@ -785,6 +785,22 @@ CÁCH TRẢ LỜI
 - Xử lý phản hồi trên GitHub Pull Request: Khi nhận review trên GitHub PR về lỗi lặp đoạn văn bản trong mục "Quy ước viết code giao diện", đã tiến hành xóa phần thừa trong file, thực hiện git commit, git push cập nhật nhánh riêng và ấn chọn "Resolve conversation".   
 image_dac136.png
 - Kiểm tra: Dán mã Markdown vào tệp docs/ui-design.md, kiểm tra hiển thị qua Markdown Preview VS Code rồi commit lên nhánh riêng.
+#### B3-TH-01 – Xây dựng bộ hàm tính giá dịch vụ biến đổi (price-calculator.js)
+
+- **Công cụ:** Gemini
+- **Bước đề bài:** Giai đoạn 4 – Máy tính giá theo cân nặng, độ dài lông và đưa vào giỏ
+- **Mục đích:** Viết 3 hàm thuần logic (`isPricedService`, `getBasePrice`, `calculatePrice`) để tự động tính phụ thu theo mốc cân nặng, độ dài lông và loại thú cưng (Mèo) mà không can thiệp trực tiếp vào giao diện hay localStorage.
+
+**Prompt:**
+
+```text
+VAI TRÒ: Lập trình viên JavaScript logic cho website thương mại điện tử.
+BỐI CẢNH: Dự án PawCare (dịch vụ spa thú cưng). Tôi phụ trách file frontend/js/services/price-calculator.js.
+NHIỆM VỤ: Viết 3 hàm:
+1. isPricedService(product): trả về true cho các dịch vụ giá từ (id 1, 2, 5, 6, 7).
+2. getBasePrice(product): trả về giá gốc.
+3. calculatePrice(product, options): tính giá tạm tính = giá gốc + phụ thu cân nặng (<5kg, 5-10kg, 10-20kg, >20kg) + phụ thu lông (short/long) + phụ thu Mèo (+50.000đ).
+RÀNG BUỘC: Không đụng DOM/giao diện, không đụng localStorage, gán 3 hàm vào window, dịch vụ cố định trả về giá gốc.
 
 ### Nhật ký của Nguyễn Hồng Hạnh
 
