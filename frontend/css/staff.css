@@ -1,0 +1,68 @@
+/* =========================================================
+   PawCare - staff.css
+   Chủ file: Hà
+   Nội dung: màn hình nhân viên, lưới groomer x giờ
+   ========================================================= */
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.demo-note { display: inline-block; margin: 0; padding: 2px 10px; font-size: 0.875rem; font-weight: 600; color: var(--color-primary); background-color: var(--color-surface); border-radius: var(--radius-pill); }
+
+.staff-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin: var(--space-3) 0; }
+.staff-date { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.staff-date input { min-height: 44px; padding: 0 8px; font: inherit; border: var(--border-width) solid var(--color-border); border-radius: var(--radius); }
+.staff-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 0 auto; font-size: 0.8125rem; }
+.lg { padding: 2px 8px; border-radius: var(--radius-pill); border: 1px solid transparent; }
+
+.staff-layout { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3); align-items: start; margin-bottom: var(--space-6); }
+
+/* Lưới: một cột giờ + mỗi groomer một cột. 1 hàng = 15 phút = 20px */
+.staff-grid { display: grid; grid-template-columns: 56px repeat(var(--cols, 3), minmax(120px, 1fr)); overflow-x: auto; border: 1px solid var(--color-header-line); border-radius: var(--radius-card); background-color: var(--color-card); }
+.sg-head { position: sticky; top: 0; z-index: 3; padding: 10px 6px; text-align: center; font-weight: 700; background-color: var(--color-surface); border-bottom: 1px solid var(--color-header-line); }
+.sg-times { position: relative; height: calc(var(--rows) * 20px); }
+.sg-times span { position: absolute; right: 6px; font-size: 0.75rem; color: var(--color-muted); transform: translateY(-50%); }
+.sg-times span:first-child { transform: none; }
+.sg-col {
+  position: relative; height: calc(var(--rows) * 20px); border-left: 1px solid var(--color-header-line); cursor: pointer;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 79px, var(--color-header-line) 79px, var(--color-header-line) 80px);
+}
+.sg-col:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: -3px; }
+.sg-off { position: absolute; left: 0; right: 0; background: repeating-linear-gradient(45deg, #eef0f0, #eef0f0 6px, #e3e6e6 6px, #e3e6e6 12px); cursor: not-allowed; z-index: 1; }
+.sg-block {
+  position: absolute; left: 3px; right: 3px; z-index: 2; padding: 2px 6px; overflow: hidden; font: inherit; font-size: 0.8125rem; text-align: left;
+  border: 1px solid transparent; border-radius: 6px; cursor: pointer;
+}
+.sg-block strong { display: block; }
+.sg-block:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 1px; }
+.sg-block.is-selected { box-shadow: 0 0 0 3px var(--color-text); }
+.sg-now { position: absolute; left: 0; right: 0; height: 2px; background-color: #d93025; z-index: 2; pointer-events: none; }
+
+.st-held, .lg-held { background-color: #fff4cc; border-color: #e0b100; color: #4d3b00; border-style: dashed; }
+.st-confirmed, .lg-confirmed { background-color: #d9efff; border-color: #2b7bb9; color: #0b3a5c; }
+.st-checked-in, .lg-checked-in { background-color: #d6f5df; border-color: #1f8f4a; color: #0b3d1f; }
+.st-completed, .lg-completed { background-color: #e6e6e6; border-color: #9a9a9a; color: #444; }
+.st-no-show { background-color: #fde0dc; border-color: #b3261e; color: #5c1410; opacity: 0.7; }
+
+/* Bảng bên phải */
+.staff-panel { display: grid; gap: var(--space-2); padding: var(--space-3); background-color: var(--color-card); border: 1px solid var(--color-header-line); border-radius: var(--radius-card); position: sticky; top: var(--space-2); }
+.staff-panel h2 { margin: 0; font-size: 1.125rem; }
+.staff-hint { margin: 0; color: var(--color-muted); }
+.sp-field { display: grid; gap: 4px; }
+.sp-field label { font-weight: 600; }
+.sp-field input, .sp-field select { min-height: 40px; padding: 4px 8px; font: inherit; border: var(--border-width) solid var(--color-border); border-radius: var(--radius); background-color: var(--color-card); color: var(--color-text); }
+.sp-field input:focus-visible, .sp-field select:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 2px; }
+.sp-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-1); }
+.sp-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.sp-actions .btn { padding: 8px 12px; }
+.sp-error { margin: 0; color: #b3261e; font-weight: 600; }
+.sp-info { margin: 0; font-weight: 600; }
+.sp-dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px var(--space-2); margin: 0; }
+.sp-dl dt { color: var(--color-muted); }
+.sp-dl dd { margin: 0; font-weight: 600; }
+.sp-suggest { display: flex; flex-wrap: wrap; gap: 6px; }
+.sp-suggest button { padding: 6px 10px; font: inherit; color: var(--color-text); background: var(--color-card); border: 1px solid var(--color-primary); border-radius: var(--radius); cursor: pointer; }
+
+@media (max-width: 1023px) {
+  .staff-layout { grid-template-columns: 1fr; }
+  .staff-panel { position: static; }
+  .staff-legend { margin-left: 0; }
+}
