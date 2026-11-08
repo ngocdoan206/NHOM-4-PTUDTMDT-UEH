@@ -1,28 +1,14 @@
-
-import { renderProducts } from '../components/render-products.js';
-
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const query = normalizeText(urlParams.get('q') || '');
+  const query = (urlParams.get('q') || '').trim().toLowerCase();
 
-  const allProducts = typeof products !== 'undefined' ? products : [];
+  const allProducts = window.products || [];
 
-  let filteredList = allProducts;
+  const filteredList = query
+    ? allProducts.filter(item =>
+        item.name.toLowerCase().includes(query)
+      )
+    : allProducts;
 
-  if (query) {
-    filteredList = allProducts.filter(item =>
-      normalizeText(item.name).includes(query)
-    );
-  }
-
-  renderProducts(filteredList);
+  window.renderProducts(filteredList);
 });
-
-// Chuẩn hóa tiếng Việt, bỏ dấu và chuyển thành chữ thường
-function normalizeText(text) {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd');
-}
