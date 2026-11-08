@@ -1,6 +1,5 @@
-import { formatPrice } from '../utils/format.js';
 function createProductCard(product) {
-  const formattedPrice = formatPrice(product.price);
+  const formattedPrice = window.formatPrice(product.price);
   const priceDisplay = product.priceFrom ? `Từ ${formattedPrice}` : formattedPrice;
 
   return `
@@ -15,7 +14,7 @@ function createProductCard(product) {
   `;
 }
 
-function renderProducts(list) {
+window.renderProducts = function(list) {
   const productListEl = document.getElementById('product-list');
   const resultCountEl = document.getElementById('result-count');
   const emptyMessageEl = document.getElementById('empty-message');
@@ -35,4 +34,4 @@ function renderProducts(list) {
     if (emptyMessageEl) emptyMessageEl.hidden = true;
     productListEl.innerHTML = list.map(item => createProductCard(item)).join('');
   }
-}
+};
