@@ -1,3 +1,4 @@
+import { formatPrice } from '../utils/format.js';
 function createProductCard(product) {
   const formattedPrice = formatPrice(product.price);
   const priceDisplay = product.priceFrom ? `Từ ${formattedPrice}` : formattedPrice;
