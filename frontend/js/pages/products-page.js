@@ -30,10 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const query = urlParams.get('q')?.trim() || '';
 
   const searchInput = document.getElementById('search-input');
-  if (searchInput && query) {
-    searchInput.value = query;
-  }
-
+ 
   // 3. Hiển thị ban đầu
   const initialFiltered = filterProducts(allProducts, query);
   renderProducts(initialFiltered);
