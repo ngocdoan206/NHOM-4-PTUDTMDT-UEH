@@ -1,5 +1,5 @@
 window.formatPrice = function(number) {
-  if (typeof number !== 'number' || isNaN(number)) {
+  if (!Number.isFinite(number)) {
     return '0 ₫';
   }
   return number.toLocaleString('vi-VN') + ' ₫';
