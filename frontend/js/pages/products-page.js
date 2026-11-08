@@ -9,6 +9,18 @@ function removeAccents(str) {
     .toLowerCase();
 }
 
+// Chuẩn hóa chuỗi để tìm không dấu, không phân biệt hoa thường
+function normalize(text) {
+  return removeAccents(String(text || '')).toLowerCase().trim();
+}
+
+// Lọc danh sách theo từ khóa (so khớp theo tên)
+function filterProducts(list, keyword) {
+  const key = normalize(keyword);
+  if (!key) return list;
+  return list.filter(item => normalize(item.name).includes(key));
+}
+
 function filterProducts(allProducts, keyword) {
   const cleanKeyword = removeAccents(keyword);
   return allProducts.filter(item => {
