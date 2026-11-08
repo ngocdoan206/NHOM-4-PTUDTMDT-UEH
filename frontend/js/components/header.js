@@ -21,3 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// ----- Giỏ hàng: cập nhật badge -----
+// Script có defer nên khi chạy tới đây DOM đã sẵn sàng, không cần thêm DOMContentLoaded mới.
+if (typeof window.updateCartBadge === 'function') {
+  window.updateCartBadge();
+}
+
+// Quay lại bằng nút Back (bfcache) có thể hiện badge cũ -> cập nhật lại
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted && typeof window.updateCartBadge === 'function') {
+    window.updateCartBadge();
+  }
+});

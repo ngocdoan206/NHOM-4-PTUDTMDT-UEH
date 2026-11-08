@@ -5,3 +5,10 @@
    Dung lai bien trong base.css (var(--space-2), var(--color-primary)...)
    ========================================================= */
  
+   /* Cụm nút trong thẻ sản phẩm: xếp dọc, đẩy xuống đáy thẻ */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: auto;
+}
