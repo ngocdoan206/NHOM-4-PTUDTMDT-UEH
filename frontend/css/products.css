@@ -2,6 +2,135 @@
    PawCare - products.css
    Chu file: Ngoc Pham
    Noi dung: Thanh tim kiem, loc, sap xep, dong Tim thay X san pham (products.html)
-   Dung lai bien trong base.css (var(--space-2), var(--color-primary)...)
+    Dung lai bien trong base.css (var(--space-2), var(--color-primary)...)
    ========================================================= */
- 
+
+.product-filters {
+   margin: var(--space-3) 0 var(--space-2);
+   padding-bottom: var(--space-2);
+   border-bottom: 1px solid var(--color-border);
+}
+
+.product-filters h2 {
+   margin-bottom: var(--space-2);
+   font-size: 1.25rem;
+}
+
+.filter-controls {
+   display: grid;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+   gap: var(--space-2);
+}
+
+.filter-field,
+.filter-price-group {
+   display: grid;
+   align-content: start;
+   gap: var(--space-1);
+   min-width: 0;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   color: var(--color-text);
+   font-weight: 600;
+}
+
+.filter-field select {
+   width: 100%;
+   min-width: 0;
+   min-height: 44px;
+   padding: var(--space-1) 12px;
+   border: 1px solid var(--color-border);
+   border-radius: var(--radius);
+   color: var(--color-text);
+   background-color: var(--color-card);
+   font: inherit;
+   font-weight: 400;
+}
+
+.filter-field select:hover {
+   border-color: var(--color-primary);
+}
+
+.selected-filters {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--space-2);
+   margin-top: var(--space-2);
+}
+
+.active-filter-list {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--space-1);
+   min-width: 0;
+}
+
+.active-filter-chip {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--space-1);
+   max-width: 100%;
+   padding: 4px 8px 4px 12px;
+   border: 1px solid var(--color-primary);
+   border-radius: var(--radius-pill);
+   color: var(--color-primary);
+   background-color: var(--color-card);
+   overflow-wrap: anywhere;
+}
+
+.active-filter-chip button {
+   display: inline-grid;
+   flex: 0 0 32px;
+   place-items: center;
+   width: 32px;
+   height: 32px;
+   padding: 0;
+   border: 0;
+   border-radius: 50%;
+   color: var(--color-primary);
+   background-color: transparent;
+   cursor: pointer;
+   font: inherit;
+   font-size: 1.25rem;
+   line-height: 1;
+}
+
+.active-filter-chip button:hover {
+   color: var(--color-on-primary);
+   background-color: var(--color-primary-hover);
+}
+
+.clear-filters {
+   flex: 0 0 auto;
+}
+
+.clear-filters:disabled {
+   cursor: not-allowed;
+   opacity: 0.55;
+   transform: none;
+   box-shadow: none;
+}
+
+@media (max-width: 1023px) {
+   .filter-controls {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+   }
+}
+
+@media (max-width: 599px) {
+   .filter-controls {
+      grid-template-columns: minmax(0, 1fr);
+   }
+
+   .selected-filters {
+      align-items: stretch;
+      flex-direction: column;
+   }
+
+   .clear-filters {
+      align-self: flex-start;
+   }
+}
+

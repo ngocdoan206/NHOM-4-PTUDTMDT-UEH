@@ -2569,7 +2569,7 @@ Hãy:
 Không tạo trang web mới và không viết lại những phần đang hoạt động tốt.
 ```
 
-- **Kết quả:** Tận dụng ô tìm kiếm và `renderProducts` hiện có; thêm điều khiển lọc danh mục/sắp xếp giá và xử lý kết hợp trên các mảng mới.
+- **Kết quả:** Giữ ô tìm kiếm hiện có; thêm điều khiển danh mục và sắp xếp, nối cả ba tiêu chí qua `applyFilters` và gọi `renderProducts` sau mỗi thao tác. Tạo danh mục từ dữ liệu ban đầu, lọc/sắp xếp trên bản sao; giữ thông báo không có kết quả và bổ sung CSS theo giao diện PawCare. Đã kiểm tra tìm kiếm, lọc danh mục, sắp xếp, kết hợp điều kiện và danh sách gốc.
 
 ### Nhật ký của Dương Thành Đạt
 #### B2-TD-01 – Hoàn thiện nội dung trang giới thiệu (about.html)
