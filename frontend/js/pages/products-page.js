@@ -31,7 +31,7 @@ function filterProducts(allProducts, keyword) {
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Lấy danh sách sản phẩm gốc
-  const allProducts = window.products || (typeof products !== 'undefined' ? products : []);
+  const allProducts = typeof products !== 'undefined' ? products : [];
 
   // 2. Lấy từ khóa trên URL (nếu có)
   const urlParams = new URLSearchParams(window.location.search);
