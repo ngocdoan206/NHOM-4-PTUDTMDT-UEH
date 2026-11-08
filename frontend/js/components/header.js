@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     searchInput.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' && !event.isComposing) {
         event.preventDefault();
         const keyword = searchInput.value.trim();
         if (keyword) {
