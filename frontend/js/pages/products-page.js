@@ -21,14 +21,6 @@ function filterProducts(list, keyword) {
   return list.filter(item => normalize(item.name).includes(key));
 }
 
-function filterProducts(allProducts, keyword) {
-  const cleanKeyword = removeAccents(keyword);
-  return allProducts.filter(item => {
-    if (!item.name) return false;
-    return removeAccents(item.name).includes(cleanKeyword);
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Lấy danh sách sản phẩm gốc
   const allProducts = typeof products !== 'undefined' ? products : [];
