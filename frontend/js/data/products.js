@@ -19,7 +19,7 @@ const products = [
       "images/services/tam-say-buoc-say.jpg",
       "images/services/tam-say-hoan-thanh.jpg"
     ],
-    description: "Tắm, sấy khô và chải lông cho chó mèo."
+    description: "Dịch vụ tắm sấy cơ bản cho chó, mèo: tắm sạch bằng sữa tắm dịu nhẹ, sấy khô và chải gỡ lông rụng. Giá tính theo cân nặng và độ dài lông."
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const products = [
     species: "all",
     price: 200000,
     priceFrom: true,
-    duration: 90,
+    duration: 60,
     tags: [],
     image: "images/services/cat-tia.jpg",
     description: "Cắt tỉa lông và tạo kiểu thẩm mỹ cho thú cưng."
@@ -64,13 +64,13 @@ const products = [
   {
     id: 5,
     sku: "SPA-005",
-    name: "Combo tắm + tai + móng",
+    name: "Combo Tắm sấy + Vệ sinh tai + Cắt móng",
     type: "service",
     category: "Combo & trọn gói",
     species: "all",
     price: 170000,
     priceFrom: true,
-    duration: 75,
+    duration: 90,
     tags: ["combo", "noi-bat"],
     image: "images/services/combo-tam-tai-mong.jpg",
     description: "Gói kết hợp tắm sấy, vệ sinh tai và cắt móng tiện lợi."
@@ -78,7 +78,7 @@ const products = [
   {
     id: 6,
     sku: "SPA-006",
-    name: "Combo tắm + cắt tỉa",
+    name: "Combo Tắm sấy + Cắt tỉa",
     type: "service",
     category: "Combo & trọn gói",
     species: "all",
@@ -101,12 +101,12 @@ const products = [
     duration: 150,
     tags: ["combo"],
     image: "images/services/combo-tron-goi.jpg",
-    description: "Dịch vụ chăm sóc cao cấp trọn gói từ A đến Z cho thú cưng."
+    description: "Gói chăm sóc đầy đủ từ tắm, cắt tỉa, vệ sinh tai đến cắt móng."
   },
   {
     id: 8,
     sku: "PET-001",
-    name: "Thức ăn hạt chó",
+    name: "Thức ăn hạt cho chó",
     type: "product",
     category: "Thức ăn",
     species: "dog",
@@ -118,7 +118,7 @@ const products = [
   {
     id: 9,
     sku: "PET-002",
-    name: "Thức ăn hạt mèo",
+    name: "Thức ăn hạt cho mèo",
     type: "product",
     category: "Thức ăn",
     species: "cat",
@@ -130,19 +130,19 @@ const products = [
   {
     id: 10,
     sku: "PET-003",
-    name: "Pate mèo",
+    name: "Pate cho mèo",
     type: "product",
     category: "Thức ăn",
     species: "cat",
     price: 25000,
     tags: [],
     image: "images/products/pate-meo.jpg",
-    description: "Pate tươi bổ sung độ ẩm và chất dinh dưỡng cho mèo."
+    description: "Pate cho mèo, mềm và thơm, kích thích ăn ngon."
   },
   {
     id: 11,
     sku: "PET-004",
-    name: "Snack chó",
+    name: "Snack thưởng cho chó",
     type: "product",
     category: "Snack & đồ gặm",
     species: "dog",
@@ -154,19 +154,19 @@ const products = [
   {
     id: 12,
     sku: "PET-005",
-    name: "Đồ gặm chó",
+    name: "Đồ gặm cho chó",
     type: "product",
     category: "Snack & đồ gặm",
     species: "dog",
     price: 35000,
     tags: [],
     image: "images/products/do-gam-cho.jpg",
-    description: "Xương gặm giúp sạch răng và ngứa răng cho chó."
+    description: "Đồ gặm cho chó, giúp giải tỏa năng lượng và giữ răng sạch."
   },
   {
     id: 13,
     sku: "PET-006",
-    name: "Vòng cổ & dây dắt",
+    name: "Vòng cổ và dây dắt",
     type: "product",
     category: "Phụ kiện",
     species: "all",
@@ -185,7 +185,7 @@ const products = [
     price: 50000,
     tags: [],
     image: "images/products/bat-an.jpg",
-    description: "Bát ăn inox chống trượt, dễ dàng vệ sinh."
+    description: "Bát ăn cho thú cưng, dễ vệ sinh."
   },
   {
     id: 15,
