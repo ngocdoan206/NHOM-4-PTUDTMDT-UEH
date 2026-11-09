@@ -22,7 +22,7 @@
   align-items: center;
   gap: 1.25rem;
   padding: 1rem;
-  background-color: var(--color-bg-card, #ffffff);
+  background-color: var(--color-card, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 8px;
 }
@@ -43,7 +43,7 @@
 
 .cart-item-unit-price {
   font-size: 0.875rem;
-  color: var(--color-text-muted, #6b7280);
+  color: var(--color-muted, #6b7280);
   margin: 0;
 }
 
@@ -92,7 +92,7 @@
 .subtotal-label {
   display: none;
   font-size: 0.875rem;
-  color: var(--color-text-muted, #6b7280);
+  color: var(--color-muted, #6b7280);
 }
 
 .subtotal-price {
@@ -151,4 +151,17 @@
     grid-column: 3 / 4;
     justify-self: end;
   }
+}
+.cart-summary {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.cart-total-line {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.cart-continue {
+  margin-top: 1rem;
 }
