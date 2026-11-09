@@ -40,15 +40,25 @@ function readProductFilterCriteria() {
   };
 }
 
-function populateProductCategories(list) {
+function populateProductCategories(list, type = '', keepValue = '') {
   const categorySelect = document.getElementById('product-category');
   if (!categorySelect) return;
 
-  const categories = [...new Set(list.map(product => product.category).filter(Boolean))]
-    .sort((first, second) => first.localeCompare(second, 'vi'));
+  // Chỉ lấy danh mục của đúng loại đang chọn (rỗng = tất cả), giữ thứ tự trong dữ liệu
+  const categories = [...new Set(
+    list.filter(product => !type || product.type === type)
+        .map(product => product.category)
+        .filter(Boolean)
+  )];
 
-  categorySelect.replaceChildren(new Option('Tất cả danh mục', ''));
+  categorySelect.replaceChildren(new Option(
+    type === 'service' ? 'Tất cả danh mục dịch vụ'
+      : type === 'product' ? 'Tất cả danh mục sản phẩm'
+      : 'Tất cả danh mục', ''));
   categories.forEach(category => categorySelect.add(new Option(category, category)));
+
+  // Giữ lại danh mục đang chọn nếu vẫn thuộc loại này, không thì về "Tất cả"
+  categorySelect.value = categories.includes(keepValue) ? keepValue : '';
 }
 
 function renderActiveProductFilters(criteria) {
@@ -136,7 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.addEventListener('change', event => {
+    document.addEventListener('change', event => {
+    if (event.target.id === 'product-type') {
+      const category = document.getElementById('product-category')?.value || '';
+      populateProductCategories(allProducts, event.target.value, category);
+    }
     if (productSelectFilterIds.has(event.target.id)) renderFilteredProducts();
   });
 
@@ -146,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (target.closest('#clear-product-filters')) {
       productFilterIds.forEach(id => {
+              populateProductCategories(allProducts);
         const control = document.getElementById(id);
         if (control) control.value = '';
       });
@@ -173,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const control = document.getElementById(id);
       if (control) control.value = '';
     });
+        if (key === 'type') populateProductCategories(allProducts);
 
     if (key === 'keyword') {
       const params = new URLSearchParams(window.location.search);
