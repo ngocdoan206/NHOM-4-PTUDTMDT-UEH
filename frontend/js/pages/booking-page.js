@@ -223,7 +223,7 @@
       <dt>Bé</dt><dd>${x.pet.species === "cat" ? "Mèo" : "Chó"}, ${esc((WEIGHTS.find(function (w) { return w[0] === x.pet.weightRange; }) || [0, ""])[1])}, ${x.pet.coat === "long" ? "lông dài" : "lông ngắn"}</dd>
       <dt>Groomer</dt><dd>${groomerChip(x.groomerId)}</dd>
       <dt>Thời gian</dt><dd>${dateText(x.date)}, ${timeRange(x.startMin, x.duration)}</dd>
-      <dt>Giá</dt><dd>${formatPrice(x.unitPrice)}</dd></dl>`;
+      <dt>Giá tạm tính</dt><dd>${formatPrice(x.unitPrice)}</dd></dl>`;
   }
 
   // ---------- Bước 4: xác nhận ----------
