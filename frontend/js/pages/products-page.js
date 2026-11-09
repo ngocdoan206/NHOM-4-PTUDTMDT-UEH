@@ -98,8 +98,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const searchInput = document.getElementById('search-input');
 
-  if (searchInput && urlParams.has('q')) {
+   if (searchInput && urlParams.has('q')) {
     searchInput.value = urlParams.get('q') || '';
+  }
+
+  // 3b. Nút "Thêm vào giỏ": dùng event delegation vì danh sách được render lại khi tìm kiếm
+ 
+    // 3b. Nút "Thêm vào giỏ": dùng event delegation vì danh sách được render lại khi tìm kiếm
+  const productListEl = document.getElementById('product-list');
+  if (productListEl) {
+    productListEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-add-cart');
+      if (!btn) return;
+
+      const ok = typeof addToCart === 'function' && addToCart(Number(btn.dataset.productId), 1);
+
+      if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.textContent = ok ? 'Đã thêm ✓' : 'Không thêm được';
+      clearTimeout(btn._resetTimer);
+      btn._resetTimer = setTimeout(() => {
+        btn.textContent = btn.dataset.label;
+      }, 1200);
+    });
   }
 
   populateProductCategories(allProducts);
