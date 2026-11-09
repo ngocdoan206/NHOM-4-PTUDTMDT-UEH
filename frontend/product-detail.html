@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tắm sấy – PawCare</title>
+  <title>Chi tiết – PawCare</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/calculator.css">
   <link rel="stylesheet" href="css/booking.css">
   <!-- Nạp script: thứ tự quan trọng (dữ liệu → dùng chung → logic → giao diện → trang) -->
   <script defer src="js/data/products.js"></script>
   <script defer src="js/utils/format.js"></script>
   <script defer src="js/services/cart.js"></script>
-  <script defer src="js/services/price-calculator.js"></script>
-  <script defer src="js/services/booking.js"></script>
+  <script defer src="js/components/render-products.js"></script>
   <script defer src="js/components/header.js"></script>
   <script defer src="js/pages/product-detail-page.js"></script>
 </head>
@@ -24,25 +22,21 @@
   <!-- ===== HEADER (giống hệt ở 4 trang, chỉ khác aria-current) ===== -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Logo vuông thật + chữ PawCare (alt rỗng vì đã có chữ PawCare bên cạnh) -->
       <a class="logo" href="index.html">
         <img class="logo-img" src="images/logo/logo-icon.png" alt="" width="40" height="40">
         PawCare
       </a>
  
-      <!-- Menu chính: 3 liên kết -->
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="nav-list">
           <li><a href="index.html">Trang chủ</a></li>
-          <li><a href="products.html" aria-current="page">Dịch vụ &amp; Sản phẩm</a></li>
+          <li><a href="products.html">Dịch vụ &amp; Sản phẩm</a></li>
           <li><a href="about.html">Giới thiệu</a></li>
         </ul>
       </nav>
  
-      <!-- Ô tìm kiếm: chỉ là giao diện, không có form gửi dữ liệu -->
       <div class="search" role="search">
         <label for="search-input">Tìm kiếm</label>
-        <!-- Icon kính lúp (Lucide "search"), kế thừa màu từ CSS qua currentColor -->
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <circle cx="11" cy="11" r="8"></circle>
           <path d="m21 21-4.3-4.3"></path>
@@ -50,9 +44,7 @@
         <input id="search-input" type="search" placeholder="Tìm dịch vụ, sản phẩm">
       </div>
  
-      <!-- Nút Đặt lịch dẫn tới trang danh sách -->
       <a class="btn btn-primary header-btn" href="products.html">
-        <!-- Icon lịch (Lucide "calendar") -->
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <path d="M8 2v4"></path>
           <path d="M16 2v4"></path>
@@ -73,154 +65,22 @@
       </a>
     </div>
   </header>
- 
   <main class="container">
-    
     <a class="back-link" href="products.html">← Quay lại danh sách</a>
  
-    <!-- ===== KHU CHI TIẾT: Grid 2 cột ===== -->
-    <article class="detail" aria-labelledby="detail-title">
-      <!-- Cột trái: ảnh -->
-      <div class="gallery">
-        <figure class="gallery-main">
-          <img src="images/services/tam-say-chitiet.jpg" alt="Thú cưng được tắm sấy nhẹ nhàng tại PawCare" width="600" height="600">
-          <figcaption>Tắm sấy nhẹ nhàng, an toàn cho thú cưng</figcaption>
-        </figure>
-        <div class="thumbs">
-          <img src="images/services/tam-say-buoc-tam.jpg" alt="Bé chó đang được tắm bằng nước ấm" width="300" height="300">
-          <img src="images/services/tam-say-buoc-say.jpg" alt="Bé mèo đang được sấy khô lông" width="300" height="300">
-          <img src="images/services/tam-say-hoan-thanh.jpg" alt="Thú cưng sau khi tắm sấy xong, lông mượt" width="300" height="300">
-        </div>
-      </div>
+    <!-- Hiện khi ?id= sai hoặc thiếu -->
+    <div id="detail-error" class="detail-error" hidden>
+      <h1>Không tìm thấy sản phẩm</h1>
+      <p>Sản phẩm bạn mở không tồn tại hoặc đã ngừng bán.</p>
+      <a class="btn btn-primary" href="products.html">Xem tất cả sản phẩm</a>
+    </div>
  
-      <!-- Cột phải: thông tin -->
-      <div class="detail-info">
-        <div>
-          <h1 id="detail-title">Tắm sấy</h1>
-          <p class="detail-price">Từ 120.000đ</p>
-          <p>Dịch vụ tắm sấy cơ bản cho chó, mèo: tắm sạch bằng sữa tắm dịu nhẹ, sấy khô, chải gỡ lông rụng, cắt móng và vệ sinh tai theo yêu cầu. Giá tính theo cân nặng và độ dài lông.</p>
-        </div>
+    <!-- Nội dung chi tiết: do js/pages/product-detail-page.js vẽ theo ?id= -->
+    <article id="detail-content" class="detail" aria-live="polite"></article>
  
-        <!-- Thuộc tính: danh sách mô tả (dl) gồm cặp nhãn dt – giá trị dd -->
-        <section aria-labelledby="attr-title">
-          <h2 id="attr-title">Thông tin dịch vụ</h2>
-          <dl class="attr-list">
-            <dt>Áp dụng cho</dt>
-            <dd>Chó, mèo</dd>
-            <dt>Thời lượng ước tính</dt>
-            <dd>Khoảng 60–90 phút</dd>
-            <dt>Hình thức</dt>
-            <dd>Tại tiệm</dd>
-          </dl>
-        </section>
- 
-        <!-- Bảng giá mẫu -->
-        <section aria-labelledby="price-title">
-          <h2 id="price-title">Bảng giá mẫu</h2>
-          <div class="table-wrap">
-            <table class="price-table">
-              <caption>Giá tham khảo theo cân nặng và độ dài lông (chó)</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Cân nặng</th>
-                  <th scope="col">Lông ngắn</th>
-                  <th scope="col">Lông dài</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Dưới 5 kg</th>
-                  <td>120.000đ</td>
-                  <td>180.000đ</td>
-                </tr>
-                <tr>
-                  <th scope="row">5–10 kg</th>
-                  <td>180.000đ</td>
-                  <td>260.000đ</td>
-                </tr>
-                <tr>
-                  <th scope="row">10–20 kg</th>
-                  <td>260.000đ</td>
-                  <td>360.000đ</td>
-                </tr>
-                <tr>
-                  <th scope="row">Trên 20 kg</th>
-                  <td>360.000đ</td>
-                  <td>500.000đ</td>
-                </tr>
-              </tbody>
-                <tfoot>
-                <tr>
-                  <td colspan="3">Mèo cộng thêm 50.000đ. Lông rối nhiều có thể phụ thu phí gỡ rối.</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </section>
-        <section aria-labelledby="process-title">
-          <h2 id="process-title">Quy trình thực hiện</h2>
-          <ol class="step-list">
-            <li>Tiếp nhận và kiểm tra nhanh da, lông, tai của thú cưng.</li>
-            <li>Tắm bằng nước ấm và sữa tắm phù hợp, xả sạch.</li>
-            <li>Sấy khô, chải gỡ lông rụng.</li>
-            <li>Cắt móng, vệ sinh tai nếu khách yêu cầu, rồi bàn giao.</li>
-          </ol>
-        </section>
- 
-        <section aria-labelledby="note-title">
-          <h2 id="note-title">Lưu ý trước khi đặt lịch</h2>
-          <ul class="note-list">
-            <li>Báo trước nếu thú cưng có bệnh da, vết thương hoặc đang mang thai.</li>
-            <li>Thú cưng nên tiêm phòng đầy đủ.</li>
-            <li>Lông rối nhiều có thể phát sinh phụ phí gỡ rối.</li>
-          </ul>
-        </section>
- 
-        <section aria-labelledby="faq-title">
-          <h2 id="faq-title">Câu hỏi thường gặp</h2>
-          <details class="faq-item">
-            <summary>Thú cưng nhát có tắm được không?</summary>
-            <p>Được. Nhân viên sẽ làm chậm và nhẹ nhàng. Bạn có thể báo trước tính cách của bé khi đặt lịch.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Có thể chờ tại tiệm không?</summary>
-            <p>Được. Bạn có thể ngồi chờ hoặc đón bé theo giờ hẹn.</p>
-          </details>
-        </section>
-        <!-- type="button": nút không gửi dữ liệu, chỉ là giao diện -->
-                <div class="detail-actions">
-          <button class="btn btn-outline btn-large" id="add-to-cart-btn" type="button" data-product-id="1">Thêm vào giỏ</button>
-          <button class="btn btn-primary btn-large" type="button">Đặt lịch</button>
-        </div>
-      </div>
-    </article>
- 
-    <!-- ===== LIÊN QUAN (3 thẻ) ===== -->
-    <section class="section" aria-labelledby="related-title">
-      <h2 id="related-title">Dịch vụ/sản phẩm liên quan</h2>
- 
-      <div class="grid grid-3">
-        <article class="card">
-          <img class="card-img" src="images/services/cat-tia.jpg" alt="Cắt tỉa tạo kiểu lông cho thú cưng" width="400" height="300">
-          <h3 class="card-title">Cắt tỉa tạo kiểu</h3>
-          <p class="card-price">Từ 200.000đ</p>
-          <a class="btn btn-outline card-action" href="product-detail.html?id=2" aria-label="Xem chi tiết Cắt tỉa tạo kiểu">Xem chi tiết</a>
-        </article>
- 
-        <article class="card">
-          <img class="card-img" src="images/services/combo-tam-tai-mong.jpg" alt="Combo tắm sấy, vệ sinh tai và cắt móng" width="400" height="300">
-          <h3 class="card-title">Combo Tắm sấy + Vệ sinh tai + Cắt móng</h3>
-          <p class="card-price">Từ 170.000đ</p>
-          <a class="btn btn-outline card-action" href="product-detail.html?id=5" aria-label="Xem chi tiết Combo Tắm sấy, Vệ sinh tai, Cắt móng">Xem chi tiết</a>
-        </article>
- 
-        <article class="card">
-          <img class="card-img card-img-square" src="images/products/luoc-chai-long.jpg" alt="Lược chải lông cho thú cưng" width="400" height="400">
-          <h3 class="card-title">Lược chải lông</h3>
-          <p class="card-price">65.000đ</p>
-          <a class="btn btn-outline card-action" href="product-detail.html?id=15" aria-label="Xem chi tiết Lược chải lông">Xem chi tiết</a>
-        </article>
-      </div>
+    <section id="related-section" class="section" aria-labelledby="related-title" hidden>
+      <h2 id="related-title">Dịch vụ, sản phẩm liên quan</h2>
+      <div id="related-list" class="grid grid-3"></div>
     </section>
   </main>
  
@@ -260,4 +120,3 @@
  
 </body>
 </html>
- 
