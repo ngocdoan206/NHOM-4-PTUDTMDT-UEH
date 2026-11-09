@@ -1,10 +1,6 @@
 // Owner: Nghi
 document.addEventListener('DOMContentLoaded', () => {
-  // Hiển thị danh sách giỏ hàng lần đầu khi tải trang
   renderCartPage();
-
-  // Gắn sự kiện 1 lần duy nhất ở cấp document (Event Delegation)
-  // Không sử dụng onclick trong HTML
   document.addEventListener('click', (event) => {
     const actionBtn = event.target.closest('[data-action]');
     if (!actionBtn) return;
@@ -41,9 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/**
- * Đọc dữ liệu giỏ hàng an toàn từ hàm của cart.js hoặc localStorage
- */
+
 function getCartData() {
   if (typeof window.getCart === 'function') {
     return window.getCart();
@@ -55,9 +49,6 @@ function getCartData() {
   }
 }
 
-/**
- * Ghi lại dữ liệu giỏ hàng bằng hàm của cart.js hoặc localStorage
- */
 function saveCartData(cart) {
   if (typeof window.saveCart === 'function') {
     window.saveCart(cart);
@@ -66,9 +57,7 @@ function saveCartData(cart) {
   }
 }
 
-/**
- * Render toàn bộ danh sách giỏ hàng và tổng tiền
- */
+
 function renderCartPage() {
   const cartListEl = document.getElementById('cart-list');
   const cartTotalEl = document.getElementById('cart-total');
@@ -84,13 +73,11 @@ function renderCartPage() {
   const validRowsHtml = [];
 
   rawCart.forEach((item) => {
-    const itemId = item.id || item.productId;
-    // Tra sản phẩm theo id trong window.products
+    const itemId = item.id || item.productId; 
     const product = allProducts.find(p => String(p.id) === String(itemId));
 
-    // Nếu dòng nào không tìm thấy sản phẩm thì bỏ qua, tránh gây lỗi trang
+  
     if (!product) return;
-
     const unitPrice = typeof product.price === 'number' ? product.price : (item.price || 0);
     const qty = Math.max(1, Math.min(99, Number(item.quantity) || 1));
     const lineTotal = unitPrice * qty;
@@ -129,7 +116,6 @@ function renderCartPage() {
     `);
   });
 
-  // Ẩn/hiện thông báo giỏ trống hoặc vẽ danh sách
   if (validRowsHtml.length === 0) {
     if (cartEmptyEl) cartEmptyEl.hidden = false;
     if (cartContentEl) cartContentEl.hidden = true;
