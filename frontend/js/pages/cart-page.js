@@ -34,15 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+function getAllProducts() {
+  return window.products || window.PRODUCTS || window.productsData || window.productList || [];
+}
+
 function getRawCart() {
   if (typeof window.getCart === 'function') {
-    return window.getCart();
+    const res = window.getCart();
+    if (res && (Array.isArray(res) ? res.length > 0 : Object.keys(res).length > 0)) {
+      return res;
+    }
   }
-  try {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-  } catch (e) {
-    return [];
+  const possibleKeys = ['cart', 'cartItems', 'cart_items', 'pawcare_cart', 'cartData'];
+  for (const key of possibleKeys) {
+    const data = localStorage.getItem(key);
+    if (data) {
+      try {
+        const parsed = JSON.parse(data);
+        if (parsed && (Array.isArray(parsed) ? parsed.length > 0 : Object.keys(parsed).length > 0)) {
+          return parsed;
+        }
+      } catch (e) {}
+    }
   }
+  return [];
 }
 
 function normalizeCart(rawCart) {
@@ -142,7 +157,7 @@ function renderCartPage() {
 
   const rawCart = getRawCart();
   const normalizedCart = normalizeCart(rawCart);
-  const allProducts = window.products || [];
+  const allProducts = getAllProducts();
 
   let grandTotal = 0;
   const validRowsHtml = [];
