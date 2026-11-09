@@ -1,3 +1,4 @@
+// Owner: Nghi
 function createProductCard(product) {
   const formattedPrice = window.formatPrice(product.price);
   const priceDisplay = product.priceFrom ? `Từ ${formattedPrice}` : formattedPrice;
@@ -17,4 +18,16 @@ function createProductCard(product) {
       </div>
     </article>
   `;
+}
+
+// Vẽ danh sách thẻ vào #product-list, cập nhật dòng "Tìm thấy X sản phẩm" và thông báo rỗng
+function renderProducts(list) {
+  const listEl = document.getElementById('product-list');
+  const countEl = document.getElementById('result-count');
+  const emptyEl = document.getElementById('empty-message');
+  if (!listEl) return;
+
+  listEl.innerHTML = list.map(product => createProductCard(product)).join('');
+  if (countEl) countEl.textContent = list.length ? `Tìm thấy ${list.length} sản phẩm` : '';
+  if (emptyEl) emptyEl.hidden = list.length > 0;
 }
