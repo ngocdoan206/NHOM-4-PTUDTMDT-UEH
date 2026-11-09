@@ -4,4 +4,151 @@
    Noi dung: Bang gio hang, nut tang giam, tong tien (cart.html)
    Dung lai bien trong base.css (var(--space-2), var(--color-primary)...)
    ========================================================= */
- 
+ /* ==========================================
+   CARTS PAGE STYLES - PAWCARE
+   ========================================== */
+
+#cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Mỗi dòng sản phẩm */
+.cart-item-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  background-color: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+}
+
+.cart-item-media img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--color-text, #111827);
+}
+
+.cart-item-unit-price {
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #6b7280);
+  margin: 0;
+}
+
+/* Cụm nút tăng/giảm số lượng */
+.cart-item-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border, #d1d5db);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.btn-qty {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--color-text, #374151);
+}
+
+.btn-qty:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.btn-qty:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty-value {
+  width: 36px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Thành tiền dòng */
+.cart-item-subtotal {
+  font-size: 1rem;
+}
+
+.subtotal-label {
+  display: none;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+.subtotal-price {
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+}
+
+/* Nút xóa */
+.btn-remove {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+}
+
+.btn-remove:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+/* Responsive cho màn hình điện thoại (< 768px) */
+@media (max-width: 768px) {
+  .cart-item-row {
+    grid-template-columns: 70px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+  }
+
+  .cart-item-media img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cart-item-info {
+    grid-column: 2 / 4;
+  }
+
+  .cart-item-qty {
+    grid-column: 2 / 3;
+    justify-self: start;
+  }
+
+  .cart-item-subtotal {
+    grid-column: 3 / 4;
+    align-items: flex-end;
+  }
+
+  .subtotal-label {
+    display: inline;
+  }
+
+  .cart-item-action {
+    grid-column: 3 / 4;
+    justify-self: end;
+  }
+}
