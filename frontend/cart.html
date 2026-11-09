@@ -74,9 +74,27 @@
  
 <main class="container">
   <h1>Giỏ hàng</h1>
-  <div id="cart-content"></div>
-  <p id="cart-empty" hidden>Giỏ hàng của bạn đang trống.</p>
-  <p><a href="products.html">← Tiếp tục xem dịch vụ</a></p>
+
+  <!-- Thông báo rỗng -->
+  <div id="cart-empty" hidden>
+    <p>Giỏ hàng của bạn đang trống.</p>
+    <a href="products.html" class="btn btn-primary">Khám phá dịch vụ &amp; sản phẩm</a>
+  </div>
+
+  <!-- Khung chứa danh sách và tổng tiền -->
+  <div id="cart-content">
+    <!-- Thêm id="cart-list" để JS vẽ sản phẩm vào đây -->
+    <div id="cart-list"></div>
+
+    <!-- Thêm id="cart-total" để JS hiển thị tổng tiền -->
+   <div class="cart-summary">
+  <p class="cart-total-line">
+        Tổng tiền: <span id="cart-total">0 ₫</span>
+      </p>
+    </div>
+  </div>
+
+<p class="cart-continue"><a href="products.html">← Tiếp tục xem dịch vụ</a></p>
 </main>
  
   <!-- ===== FOOTER (giống hệt ở 4 trang) ===== -->
