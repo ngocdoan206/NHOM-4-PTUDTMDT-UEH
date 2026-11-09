@@ -51,7 +51,8 @@ function renderCartPage() {
   if (!cartListEl || !cartTotalEl) return;
 
   const cart = window.loadCart();
-  const allProducts = typeof products !== 'undefined'
+
+const allProducts = typeof products !== 'undefined'
   ? products
   : (window.products || []);
 
