@@ -73,11 +73,62 @@
     <h1>Dịch vụ &amp; Sản phẩm</h1>
     <p class="page-desc">Chăm sóc thú cưng từ tắm sấy, cắt tỉa đến trọn gói, cùng các sản phẩm thiết yếu bán kèm tại PawCare.</p>
   </div>   
+<section class="product-filters" aria-labelledby="product-filters-title">
+    <h2 id="product-filters-title">Lọc và sắp xếp</h2>
+    <div class="filter-controls">
+      <label class="filter-field" for="product-type">
+        <span>Loại</span>
+        <select id="product-type">
+          <option value="">Tất cả</option>
+          <option value="service">Dịch vụ</option>
+          <option value="product">Sản phẩm</option>
+        </select>
+      </label>
+      <label class="filter-field" for="product-category">
+        <span>Danh mục</span>
+        <select id="product-category">
+          <option value="">Tất cả danh mục</option>
+        </select>
+      </label>
+      <label class="filter-field" for="product-species">
+        <span>Đối tượng</span>
+        <select id="product-species">
+          <option value="">Chó và mèo</option>
+          <option value="dog">Chó</option>
+          <option value="cat">Mèo</option>
+        </select>
+      </label>
+      <label class="filter-field" for="product-price-range">
+        <span>Khoảng giá</span>
+        <select id="product-price-range">
+          <option value="">Mọi mức giá</option>
+          <option value="0-100000">0 – 100.000 ₫</option>
+          <option value="100000-200000">100.000 – 200.000 ₫</option>
+          <option value="200000-300000">200.000 – 300.000 ₫</option>
+          <option value="300000-400000">300.000 – 400.000 ₫</option>
+          <option value="400000+">Từ 400.000 ₫</option>
+        </select>
+      </label>
+      <label class="filter-field" for="product-sort">
+        <span>Sắp xếp</span>
+        <select id="product-sort">
+          <option value="">Mặc định</option>
+          <option value="price-asc">Giá tăng dần</option>
+          <option value="price-desc">Giá giảm dần</option>
+          <option value="name-asc">Tên A–Z</option>
+        </select>
+      </label>
+    </div>
+    <div class="selected-filters">
+      <div id="active-filter-list" class="active-filter-list" aria-label="Bộ lọc đang chọn" aria-live="polite"></div>
+      <button id="clear-product-filters" class="btn btn-outline clear-filters" type="button" disabled>Xóa bộ lọc</button>
+    </div>
+  </section>
   <!-- THÔNG BÁO SỐ LƯỢNG KẾT QUẢ -->
-  <p id="result-count" class="result-count"></p>
+  <p id="result-count" class="result-count" aria-live="polite"></p>
 
   <!-- THÔNG BÁO KHI KHÔNG TÌM THẤY SẢN PHẨM -->
-  <p id="empty-message" class="empty-message" hidden>Không tìm thấy sản phẩm nào phù hợp.</p>
+  <p id="empty-message" class="empty-message" role="status" aria-live="polite" hidden>Không tìm thấy sản phẩm nào phù hợp.</p>
 
   <!-- KHUNG TỰ ĐỘNG CHỨA CÁC THẺ SẢN PHẨM -->
   <div id="product-list" class="grid grid-4"></div>

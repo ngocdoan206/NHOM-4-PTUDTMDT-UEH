@@ -2536,6 +2536,41 @@ Không dùng JavaScript, framework CSS hoặc dữ liệu backend.
 - **Giải thích chọn kỹ thuật:** Grid cho lưới thẻ (bố cục 2 chiều, đổi số cột theo breakpoint, `grid-auto-rows: 1fr` cho thẻ cao đều); Flexbox trong thẻ (xếp dọc, `margin-top: auto` đẩy giá và nút xuống đáy).
 - **Kiểm tra:** Đã chạy thử bằng trình duyệt với ảnh tạm ở 1366/768/390 px: đúng 4/2/1 cột, thẻ cùng hàng cao bằng nhau, giá và nút thẳng hàng, không tràn ngang. 
 
+#### B3-PBN-01 – Tích hợp tìm kiếm, lọc danh mục và sắp xếp giá
+
+- **Công cụ:** Copilot SDK trong VS Code
+- **Bước đề bài:** Buổi 3 – tích hợp chức năng tìm kiếm, lọc và sắp xếp trang danh sách.
+- **Mục đích:** Bổ sung tìm kiếm theo tên, lọc danh mục và sắp xếp giá ở `frontend/products.html` mà không thay đổi dữ liệu gốc hoặc chức năng hiện có.
+
+**Prompt (nguyên văn):**
+
+```text
+Website nhóm tôi đã có mảng products và hàm renderProducts(list) để hiển thị danh sách sản phẩm.
+Hãy giúp nhóm tích hợp chức năng tìm kiếm, lọc và sắp xếp vào giao diện products.html
+hiện có.
+
+Yêu cầu:
+1. Tìm kiếm theo tên sản phẩm.
+2. Lọc theo danh mục.
+3. Sắp xếp theo giá tăng dần và giảm dần.
+4. Cho phép kết hợp nhiều điều kiện.
+5. Cập nhật danh sách sau mỗi thao tác.
+6. Hiển thị thông báo khi không có kết quả.
+7. Không làm thay đổi dữ liệu products ban đầu.
+8. Giữ nguyên phong cách giao diện của website nhóm.
+
+Hãy:
+- Kiểm tra các thành phần HTML hiện có.
+- Xác định những phần cần bổ sung.
+- Viết các hàm JavaScript riêng biệt.
+- Giải thích cách các chức năng phối hợp với nhau.
+- Đề xuất các trường hợp kiểm thử.
+
+Không tạo trang web mới và không viết lại những phần đang hoạt động tốt.
+```
+
+- **Kết quả:** Giữ ô tìm kiếm hiện có; thêm điều khiển danh mục và sắp xếp, nối cả ba tiêu chí qua `applyFilters` và gọi `renderProducts` sau mỗi thao tác. Tạo danh mục từ dữ liệu ban đầu, lọc/sắp xếp trên bản sao; giữ thông báo không có kết quả và bổ sung CSS theo giao diện PawCare. Đã kiểm tra tìm kiếm, lọc danh mục, sắp xếp, kết hợp điều kiện và danh sách gốc.
+
 ### Nhật ký của Dương Thành Đạt
 #### B2-TD-01 – Hoàn thiện nội dung trang giới thiệu (about.html)
 
@@ -2880,4 +2915,3 @@ Không sử dụng JavaScript hoặc framework CSS.
 Không tự ý tạo thêm màu sắc hoặc thay đổi thiết kế ban đầu.
 Chỉ cung cấp phần mã CSS cần bổ sung hoặc chỉnh sửa, không viết lại toàn bộ file.
 ```
-
