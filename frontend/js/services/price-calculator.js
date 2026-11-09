@@ -76,8 +76,3 @@ function calculatePrice(product, options) {
 
   return totalPrice;
 }
-
-// Gán hàm vào window để booking.js và các file khác gọi được
-window.isPricedService = isPricedService;
-window.getBasePrice = getBasePrice;
-window.calculatePrice = calculatePrice;
