@@ -3051,6 +3051,19 @@ Phân biệt lỗi đã xác định được với vấn đề chỉ cần ki�
  
 Cả hai vấn đề được ghi vào docs/test-report.md (mục 6) và phần "Hạn chế hiện tại" của README.md.
 
+#### B3-TD-01 – Lập kế hoạch, rà soát và kiểm tra phần Đặt lịch khung giờ mô phỏng
+
+- **Công cụ:** Claude
+- **Bước đề bài:** Điểm đột phá 2 – Đặt lịch khung giờ mô phỏng (Issue #67); Bước 7 – Tích hợp, kiểm thử; Bước 8 – Hoàn thiện báo cáo (mục 2.9)
+- **Mục đích:** Lập kế hoạch các việc được giao, rà soát lỗi bằng cách chạy thử thay vì chỉ đọc, viết dòng trạng thái mở cửa và gợi ý khung sườn mục 2.9 của báo cáo.
+
+**Prompt (tóm lược nội dung yêu cầu, không phải nguyên văn):**
+
+````text
+Dựa trên đề bài Buổi 3 (PDF), bảng phân công (Excel) và quy ước của nhóm (file Word), hướng dẫn chi tiết các công việc của Dương Thành Đạt trong Buổi 3 trên repository của nhóm.
+
+Sau đó rà soát kế hoạch qua nhiều vòng cho đến khi không còn lỗi. Ưu tiên mô phỏng code và kiểm tra chéo khi có thể, rồi gửi lại bản kế hoạch chi tiết từ đầu đến cuối.
+
 ### Nhật ký của Nguyễn Thị Huỳnh Giao
 
 ### Nhật ký của Nguyễn Hoàng Bảo Nghi
