@@ -23,18 +23,11 @@
 }
 
 .filter-field,
-.filter-price-group {
-   display: grid;
-   align-content: start;
+.sort-field {
+   display: flex;
+   flex-direction: column;
    gap: var(--space-1);
-   min-width: 0;
-   margin: 0;
-   padding: 0;
-   border: 0;
-   color: var(--color-text);
-   font-weight: 600;
 }
-
 .filter-field select {
    width: 100%;
    min-width: 0;

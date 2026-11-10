@@ -111,8 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
    if (searchInput && urlParams.has('q')) {
     searchInput.value = urlParams.get('q') || '';
   }
-
-  // 3b. Nút "Thêm vào giỏ": dùng event delegation vì danh sách được render lại khi tìm kiếm
  
     // 3b. Nút "Thêm vào giỏ": dùng event delegation vì danh sách được render lại khi tìm kiếm
   const productListEl = document.getElementById('product-list');
