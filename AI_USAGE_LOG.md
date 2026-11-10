@@ -1425,6 +1425,195 @@ Hãy giải thích ngắn gọn bằng tiếng Việt:
 
 Không cần giải thích lại toàn bộ HTML/CSS cơ bản. Chỉ tập trung vào những phần mới hoặc đã thay đổi trong task này.
 ````
+
+#### B2-HH-03 – Hoàn thiện Trang chủ
+
+- **Công cụ:** Claude
+- **Bước đề bài:** 
+- **Mục đích:** Hỗ trợ code phần cart.js và giải thích code.
+
+**Prompt (nguyên văn):**
+
+````text
+# PROMPT: TRIỂN KHAI TASK GIỎ HÀNG – PAWCARE
+
+Bạn hãy đóng vai Frontend Developer có kinh nghiệm xây dựng website thương mại điện tử bằng HTML, CSS và JavaScript thuần (Vanilla JavaScript).
+
+Tôi đang thực hiện dự án **PawCare – Spa và chăm sóc thú cưng** cho môn Phát triển ứng dụng thương mại điện tử tại UEH. Hãy hỗ trợ triển khai task `feat/cart-logic` dựa trên repository và tài liệu tôi cung cấp.
+
+**Mục tiêu:** Viết code tương thích với cấu trúc dự án, tái sử dụng chức năng hiện có và không làm ảnh hưởng đến các task đã hoàn thành.
+
+## 1. Bối cảnh dự án
+
+Task này nối tiếp `feat/products-data`. Hiện tại:
+
+- Dữ liệu sản phẩm đã được tách thành file JavaScript riêng.
+- Trang danh sách sản phẩm đã render dữ liệu động.
+- Header đã tích hợp chức năng tìm kiếm.
+- Các trang có HTML/CSS và JavaScript riêng.
+
+Cấu trúc chính:
+
+```text
+docs/
+  ui-design.md
+frontend/
+  css/
+  images/
+  js/
+    components/
+    data/
+    pages/
+    services/
+    utils/
+  cart.html
+  products.html
+  product-detail.html
+  index.html
+  about.html
+  booking.html
+  staff.html
+AGENTS.md
+README.md
+```
+
+Không xây dựng lại website, thay đổi cấu trúc dữ liệu sản phẩm hoặc viết lại chức năng đã hoàn thành.
+
+## 2. Phân tích trước khi code
+
+**Bắt buộc đọc và kiểm tra trước khi chỉnh sửa:**
+
+Tài liệu:
+
+- `docs/ui-design.md`
+- `AGENTS.md` và các tài liệu liên quan nếu cần.
+
+Các file:
+
+- `frontend/js/data/products.js`
+- `frontend/js/services/cart.js` (nếu đã tồn tại)
+- `frontend/js/utils/format.js`
+- `frontend/js/components/header.js`
+- `frontend/js/components/render-products.js`
+- `frontend/js/pages/products-page.js`
+- JavaScript của trang chi tiết sản phẩm.
+- `frontend/cart.html`, `products.html`, `product-detail.html`, `index.html`.
+- CSS liên quan.
+
+Xác định:
+
+1. Cấu trúc dữ liệu sản phẩm, ID, tên, hình ảnh và giá.
+2. Cách các nút thêm giỏ hàng và options đang hoạt động.
+3. Giao diện hiện tại của trang giỏ hàng.
+4. Cách nhúng JavaScript và thứ tự tải file.
+5. Header đã có `id="cart-count"` chưa.
+6. Các hàm có thể tái sử dụng.
+
+**Không tự giả định tên biến, hàm, ID, đường dẫn hoặc cấu trúc dữ liệu.** Nếu thiếu thông tin quan trọng, hãy hỏi tôi trước khi triển khai.
+
+## 3. Yêu cầu chức năng
+
+### 3.1. Quản lý dữ liệu
+
+Sử dụng `localStorage` với khóa `cart`.
+
+Quy tắc:
+
+- Chỉ `frontend/js/services/cart.js` được phép đọc/ghi localStorage liên quan đến giỏ hàng.
+- Các file khác phải gọi hàm từ `cart.js`.
+- Dữ liệu được duy trì khi reload hoặc chuyển trang.
+- Nếu dữ liệu trống hoặc JSON lỗi, trả về `[]`, không làm website crash.
+
+Cấu trúc mỗi dòng giỏ hàng:
+
+```javascript
+{
+  key,
+  id,
+  quantity,
+  options,
+  unitPrice
+}
+```
+
+Chỉ lưu các trường trên, không lưu tên hoặc hình ảnh. Khi render, lấy thông tin sản phẩm từ `products.js` thông qua ID.
+
+Phân biệt sản phẩm theo ID và options:
+
+- Cùng ID, cùng options: tăng quantity.
+- Cùng ID, khác options: tạo dòng riêng.
+
+### 3.2. Các hàm bắt buộc trong `cart.js`
+
+Triển khai các hàm sau, đảm bảo tương thích với quy ước hiện tại của nhóm:
+
+| Hàm                                           | Chức năng                                                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `loadCart()`                                  | Đọc dữ liệu, xử lý JSON lỗi và trả về `[]` nếu không hợp lệ.                                      |
+| `saveCart(cart)`                              | Lưu dữ liệu giỏ hàng.                                                                             |
+| `addToCart(id, quantity, options, unitPrice)` | Thêm sản phẩm, gộp dòng trùng, tự lấy giá nếu không truyền `unitPrice`, từ chối ID không tồn tại. |
+| `updateQuantity(key, quantity)`               | Cập nhật số lượng, xóa dòng nếu quantity < 1.                                                     |
+| `removeFromCart(key)`                         | Xóa đúng dòng theo key.                                                                           |
+| `clearCart()`                                 | Xóa toàn bộ giỏ hàng.                                                                             |
+| `getCartCount()`                              | Tính tổng quantity, không phải số dòng.                                                           |
+| `getCartTotal()`                              | Tính tổng `unitPrice × quantity`.                                                                 |
+| `updateCartBadge()`                           | Cập nhật `#cart-count`, không gây lỗi nếu phần tử không tồn tại.                                  |
+
+Mọi thao tác làm thay đổi giỏ hàng phải lưu dữ liệu và cập nhật badge phù hợp.
+
+### 3.3. Tích hợp header
+
+Trong `frontend/js/components/header.js`:
+
+- Bổ sung gọi `updateCartBadge()` ở cuối file theo ghi chú của leader.
+- Đảm bảo badge cập nhật khi trang tải.
+- Không xóa hoặc ghi đè chức năng tìm kiếm.
+- Tránh đăng ký `DOMContentLoaded` trùng lặp.
+- Badge phải đồng bộ trên tất cả trang có header.
+
+### 3.4. Tích hợp thêm sản phẩm
+
+**Trang `products.html`:**
+
+- Nút thêm giỏ hàng gọi `addToCart()`.
+- Không ảnh hưởng nút xem chi tiết và chức năng hiện có.
+
+**Trang `product-detail.html`:**
+
+- Lấy đúng ID, giá và options của sản phẩm.
+- Truyền đúng options nếu có.
+- Không có options thì sử dụng giá trị phù hợp với quy ước của nhóm.
+
+Nếu cần sửa file ngoài phạm vi leader giao, hãy giải thích lý do và phạm vi thay đổi trước.
+
+## 4. Yêu cầu chất lượng
+
+- Sử dụng Vanilla JavaScript, không thêm framework/thư viện.
+- Tuân thủ coding convention và cấu trúc hiện tại.
+- Ưu tiên tái sử dụng, tránh trùng lặp logic.
+- Không tạo nhiều nơi quản lý giỏ hàng.
+- Không thao tác localStorage ngoài `cart.js`.
+- Không phá vỡ chức năng tìm kiếm, CSS hoặc các tính năng hiện có.
+- Không tạo file mới nếu không thực sự cần thiết.
+- Xử lý dữ liệu thiếu, sai định dạng và sản phẩm không tồn tại.
+- Không để phát sinh lỗi JavaScript trên Console.
+
+## 5. Quy trình triển khai
+
+**Bước 1: Phân tích**
+
+Đọc tài liệu, kiểm tra repository và xác định phương án tích hợp. Chưa chỉnh sửa code.
+
+**Bước 2: Triển khai**
+
+## 6. Đầu ra
+
+Cung cấp kết quả theo cấu trúc:
+
+1. **Code triển khai:** Ghi rõ vị trí cần thêm/thay thế và cung cấp code hoàn chỉnh cho từng vị trí.
+2. **Chức năng hoàn thành:** Đối chiếu với yêu cầu.
+3. **Lưu ý tích hợp:** Những thay đổi có thể ảnh hưởng đến thành viên khác.
+````
 ### Nhật ký của Phạm Bảo Ngọc
 #### B2-PBN-01 – Xây dựng danh sách sản phẩm (products.html)
 - **Công cụ:** Claude
