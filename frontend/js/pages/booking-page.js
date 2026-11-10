@@ -53,6 +53,12 @@
     return `<span class="groomer-chip">${avatarHtml(g, "sm")}<span>${esc(g.name)}<small>${esc(g.title)} · ${esc(g.specialties.slice(0, 2).join(", "))}</small></span></span>`;
   }
   function dateText(date) { const p = date.split("-"); return p[2] + "/" + p[1] + "/" + p[0]; }
+    // Nhãn tháng cho dải ngày đang hiện, ví dụ "Tháng 11/2026" hoặc "Tháng 11/2026 – Tháng 12/2026" khi dải ngày qua tháng
+  function monthLabel(dates) {
+    const first = dates[0].split("-"), last = dates[dates.length - 1].split("-");
+    const a = "Tháng " + Number(first[1]) + "/" + first[0], b = "Tháng " + Number(last[1]) + "/" + last[0];
+    return a === b ? a : a + " – " + b;
+  }
   function today() { return toVnParts(Date.now()).date; }
   function timeRange(start, duration) { return minutesToText(start) + " – " + minutesToText(start + duration); }
   function listDates() {
@@ -173,6 +179,7 @@
       <section class="panel" aria-labelledby="s2-title">
         <h2 id="s2-title">2. Chọn groomer, ngày và giờ</h2>
         ${groomerCardsHtml()}
+                <p class="month-label" aria-live="polite">${monthLabel(pageDates)}</p>
         <div class="day-strip">
           <button type="button" class="btn btn-outline" data-action="days-prev" ${state.dayPage === 0 ? "disabled" : ""} aria-label="Tuần trước">‹</button>
           <div class="day-chips">${dayChips}</div>
