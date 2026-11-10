@@ -76,7 +76,7 @@ t('walk-in bị chặn vì khung đang được giữ', !w.ok && w.code === 'SLO
 const w2 = walk({ startMin: 545 });
 t('walk-in ở giờ trống được ghi ngay, trạng thái confirmed, nguồn walk-in', w2.ok && w2.booking.status === 'confirmed' && w2.booking.source === 'walk-in', w2);
 t('walk-in được đặt sát giờ (nhân viên không bị giới hạn 60 phút)', w2.ok);
-const wNo = walk({ startMin: 700, customer: { name: '', phone: '' } });
+const wNo = walk({ startMin: 700, customer: { name: '', phone: '0912345678' } });
 t('walk-in thiếu cả tên lẫn số điện thoại bị từ chối', !wNo.ok && wNo.code === 'INVALID_INPUT');
 
 console.log('7. Hủy rồi đặt lại đúng chỗ đó');
@@ -175,7 +175,7 @@ for (let i = 0; i < 400; i++) {
   const sid = [1, 2, 3, 4, 5, 6, 7][rnd(7)], g = ['g-linh', 'g-minh', 'g-an', 'any'][rnd(4)], day = ['2026-11-09','2026-11-10','2026-11-11'][rnd(3)];
   const o = { species: 'dog', weightRange: ['<5kg','5-10kg','10-20kg','>20kg'][rnd(4)], coat: ['short','long'][rnd(2)] };
   if (rnd(2)) hold({ serviceId: sid, options: o, date: day, startMin: 480 + rnd(40) * 15, groomerId: g, clientId: 'r' + i });
-  else walk({ serviceId: sid, options: o, date: day, startMin: 480 + rnd(40) * 15, groomerId: g, customer: { name: 'w' + i, phone: '' } });
+  else walk({ serviceId: sid, options: o, date: day, startMin: 480 + rnd(40) * 15, groomerId: g, customer: { name: 'w' + i, phone: '09' + String(10000000 + i) } });
 }
 const all = run('loadBookings()').filter(b => ['held','confirmed','checked-in'].includes(b.status));
 let clashes = 0;
@@ -183,7 +183,7 @@ for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
   const x = all[i], y = all[j];
   if (x.groomerId === y.groomerId && x.date === y.date && x.startMin < y.endMin + 10 && y.startMin < x.endMin + 10) clashes++;
 }
-t('400 lần đặt ngẫu nhiên → ' + all.length + ' lịch, 0 cặp chồng nhau (kể cả đệm 10 phút)', clashes === 0, clashes);
+t('400 lần đặt ngẫu nhiên → ' + all.length + ' lịch, 0 cặp chồng nhau (kể cả đệm 5 phút)', clashes === 0, clashes);
 t('mọi lịch đều nằm trong giờ làm việc của groomer', all.every(b => run('getGroomerSegments("' + b.groomerId + '","' + b.date + '")').some(s => b.startMin >= s[0] && b.endMin <= s[1])));
 
 console.log('16. Ghi nhận cách chọn groomer');

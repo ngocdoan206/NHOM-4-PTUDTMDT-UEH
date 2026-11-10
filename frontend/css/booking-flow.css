@@ -144,6 +144,7 @@
   .groomer-card .avatar { grid-row: span 1; }
   .groomer-info { grid-column: 1 / -1; }
   .field-row { grid-template-columns: 1fr; }
+  .month-label { margin: var(--space-3) 0 var(--space-1); font-weight: 700; font-size: 1rem; color: var(--color-text); }
   .day-strip { grid-template-columns: 1fr; }
   .day-strip > .btn { display: none; }
   .day-chips { grid-template-columns: repeat(4, 1fr); }

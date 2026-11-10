@@ -50,6 +50,8 @@
 
   // ---------- Bảng bên phải ----------
   function optionsHtml(list, selected) { return list.map(function (o) { return `<option value="${o[0]}" ${String(o[0]) === String(selected) ? "selected" : ""}>${esc(o[1])}</option>`; }).join(""); }
+    // "HH:MM" -> số phút từ 0h (khách đến trực tiếp có thể bắt đầu ở phút lẻ, ví dụ 08:02)
+  function timeToMinutes(v) { const m = /^(\d{1,2}):(\d{2})$/.exec(v || ""); return m ? Number(m[1]) * 60 + Number(m[2]) : 0; }
   function timeOptions() { const out = []; for (let m = DAY_START; m < DAY_END; m += STEP) out.push([m, minutesToText(m)]); return out; }
 
   function renderPanel() {
@@ -68,7 +70,7 @@
       <form id="walkin-form" novalidate>
         <div class="sp-row">
           <div class="sp-field"><label for="w-groomer">Groomer</label><select id="w-groomer" data-w="groomerId">${optionsHtml(groomers.map(function (g) { return [g.id, g.name]; }), p.groomerId)}</select></div>
-          <div class="sp-field"><label for="w-time">Giờ bắt đầu</label><select id="w-time" data-w="startMin">${optionsHtml(timeOptions(), p.startMin)}</select></div>
+          <div class="sp-field"><label for="w-time">Giờ bắt đầu</label><input id="w-time" data-w="startMin" type="time" step="60" required value="${minutesToText(p.startMin)}"></div>
         </div>
         <div class="sp-field"><label for="w-service">Dịch vụ</label><select id="w-service" data-w="serviceId">${optionsHtml(services.map(function (s) { return [s.id, s.name]; }), p.serviceId)}</select></div>
         <div class="sp-row">
@@ -76,8 +78,8 @@
           <div class="sp-field"><label for="w-coat">Lông</label><select id="w-coat" data-wo="coat">${optionsHtml([["short", "Ngắn"], ["long", "Dài"]], p.options.coat)}</select></div>
         </div>
         <div class="sp-field"><label for="w-weight">Cân nặng</label><select id="w-weight" data-wo="weightRange">${optionsHtml(WEIGHTS, p.options.weightRange)}</select></div>
-        <div class="sp-field"><label for="w-name">Tên khách</label><input id="w-name" data-wf="name" value="${esc(p.name || "")}"></div>
-        <div class="sp-field"><label for="w-phone">Số điện thoại</label><input id="w-phone" data-wf="phone" type="tel" value="${esc(p.phone || "")}"></div>
+        <div class="sp-field"><label for="w-name">Tên khách *</label><input id="w-name" data-wf="name" required value="${esc(p.name || "")}"></div>
+        <div class="sp-field"><label for="w-phone">Số điện thoại *</label><input id="w-phone" data-wf="phone" type="tel" inputmode="tel" placeholder="0912345678" required value="${esc(p.phone || "")}"></div>
         <div class="sp-field"><label for="w-pet">Tên bé</label><input id="w-pet" data-wf="petName" value="${esc(p.petName || "")}"></div>
         <p class="sp-info">${dur} phút, ${minutesToText(p.startMin)} – ${minutesToText(p.startMin + dur)}, ${formatPrice(price)}</p>
         ${p.error ? `<p class="sp-error" role="alert">${esc(p.error)}</p>` : ""}
@@ -170,7 +172,7 @@
 
     panelEl.addEventListener("change", function (event) {
       const t = event.target, p = view.panel; if (!p) return;
-      if (t.dataset.w) { p[t.dataset.w] = t.dataset.w === "groomerId" ? t.value : Number(t.value); p.error = ""; p.suggestions = []; renderPanel(); }
+      if (t.dataset.w) { p[t.dataset.w] = t.dataset.w === "groomerId" ? t.value : t.dataset.w === "startMin" ? timeToMinutes(t.value) : Number(t.value); p.error = ""; p.suggestions = []; renderPanel(); }
       else if (t.dataset.wo) { p.options[t.dataset.wo] = t.value; renderPanel(); }
       else if (t.dataset.m) { p[t.dataset.m] = t.dataset.m === "moveStart" ? Number(t.value) : t.value; if (t.dataset.m !== "moveStart") p.moveStart = undefined; renderPanel(); }
     });

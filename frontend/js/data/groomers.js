@@ -31,7 +31,7 @@ const groomers = [
     bio: "Quen xử lý chó cỡ lớn, làm việc nhanh và gọn.",
     services: [1, 2, 3, 4, 5, 6, 7],
     hours: { 0: [540, 1140], 2: [540, 1140], 3: [540, 1140], 4: [540, 1140], 5: [540, 1140], 6: [540, 1140] },
-    lunch: [720, 780],
+    lunch: [750, 810],
     daysOff: []
   },
   {
@@ -43,8 +43,8 @@ const groomers = [
     specialties: ["Mèo", "Vệ sinh tai", "Cắt móng"],
     bio: "Nhẹ tay với mèo và các bé nhạy cảm, chuyên chăm sóc cơ bản.",
     services: [1, 3, 4, 5],
-    hours: { 1: [480, 1020], 2: [480, 1020], 3: [480, 1020], 4: [480, 1020], 5: [480, 1020], 6: [480, 1020] },
-    lunch: [720, 780],
+    hours: { 1: [480, 1020], 2: [480, 1020], 3: [480, 1020], 4: [480, 1020], 5: [480, 1020], 6: [480, 720]  },
+    lunch: [690, 750],
     daysOff: []
   }
 ];

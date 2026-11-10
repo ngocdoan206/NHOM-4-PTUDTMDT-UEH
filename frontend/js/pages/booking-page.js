@@ -146,7 +146,7 @@
     const free = getAvailability(state.serviceId, state.options, state.date, state.groomerId, false);
     const freeMap = {}; free.forEach(function (f) { freeMap[f.startMin] = f.groomerIds; });
     const all = getAllStarts(state.serviceId, state.options, state.date, state.groomerId);
-    const groups = [["Sáng", 0, 720], ["Chiều", 720, 1020], ["Tối", 1020, 1440]];
+    const groups = [["Sáng", 0, 720], ["Chiều", 720, 1080], ["Tối", 1080, 1440]];
     const dur = getServiceDuration(state.serviceId, state.options);
 
     const dayChips = pageDates.map(function (d) {
@@ -178,7 +178,8 @@
           <div class="day-chips">${dayChips}</div>
           <button type="button" class="btn btn-outline" data-action="days-next" ${state.dayPage >= maxPage ? "disabled" : ""} aria-label="Tuần sau">›</button>
         </div>
-        <p class="note">Giờ mờ là đã kín hoặc đã qua. Đặt trước tối thiểu ${BOOKING_CONFIG.minLeadMinutes} phút. Giờ theo múi giờ Việt Nam (GMT+7).</p>
+        <p class="note">Giờ mờ là đã kín hoặc đã qua. Giữa hai lịch có 5 phút dọn dẹp. Giờ theo múi giờ Việt Nam (GMT+7).</p>
+        <p class="note">Bạn có thể đến sớm tối đa ${BOOKING_CONFIG.earlyArriveMinutes} phút. Nếu quá giờ hẹn ${BOOKING_CONFIG.lateCancelMinutes} phút mà chưa đến, tiệm có quyền hủy lịch.</p>
         ${free.length === 0 ? `<p class="form-error">Ngày này đã hết chỗ cho dịch vụ này. Hãy chọn ngày khác hoặc groomer khác.</p>` : ""}
         ${timeHtml}
         <p class="summary-line">${esc(s.name)} · ${dur} phút · ${state.startMin !== null ? "Giờ " + timeRange(state.startMin, dur) + " · " + (chosenGroomers.length === 1 || state.groomerId !== "any" ? "Groomer " + groomerName(chosenGroomers[0] || state.groomerId) : who) : "Chưa chọn giờ"}</p>

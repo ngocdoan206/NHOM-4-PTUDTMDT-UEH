@@ -8,9 +8,11 @@
 const BOOKINGS_KEY = "bookings";
 const BOOKING_CONFIG = {
   stepMinutes: 15,          // khoảng cách giữa hai giờ bắt đầu
-  bufferMinutes: 10,        // thời gian dọn dẹp sau mỗi lượt (giữa hai lượt luôn cách nhau ít nhất số phút này)
+  bufferMinutes: 5,        // thời gian dọn dẹp sau mỗi lượt (giữa hai lượt luôn cách nhau ít nhất số phút này)
   holdMinutes: 10,          // giữ chỗ khi khách chưa xác nhận
   minLeadMinutes: 60,       // khách phải đặt trước giờ bắt đầu ít nhất số phút này (nhân viên không bị giới hạn)
+    earlyArriveMinutes: 30,   // khách được đến sớm tối đa số phút này để làm thủ tục
+  lateCancelMinutes: 15,    // quá giờ hẹn số phút này mà chưa đến thì tiệm có quyền hủy lịch
   maxAdvanceDays: 30,       // đặt trước tối đa
   maxHeldPerClient: 2,      // số lượt đang giữ chỗ tối đa của một trình duyệt (chống chiếm chỗ ảo)
   maxActivePerPhone: 3,     // số lịch còn hiệu lực tối đa của một số điện thoại
@@ -300,7 +302,8 @@ function holdBooking(input) { return writeBooking(Object.assign({}, input, { sta
 function createWalkInBooking(input) {
   const name = String((input.customer && input.customer.name) || "").trim();
   const phone = normalizePhone(input.customer && input.customer.phone);
-  if (!name && !phone) return fail("INVALID_INPUT", "Cần có tên hoặc số điện thoại hợp lệ của khách.");
+   if (!name) return fail("INVALID_INPUT", "Cần nhập tên khách.");
+  if (!phone) return fail("INVALID_INPUT", "Cần nhập số điện thoại hợp lệ của khách (ví dụ 0912345678).");
   return writeBooking(Object.assign({}, input, { status: "confirmed", source: "walk-in", ignoreLead: true,
     customer: { name: name, phone: phone } }));
 }
