@@ -1,0 +1,134 @@
+/* =========================================================
+   PawCare – base.css
+   NỀN TẢNG DÙNG CHUNG: biến CSS + reset + chữ + liên kết + focus.
+   Thứ tự nạp trong <head> (bắt buộc đúng thứ tự):
+     1. base.css        biến, nền tảng            (file này)
+     2. layout.css      khung chứa, lưới, header, footer
+     3. components.css  nút, thẻ, bảng, FAQ...
+     4. pages.css       riêng từng trang
+     5. file riêng của tính năng (products / cart / calculator / booking .css)
+   Cách viết: "desktop trước" – kiểu mặc định cho 1366px; các khối
+   @media ở cuối MỖI phần ghi đè cho máy tính bảng (≤1023px) và
+   điện thoại (≤599px). Mốc kiểm thử: 1366 / 768 / 390 px.
+   ========================================================= */
+ 
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+ 
+ 
+/* ---------- 1. BIẾN CSS ----------
+   Muốn đổi bảng màu thật sau này: chỉ sửa giá trị ở đây. */
+:root {
+  /* Màu – theo docs/ui-design.md, mục 1 */
+  --color-bg: #F8F9FA;                /* nền web */
+  --color-card: #FFFFFF;              /* nền card, header, ô nhập */
+  --color-surface: var(--color-card); /* nền khối phụ (docs chưa quy định riêng → dùng màu card) */
+  --color-text: #212529;              /* chữ chính */
+  --color-muted: #5C6570;             /* chữ phụ */
+  --color-primary: #007A6E;           /* màu chính: liên kết, viền nút phụ */
+  --color-primary-hover: #00665C;     /* hover, focus */
+  --color-on-primary: #FFFFFF;        /* chữ đặt trên nền màu chính/hover */
+  --color-accent: #FC7060;            /* nền nút chính */
+  --color-logo: #00A090;              /* màu logo – chỉ dùng trang trí */
+  --color-border: var(--color-muted); /* docs chưa quy định màu viền → dùng màu chữ phụ (≥ 3:1) */
+ 
+  /* Màu bổ sung cho Header (docs chưa quy định → cần cập nhật docs) */
+  --color-header-bg: #E8F5F3;         /* nền Header: teal nhạt (phương án B). A: var(--color-card), C: #FFF3F0 */
+  --color-accent-hover: #EF6551;      /* hover nút Đặt lịch: cam đậm hơn một chút (chữ #212529 ≈ 4,9:1) */
+  --color-focus-ring: #BFDEDB;        /* vầng sáng teal quanh ô tìm kiếm khi focus */
+  --color-header-line: #B8DCD7;       /* đường kẻ dưới Header: teal nhạt, chỉ trang trí */
+ 
+  /* Khoảng cách – luôn là bội của 8px */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+ 
+  /* Chữ, bo góc, viền */
+  --font-base: "Nunito", system-ui, sans-serif;
+  --radius: 8px;                      /* nút, ô nhập */
+  --radius-card: 12px;                /* card */
+  --radius-pill: 999px;               /* bo tròn hoàn toàn (ô tìm kiếm, số lượng giỏ) */
+  --border-width: 2px;
+ 
+  /* Chiều rộng tối đa của nội dung */
+  --container-width: 1200px;
+}
+ 
+ 
+/* ---------- 2. NỀN TẢNG ---------- */
+ 
+/* Tính width/height gồm cả padding và viền → dễ canh, tránh tràn ngang */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+ 
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: 1rem;              /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+ 
+img {
+  max-width: 100%;
+  height: auto;
+}
+ 
+button,
+input {
+  font: inherit;
+}
+ 
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-2);
+  line-height: 1.25;
+  color: var(--color-text);
+}
+ 
+h1 { font-size: 2rem;    font-weight: 700; }  /* 32px */
+h2 { font-size: 1.5rem;  font-weight: 700; }  /* 24px */
+h3 { font-size: 1.25rem; font-weight: 600; }  /* 20px */
+ 
+p {
+  margin: 0 0 var(--space-2);
+}
+ 
+/* Liên kết chữ: màu chính (≈4,9:1 trên nền web), hover đổi màu + gạch dày hơn */
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+ 
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration-thickness: 3px;
+}
+ 
+/* Focus bàn phím: dùng màu hover đậm (≈7:1) thay vì màu nhấn cam (chỉ ≈2,6:1) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+ 
+/* Thuộc tính hidden luôn có tác dụng, kể cả khi lớp CSS khác đặt display */
+[hidden] {
+  display: none !important;
+}
+ 
