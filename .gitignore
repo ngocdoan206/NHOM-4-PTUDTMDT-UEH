@@ -1,8 +1,17 @@
 
 
-# D�ng cho backend sau n�y
+# Dùng cho backend sau này
 node_modules/
 .env
 *.log
 .DS_Store
 Thumbs.db
+# Không bao giờ đưa lên Git
+**/appsettings.Production.json
+**/appsettings.*.local.json
+**/bin/
+**/obj/
+publish*/
+*.zip
+*.pubxml
+.env
