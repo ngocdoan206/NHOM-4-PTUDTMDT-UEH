@@ -1,0 +1,318 @@
+/* =========================================================
+   PawCare – components.css
+   THÀNH PHẦN DÙNG LẠI Ở NHIỀU TRANG:
+     1. Nút (.btn, .btn-primary, .btn-outline, .btn-large)
+     2. Thẻ dịch vụ / sản phẩm (.card và các phần con)
+     3. Ô nổi bật (.feature-box, .feature-icon)
+     4. Danh sách thuộc tính (.attr-list)
+     5. Bảng giá (.table-wrap, .price-table)
+     6. Câu hỏi thường gặp (.faq-item)
+     7. Responsive và giảm chuyển động
+   ========================================================= */
+ 
+ 
+/* ---------- 1. NÚT ---------- */
+ 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color 0.2s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              transform 0.15s ease,
+              box-shadow 0.15s ease;
+}
+ 
+/* Hover: nút nhấc lên 2px. Nhấn xuống: về chỗ cũ. */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+ 
+/* Nút chính: nền nhấn cam, chữ tối (≈5,7:1). Hover: nền #00665C, chữ trắng */
+.btn-primary {
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+ 
+.btn-primary:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+ 
+/* Nút phụ: nền trắng, viền + chữ màu chính. Hover: nền #00665C, chữ trắng */
+.btn-outline {
+  color: var(--color-primary);
+  background-color: var(--color-card);
+  border-color: var(--color-primary);
+}
+ 
+.btn-outline:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+ 
+/* Docs: nút phụ khi focus có vòng viền 2px */
+.btn-outline:focus-visible {
+  outline-width: var(--border-width);
+}
+ 
+/* Nút to, dễ bấm (trang chi tiết) */
+.btn-large {
+  width: 100%;
+  max-width: 320px;
+  min-height: 56px;
+  padding: var(--space-2) var(--space-4);
+  font-size: 18px;
+}
+ 
+ 
+/* ---------- 2. THẺ DỊCH VỤ / SẢN PHẨM ---------- */
+ 
+/* Thẻ: nền trắng, bo góc 12px. overflow: hidden giữ ảnh phóng to không tràn viền. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  overflow: hidden;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+ 
+/* Rê chuột: thẻ nổi lên */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(33, 37, 41, 0.12);
+  border-color: var(--color-primary-hover);
+}
+ 
+/* Người dùng bàn phím: Tab vào nút trong thẻ thì thẻ cũng nổi lên như khi hover */
+.card:focus-within {
+  box-shadow: 0 8px 24px rgba(33, 37, 41, 0.12);
+  border-color: var(--color-primary-hover);
+}
+ 
+.card-title {
+  margin: 0;
+  overflow-wrap: anywhere;      /* tên dài thì xuống dòng, không tràn */
+}
+ 
+.card-price {
+  margin: 0;
+  color: var(--color-muted);
+}
+ 
+/* Mô tả ngắn và dòng hướng dẫn giá */
+.card-text {
+  margin: 0;
+  color: var(--color-muted);
+}
+ 
+.card-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+ 
+/* margin-top: auto đẩy nút xuống đáy thẻ → các nút thẳng hàng */
+.card-action {
+  margin-top: auto;
+}
+ 
+/* Ảnh thẻ: hiện trọn vẹn, không cắt, không méo.
+   Tỉ lệ khung khớp tỉ lệ ảnh nên không có viền thừa. */
+.card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;          /* khớp ảnh dịch vụ 400×300 */
+  object-fit: contain;
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+}
+ 
+.card-img-square {
+  aspect-ratio: 1 / 1;          /* khớp ảnh sản phẩm 400×400 (đặt SAU .card-img để thắng) */
+}
+ 
+.card-img,
+.card-img-square {
+  transition: transform 0.3s ease;
+}
+ 
+.card:hover .card-img,
+.card:hover .card-img-square {
+  transform: scale(1.04);       /* phóng to nhẹ ảnh khi hover vào thẻ */
+}
+ 
+/* Trang danh sách: ảnh nằm trong .card-media nên cần quy tắc riêng, giống .card-img */
+.card-media {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+ 
+.card-media img {
+  transition: transform 0.3s ease;
+}
+ 
+.card:hover .card-media img {
+  transform: scale(1.04);
+}
+ 
+ 
+/* ---------- 3. Ô NỔI BẬT ---------- */
+ 
+/* Ô "Vì sao chọn PawCare", ô "Giá trị" */
+.feature-box {
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+}
+ 
+.feature-box p {
+  margin: 0;
+  color: var(--color-muted);
+}
+ 
+/* Khung icon nhỏ */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+ 
+ 
+/* ---------- 4. DANH SÁCH THUỘC TÍNH / LIÊN HỆ ---------- */
+ 
+/* Grid 2 cột (nhãn – giá trị) */
+.attr-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+ 
+.attr-list dt {
+  font-weight: 600;
+}
+ 
+.attr-list dd {
+  margin: 0;
+}
+ 
+ 
+/* ---------- 5. BẢNG GIÁ ---------- */
+ 
+/* Nếu quá hẹp thì cuộn trong khung, trang không tràn ngang */
+.table-wrap {
+  overflow-x: auto;
+}
+ 
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+.price-table caption {
+  padding-bottom: var(--space-1);
+  text-align: left;
+  color: var(--color-muted);
+}
+ 
+.price-table th,
+.price-table td {
+  padding: var(--space-1) var(--space-2);
+  text-align: left;
+  border: 1px solid var(--color-border);
+}
+ 
+.price-table thead th {
+  background-color: var(--color-surface);
+}
+ 
+/* Tô xen kẽ dòng, ghi chú cuối bảng */
+.price-table tbody tr:nth-child(even) {
+  background-color: var(--color-bg);
+}
+ 
+.price-table tfoot td {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+ 
+ 
+/* ---------- 6. CÂU HỎI THƯỜNG GẶP ---------- */
+ 
+.faq-item {
+  margin-bottom: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+ 
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+ 
+.faq-item summary:hover {
+  color: var(--color-primary-hover);
+}
+ 
+.faq-item p {
+  margin: var(--space-1) 0 0;
+}
+ 
+ 
+/* ---------- 7. RESPONSIVE VÀ GIẢM CHUYỂN ĐỘNG ---------- */
+ 
+/* Người dùng bật "giảm chuyển động" → tắt hiệu ứng chuyển và nhấc/phóng to */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .card,
+  .card-img,
+  .card-img-square,
+  .card-media img,
+  .faq-item summary {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+ 
+/* ĐIỆN THOẠI (mốc kiểm tra: 390px) */
+@media (max-width: 599px) {
+  .btn-large {
+    max-width: none;
+  }
+}
+ 
